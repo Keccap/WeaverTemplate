@@ -1,0 +1,20 @@
+{
+  "extends": "standard",
+  "plugins": [
+    "standard",
+    "promise"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+//    "jquery": true
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "no-multiple-empty-lines": "off",
+    "space-before-function-paren": "off", // ["error", "always"]
+    "no-unused-vars": "off",
+    "no-unused-labels": "off"
+  }
+}

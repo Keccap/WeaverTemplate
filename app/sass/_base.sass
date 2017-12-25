@@ -1,0 +1,50 @@
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: rgba(0,0,0,.25)
+	border-color: rgba(0,0,0,.25)
+
+
+
+*
+	box-sizing: border-box
+	&:before, &:after
+		box-sizing: border-box
+
+html
+	height: 100%
+
+body
+	min-height: 100%
+	min-width: 320px
+	font-family: $default-font
+	font-size: #{$baseFontSize}px
+	margin-top: -0.1px
+	padding-top: 0.1px
+	line-height: 1.6
+	overflow-x: hidden
+	position: relative
+
+
+picture
+	img
+		width: 100%
+		height: auto
+
+
+

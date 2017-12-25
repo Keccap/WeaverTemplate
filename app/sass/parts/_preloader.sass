@@ -1,0 +1,69 @@
+// PRELOADER
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 99999
+	background-color: #fff
+	opacity: 1
+	visibility: visible
+	&.loaded
+		transition: all 1s ease
+		opacity: 0
+		visibility: hidden
+
+	&__inner
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		width: 50px
+		&::before
+			content: ''
+			display: block
+			padding-top: 100%
+
+	&__svg
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		margin: auto
+		transform-origin: center center
+		animation: rotate 2s linear infinite
+		
+		.circle
+			stroke: #E38482
+			stroke-dasharray: 1, 200
+			stroke-dashoffset: 0
+			animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+			stroke-linecap: round
+
+@keyframes rotate
+	to
+		transform: rotate(360deg)
+
+@keyframes dash
+	0%
+		stroke-dasharray: 1, 200
+		stroke-dashoffset: 0
+	50%
+		stroke-dasharray: 89, 200
+		stroke-dashoffset: -35px
+	100% 
+		stroke-dasharray: 89, 200
+		stroke-dashoffset: -124px
+
+@keyframes color
+	100%, 0%
+		stroke: #f04e59
+	40%
+		stroke: #40c2d2
+	66%
+		stroke: #77c383
+	80%, 90%
+		stroke: #ffc63b
+// PRELOADER END
