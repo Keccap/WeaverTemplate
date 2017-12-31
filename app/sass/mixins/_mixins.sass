@@ -52,13 +52,22 @@
 		@content
 
 
-// ВЕРТИКАЛЬНОЕ ВЫРАВНИВАНИЕ
+// ВЫРАВНИВАНИЯ
 
-=vtr
-	position: absolute
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%)
+=center($axis)
+	@if $axis == both
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+	@else if $axis == w
+		position: absolute
+		left: 50%
+		transform: translateX(-50%)
+	@else if $axis == h
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)	
 
 =vfx
 	display: flex
