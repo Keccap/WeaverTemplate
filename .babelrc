@@ -2,5 +2,5 @@
   "presets": [
 	  ["env", { "modules": false }]
   ],
-  "plugins": ["transform-proto-to-assign"]
+  "plugins": ["transform-proto-to-assign", "transform-object-set-prototype-of-to-assign", "transform-object-rest-spread"]
 }
