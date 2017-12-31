@@ -12,7 +12,7 @@
 
     // preloader
     const preloader = document.getElementById('preloader');
-    preloader.classList.add('loaded')
+    if (preloader) preloader.classList.add('loaded');
 
     // aos
 
