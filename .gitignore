@@ -5,5 +5,3 @@
 /**/*.psd
 /**/Thumbs.db
 /**/*.DS_Store
-*.lock
-package-lock.json
