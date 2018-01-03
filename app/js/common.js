@@ -12,7 +12,12 @@
 
     // preloader
     const preloader = document.getElementById('preloader');
-    if (preloader) preloader.classList.add('loaded');
+    if (preloader) {
+      preloader.classList.add('loaded');
+      setTimeout(() => {
+        preloader.classList.add('no-anim');
+      }, 1000)
+    }
 
     // aos
 
