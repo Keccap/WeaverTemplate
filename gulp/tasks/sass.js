@@ -7,22 +7,27 @@ const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');       // (postcss)
 const mqpacker     = require('css-mqpacker');       // Группирует медиазапросы и помещает их в конец CSS документа (postcss)
 const csso         = require('postcss-csso');       // минимизатор CSS (postcss)
+const gulpif       = require('gulp-if');
 const config       = require('../config');
 
 
 
 
 //postcss plugins
-const processors = [
+const processorsDev = [
     autoprefixer({
         browsers: ['last 7 versions'],
         cascade: false
     }),
     mqpacker({
         sort: sortMediaQueries // функция сортировки запросов в правильном порядке (не поддерживает диапазоны экранов min:480 - max:780)
-    }),
+    })
+];
+
+const processorsProd = [
     csso
 ];
+
 
 gulp.task('sass', () => {
     return gulp
@@ -30,16 +35,16 @@ gulp.task('sass', () => {
         .pipe(plumber({
             errorHandler: config.errorHandler
         }))
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(!config.production, sourcemaps.init()))
         .pipe(sass({
-            outputStyle: 'expanded', // nested, expanded, compact, compressed
+            outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
             precision: 5
         }))
         .on('error', config.errorHandler)
         .pipe(rename({suffix: '.min', prefix : ''}))
-        .pipe(postcss(processors))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(config.src.css))
+        .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))
+        .pipe(gulpif(!config.production, sourcemaps.write('./')))
+        .pipe(gulp.dest(config.dest.css))
 });
 
 

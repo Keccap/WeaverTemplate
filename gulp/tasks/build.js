@@ -5,14 +5,30 @@ const config       = require('../config');
 
 
 
-gulp.task('build', (cb) => {
+function build(cb) {
     runSequence(
         'clean',
         'sprite:svg',
         'sass',
         'nunjucks',
-        'scripts-min',
+        'scripts',
+        'svgo',
         'copy',
         cb
     );
+}
+
+gulp.task('build', function (cb) {
+    config.setEnv('production');
+    config.logEnv();
+    build(cb);
 });
+
+
+gulp.task('build:dev', function (cb) {
+    config.setEnv('development');
+    config.logEnv();
+    build(cb);
+});
+
+

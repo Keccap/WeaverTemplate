@@ -76,7 +76,7 @@ gulp.task('sprite:svg', function() {
             parserOptions: { xmlMode: true }
         }))
         .pipe(rename({ basename: 'sprite' }))
-        .pipe(gulp.dest(config.src.img));
+        .pipe(gulp.dest(config.dest.img));
 });
 
 gulp.task('sprite:svg:watch', function() {

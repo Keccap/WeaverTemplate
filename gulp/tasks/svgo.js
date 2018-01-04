@@ -1,17 +1,16 @@
 const gulp         = require('gulp');
-const plumber      = require('gulp-plumber');
 const svgmin       = require('gulp-svgmin');
+const changed      = require('gulp-changed');
+const plumber      = require('gulp-plumber');
 const config       = require('../config');
 
-
-
-
-gulp.task('svgmin', function() {
+gulp.task('svgo', function () {
     return gulp
-        .src(config.dest.img + '/svg/**/*.svg')
+        .src(config.src.img + '/svgo/**/*.svg')
         .pipe(plumber({
             errorHandler: config.errorHandler
         }))
+        .pipe(changed(config.dest.img))
         .pipe(svgmin({
             js2svg: {
                 pretty: true
@@ -24,6 +23,9 @@ gulp.task('svgmin', function() {
                 mergePaths: false
             }]
         }))
-        .pipe(gulp.dest(config.dest.img + '/svg'));
+        .pipe(gulp.dest(config.dest.img));
 });
 
+gulp.task('svgo:watch', function () {
+    gulp.watch(config.src.img + '/svgo/**/*.svg', ['svgo']);
+});

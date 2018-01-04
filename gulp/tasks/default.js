@@ -7,13 +7,19 @@ const config       = require('../config');
 
 gulp.task('default', function(cb) {
     runSequence(
-        'sprite:svg',
-        'nunjucks',
-        'sass',
-        'scripts',
+        'build:dev',
         'server',
         'watch',
         cb
     );
 });
 
+
+gulp.task('prod', function (cb) {
+    runSequence(
+        'build',
+        'server',
+        'watch',
+        cb
+    );
+});

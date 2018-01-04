@@ -19,7 +19,7 @@ function renderHtml(onlyChanged) {
         .pipe(plumber({
             errorHandler: config.errorHandler
         }))
-        .pipe(gulpif(onlyChanged, changed(config.src.root)))
+        .pipe(gulpif(onlyChanged, changed(config.dest.root)))
         .pipe(frontMatter({ property: 'data' }))
         .pipe(nunjucksRender({
             path: [config.src.templates]
@@ -32,7 +32,7 @@ function renderHtml(onlyChanged) {
             unformatted: ["a", "code", "pre"],
             end_with_newline: true
         }))
-        .pipe(gulp.dest(config.src.root));
+        .pipe(gulp.dest(config.dest.root));
 }
 
 gulp.task('nunjucks', function() {

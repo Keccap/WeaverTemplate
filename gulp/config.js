@@ -1,8 +1,12 @@
+const util = require('gulp-util');
 
-const srcPath = 'app';
+const production = util.env.production || util.env.prod || false;
+const srcPath = 'src';
 const destPath = 'build';
 
 const config = {
+    env       : 'development',
+    production: production,
 
     src: {
         root         : srcPath,
@@ -35,8 +39,23 @@ const config = {
         fonts: destPath + '/fonts',
     },
 
+    setEnv: function (env) {
+        if (typeof env !== 'string') return;
+        this.env = env;
+        this.production = env === 'production';
+        process.env.NODE_ENV = env;
+    },
+
+    logEnv: function () {
+        util.log(
+            'Environment:',
+            util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
+        );
+    },
+
     errorHandler: require('./util/handle-errors')
 };
 
+config.setEnv(production ? 'production' : 'development');
 
 module.exports = config;

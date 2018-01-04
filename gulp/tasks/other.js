@@ -1,9 +1,5 @@
 const gulp           = require('gulp');
 const critical       = require('critical').stream;     // Генерирует критические стили для более быстрой загрузки страницы
-const imagemin       = require('gulp-imagemin');       // Пакет минификации изображений (в зависимостях также идут дополнительные пакеты)
-const mozjpeg        = require('imagemin-mozjpeg');
-const pngquant       = require('imagemin-pngquant');
-const cache          = require('gulp-cache');          // Работа с кэшом
 const util           = require('gulp-util');
 const ftp            = require('vinyl-ftp');
 const config         = require('../config');          // все конфиги для работы тасков
@@ -31,16 +27,7 @@ gulp.task('deploy', () => {
 });
 
 
-gulp.task('imagemin', () => {
-    return gulp.src(config.dest.img + '/**/*.{jpg,png,jpeg,gif}')
-    .pipe(cache(imagemin([
-    pngquant(),
-    mozjpeg({
-                 progressive: true
-            })
-  ]))) // Cache Images
-    .pipe(gulp.dest(config.dest.img)); 
-});
+
 
 
 gulp.task('critical', () => {
@@ -57,4 +44,4 @@ gulp.task('critical', () => {
 });
 
 
-gulp.task('clearcache', () => { return cache.clearAll(); });
+

@@ -5,6 +5,7 @@ const uglify       = require('gulp-uglify');
 const concat       = require('gulp-concat');
 const fileInclude  = require('gulp-file-include');
 const babel        = require("gulp-babel");
+const gulpif       = require('gulp-if');
 const config       = require('../config');
 
 
@@ -57,26 +58,16 @@ gulp.task('scripts', ['common-js', 'libs-js'], () => {
         errorHandler: config.errorHandler
     }))
     .pipe(concat('bundle.min.js'))
-    //.pipe(uglify())                           // Минимизировать весь js (на выбор)
-    .pipe(gulp.dest(config.src.js))
+    .pipe(gulpif(config.production, uglify()))
+    .pipe(gulp.dest(config.dest.js))
 });
 
-
-// Минимизация всего js при сборке проекта
-gulp.task('scripts-min', ['scripts'], () => {
-    return gulp.src([
-        config.src.js + '/bundle.min.js'
-    ])
-    .pipe(uglify()) // Минимизировать весь js (обязательно, в этом смысл этого таска)
-    .pipe(gulp.dest(config.src.js))
-});
 
 
 
 gulp.task('scripts:watch', () => {
     gulp.watch([
         config.src.libs + '/**/*.js',
-        config.src.js + '/common.js',
-        config.src.js + '/libs.js'], ['scripts']
+        config.src.js + '/**/*.js'], ['scripts']
     );
 });
