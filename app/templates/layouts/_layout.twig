@@ -1,18 +1,20 @@
 {% import "parts/_mixins.twig" as mixins %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="🕷">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  {# , maximum-scale=1, user-scalable=no #}
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+	{# maximum-scale=1, user-scalable=no #}
+	{# ya-title=fade, ya-dock=fade для прозрачной верхней панели Яндекс браузера #}
+
 	<meta name="MobileOptimized" content="width" />
 	<meta name="HandheldFriendly" content="true" />
 	<meta name="format-detection" content="telephone=no">
 	
 
 	<title>{% if title %}{{ title }}{% else %}Title{% endif %}</title>
-	{# Description no longer than 155 characters #}
-	<meta name="description" content="{{ description }}">
+	<meta name="description" content="{{ description }}"> {# Description no longer than 155 characters #}
 
 
 	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
@@ -23,7 +25,9 @@
 	<meta name="theme-color" content="#000">
 	<meta name="msapplication-navbutton-color" content="#000">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+
 	{# {% include "../parts/_media-tags.twig" %} #}
+	
 
 	{# <link rel="preload" as="font" href="fonts/Lato-regular.woff2" type="font/woff2" crossorigin />
 	<link rel="preload" as="font" href="fonts/Lato-bold.woff2" type="font/woff2" crossorigin /> #}
