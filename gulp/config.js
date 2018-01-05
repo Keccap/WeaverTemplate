@@ -1,4 +1,5 @@
 const util = require('gulp-util');
+const del  = require('del');
 
 const production = util.env.production || util.env.prod || false;
 const srcPath = 'src';
@@ -51,6 +52,29 @@ const config = {
             'Environment:',
             util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
         );
+    },
+
+
+    syncChange(pathEditCallback) {
+        return function (event) {
+
+            if (event.type === 'deleted') {
+                let path = event.path.replace('\\' + config.src.root + '\\', '\\' + config.dest.root + '\\');
+
+                if (typeof pathEditCallback === 'function') {
+                    path = pathEditCallback(path) || path;
+                }
+
+                return del([path]).then(function (paths) {
+                    util.log(util.colors.red('Deleted:'), paths.join('\n'));
+                });
+            }
+
+            if (event.type === 'added') {
+                util.log(util.colors.green('Added:'), event.path);
+            }
+
+        }
     },
 
     errorHandler: require('./util/handle-errors')

@@ -45,11 +45,15 @@ gulp.task('nunjucks:changed', function() {
 
 
 gulp.task('nunjucks:watch', function() {
-    gulp.watch([
+    let watcher = gulp.watch([
         config.src.templates + '/**/[^_]*.twig'
     ], ['nunjucks:changed']);
 
-    gulp.watch([
+    watcher.on('change', config.syncChange((path) => {
+        return path.replace('.twig', '.html').replace('\\templates\\', '\\');
+    }))
+
+    let watcher2 = gulp.watch([
         config.src.templates + '/**/_*.twig'
     ], ['nunjucks']);
 });

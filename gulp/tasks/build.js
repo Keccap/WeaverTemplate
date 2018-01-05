@@ -13,6 +13,7 @@ function build(cb) {
         'nunjucks',
         'scripts',
         'svgo',
+        'imagemin',
         'copy',
         cb
     );

@@ -13,7 +13,7 @@ const config         = require('../config');
 gulp.task('server', () => {
     server.init({
         server: {
-            baseDir: !config.production ? [config.dest.root, config.src.root] : config.dest.root,
+            baseDir: config.dest.root,
             directory: false,
             serveStaticOptions: {
                 extensions: ["html"]

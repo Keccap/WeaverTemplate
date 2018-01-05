@@ -12,4 +12,6 @@ gulp.task('watch', [
   'sass:watch',
   'scripts:watch',
   'svgo:watch',
+  'imagemin:watch'
 ]);
+
