@@ -9,8 +9,12 @@ const config         = require('../config');
 
 
 
-function imageminFunc() {
-  return gulp.src(config.src.img + '/**/*.{jpg,jpeg,png,gif}')
+
+gulp.task('imagemin', () => {
+  return gulp.src([
+    config.src.img + '/**/*.{jpg,jpeg,png,gif}',
+    '!' + config.src.img + '/{imagemin-exceptions,svgo}/**/*.*'
+  ])
     .pipe(plumber({
       errorHandler: config.errorHandler
     }))
@@ -22,18 +26,19 @@ function imageminFunc() {
       })
     ]))) // Cache Images
     .pipe(gulp.dest(config.dest.img));
-}
-
-
-gulp.task('imagemin', () => {
-  return imageminFunc();
 });
 
 
 
-gulp.task('imagemin:watch', () => {
-  let watcher = gulp.watch([config.src.img + '/**/*'], ['imagemin']);
-  watcher.on('change', config.syncChange())
+gulp.task('imagemin:watch', cb => {
+  let watcher = gulp.watch([
+    config.src.img + '/**/*.{jpg,jpeg,png,gif}',
+    '!' + config.src.img + '/{imagemin-exceptions,svgo}/**/*.*'
+  ], gulp.series('imagemin'));
+
+  watcher.on('all', config.syncChange());
+  
+  cb();
 });
 
 

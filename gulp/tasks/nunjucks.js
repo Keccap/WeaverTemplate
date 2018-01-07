@@ -44,16 +44,19 @@ gulp.task('nunjucks:changed', function() {
 });
 
 
-gulp.task('nunjucks:watch', function() {
+gulp.task('nunjucks:watch', function(cb) {
     let watcher = gulp.watch([
         config.src.templates + '/**/[^_]*.twig'
-    ], ['nunjucks:changed']);
+    ], gulp.series('nunjucks:changed'));
 
-    watcher.on('change', config.syncChange((path) => {
-        return path.replace('.twig', '.html').replace('\\templates\\', '\\');
+    watcher.on('all', config.syncChange(path => {
+        return path
+            .replace('.twig', '.html')
+            .replace('\\templates\\', '\\');
     }))
 
     let watcher2 = gulp.watch([
         config.src.templates + '/**/_*.twig'
-    ], ['nunjucks']);
+    ], gulp.series('nunjucks'));
+    cb();
 });

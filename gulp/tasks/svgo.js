@@ -1,6 +1,6 @@
 const gulp         = require('gulp');
 const svgmin       = require('gulp-svgmin');
-//const changed      = require('gulp-changed');
+const changed      = require('gulp-changed');
 const plumber      = require('gulp-plumber');
 const config       = require('../config');
 
@@ -10,7 +10,7 @@ gulp.task('svgo', () => {
         .pipe(plumber({
             errorHandler: config.errorHandler
         }))
-        //.pipe(changed(config.dest.img))
+        .pipe(changed(config.dest.img))
         .pipe(svgmin({
             js2svg: {
                 pretty: true
@@ -26,6 +26,14 @@ gulp.task('svgo', () => {
         .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('svgo:watch', () => {
-    gulp.watch([config.src.img + '/svgo/**/*.svg', config.src.img + '/*'], { cwd: './' },  ['svgo']);
+gulp.task('svgo:watch', (cb) => {
+    let watcher = gulp.watch([
+        config.src.img + '/svgo/**/*.svg',
+    ], gulp.series('svgo'));
+
+    watcher.on('all', config.syncChange((path) => {
+        return path.replace('\\svgo\\', '\\');
+    }));
+    
+    cb();
 });

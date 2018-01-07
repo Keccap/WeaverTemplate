@@ -1,6 +1,6 @@
 {
   "name": "start_template",
-  "version": "0.7.7",
+  "version": "0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,15 +11,14 @@
   "devDependencies": {
     "autoprefixer": "^7.2.3",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-plugin-transform-proto-to-assign": "^6.26.0",
-    "babel-plugin-transform-object-set-prototype-of-to-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-object-set-prototype-of-to-assign": "^6.22.0",
+    "babel-plugin-transform-proto-to-assign": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.21.0",
-    "critical": "^1.1.0",
     "css-mqpacker": "^6.0.1",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-cache": "^1.0.1",
     "gulp-changed": "^1.3.0",
@@ -30,8 +29,6 @@
     "gulp-front-matter": "^1.3.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.0.0",
-    "imagemin-mozjpeg": "^7.0.0",
-    "imagemin-pngquant": "^5.0.1",
     "gulp-notify": "^3.0.0",
     "gulp-nunjucks-render": "^2.2.1",
     "gulp-plumber": "^1.1.0",
@@ -44,11 +41,11 @@
     "gulp-svgstore": "^5.0.5",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^5.0.1",
     "postcss-csso": "^3.0.0",
     "require-dir": "^0.3.2",
-    "run-sequence": "^2.2.0",
-    "through2": "^2.0.3",
-    "vinyl-ftp": "^0.6.0"
+    "through2": "^2.0.3"
   },
   "dependencies": {}
 }

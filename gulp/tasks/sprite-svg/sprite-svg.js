@@ -79,6 +79,7 @@ gulp.task('sprite:svg', function() {
         .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('sprite:svg:watch', function() {
-    gulp.watch(config.src.iconsSvg + '/*.svg', ['sprite:svg']);
+gulp.task('sprite:svg:watch', function(cb) {
+    gulp.watch(config.src.iconsSvg + '/*.svg', gulp.series('sprite:svg'));
+    cb()
 });
