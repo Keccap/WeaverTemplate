@@ -26,7 +26,7 @@ gulp.task('server', (cb) => {
       config.dest.img + '/**/*'
     ],
     notify: false,
-    open: false,
+    open: true,
     ghostMode: false,
     online: Boolean(util.env.tunnel),
     tunnel: util.env.tunnel || null

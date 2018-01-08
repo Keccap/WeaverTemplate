@@ -1,5 +1,6 @@
 const gulp         = require('gulp');
 const sass         = require('gulp-sass');
+const csscomb      = require('gulp-csscomb');
 const plumber      = require('gulp-plumber');
 const rename       = require('gulp-rename');
 const sourcemaps   = require('gulp-sourcemaps');
@@ -40,6 +41,7 @@ gulp.task('sass', () => {
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5
     }))
+    .pipe(csscomb('./.csscomb.json'))
     .on('error', config.errorHandler)
     .pipe(rename({suffix: '.min', prefix : ''}))
     .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))

@@ -63,7 +63,7 @@ gulp.task('scripts:concat', () => {
 
 
 
-gulp.task('scripts', gulp.parallel('common-js', 'libs-js', 'scripts:concat'));
+gulp.task('scripts', gulp.series('common-js', 'libs-js', 'scripts:concat'));
 
 
 
