@@ -57,26 +57,26 @@ const config = {
   syncChange(pathEditCallback) {
     return function (event, filePath) {
 
-      if (event === 'unlink') {
-        let path = filePath.replace(config.src.root + '\\', config.dest.root + '\\');
-        
+      if (event === 'unlink' || event === 'add') {
+        let destPath = filePath.replace(config.src.root + '\\', config.dest.root + '\\');
+
         if (typeof pathEditCallback === 'function') {
-          path = pathEditCallback(path) || path;
+          destPath = pathEditCallback(destPath) || destPath;
         }
-
-        return del([path]).then(function (paths) {
-          util.log(util.colors.red('Deleted:'), paths.join('\n'));
-        });
-      }
-
-      if (event === 'add') {
-        util.log(util.colors.green('Added:'), filePath);
+        if (event === 'unlink') {
+          return del([destPath]).then(() => {
+            util.log(util.colors.red('Deleted: ' + destPath));
+          });
+        }
+        if (event === 'add') {
+          util.log(util.colors.green('Added: ' + destPath));
+        }
       }
 
     }
   },
 
-    errorHandler: require('./util/handle-errors')
+  errorHandler: require('./util/handle-errors')
 };
 
 config.setEnv(production ? 'production' : 'development');

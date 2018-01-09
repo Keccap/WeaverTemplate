@@ -1,10 +1,12 @@
 'use strict';
 const notify = require('gulp-notify');
 
-module.exports = function() {
-    notify.onError({
-        title: 'Compile Error',
-        message: '<%= error.message %>'
-    }).apply(this, arguments);
-    this.emit('end');
+module.exports = function(title) {
+    return function() {
+        notify.onError({
+            title: title || 'Compile Error',
+            message: '<%= error.message %>'
+        }).apply(this, arguments);
+        this.emit('end');
+    }
 };

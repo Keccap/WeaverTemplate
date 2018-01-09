@@ -6,8 +6,7 @@ const config       = require('../config');
 
 
 gulp.task('copy:rootfiles', () => {
-  return gulp
-    .src([
+  return gulp.src([
       config.src.root + '/*.*',
       config.src.root + '/.htaccess'
     ])
@@ -16,8 +15,7 @@ gulp.task('copy:rootfiles', () => {
 
 
 gulp.task('copy:img', () => {
-  return gulp
-    .src([
+  return gulp.src([
       config.src.img + '/**/*.{svg,webp,ico}',
       config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}',
       '!' + config.src.img + '/svgo/**/*.*'
@@ -27,8 +25,7 @@ gulp.task('copy:img', () => {
 
 
 gulp.task('copy:fonts', () => {
-  return gulp
-    .src(config.src.fonts + '/**/*.{ttf,eot,woff,woff2}')
+  return gulp.src(config.src.fonts + '/**/*.{ttf,eot,woff,woff2}')
     .pipe(gulp.dest(config.dest.fonts));
 });
 
@@ -60,8 +57,7 @@ gulp.task('copyImg:watch', (cb) => {
     config.src.img + '/**/*.{svg,webp,ico}',
     config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}',
     '!' + config.src.img + '/svgo/**/*.*'
-  ], gulp.series('copy:img')
-  );
+  ], gulp.series('copy:img'));
 
   watcher.on('all', config.syncChange(path => {
     return path.replace('\\imagemin-exceptions\\', '\\')

@@ -12,7 +12,7 @@ gulp.task('sprite:svg', function() {
     return gulp
         .src(config.src.iconsSvg + '/*.svg')
         .pipe(plumber({
-            errorHandler: config.errorHandler
+            errorHandler: config.errorHandler('Sprite:svg')
         }))
         .pipe(svgmin({
             js2svg: {
@@ -30,6 +30,11 @@ gulp.task('sprite:svg', function() {
                 },
                 {
                     removeStyleElement: true // Remove <style>...</style>
+                },
+                {
+                    cleanupNumericValues: {
+                        floatPrecision: 2
+                    }
                 }
             ]
         }))

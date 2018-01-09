@@ -8,11 +8,13 @@ function build(cb) {
   gulp.series(
     'clean',
     'sprite:svg',
-    'sass',
-    'nunjucks',
-    'scripts',
-    'svgo',
-    'imagemin',
+    gulp.parallel(
+      'sass',
+      'nunjucks',
+      'scripts',
+      'svgo',
+      'imagemin',
+    ),
     'copy'
   )(cb)
 }

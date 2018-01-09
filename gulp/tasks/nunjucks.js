@@ -14,10 +14,9 @@ function renderHtml(onlyChanged) {
         lstripBlocks: false
     });
 
-    return gulp
-        .src([config.src.templates + '/**/[^_]*.twig'])
+    return gulp.src([config.src.templates + '/**/[^_]*.twig'])
         .pipe(plumber({
-            errorHandler: config.errorHandler
+            errorHandler: config.errorHandler('Nunjucks')
         }))
         .pipe(gulpif(onlyChanged, changed(config.dest.root)))
         .pipe(frontMatter({ property: 'data' }))

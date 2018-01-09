@@ -34,7 +34,7 @@ gulp.task('sass', () => {
   return gulp
     .src(config.src.sass + '/*.{sass,scss}')
     .pipe(plumber({
-      errorHandler: config.errorHandler
+      errorHandler: config.errorHandler('Sass')
     }))
     .pipe(gulpif(!config.production, sourcemaps.init()))
     .pipe(sass({
@@ -50,14 +50,16 @@ gulp.task('sass', () => {
 });
 
 
-gulp.task('sass:watch', (cb) => {
+gulp.task('sass:watch', cb => {
   let watcher = gulp.watch(config.src.sass + '/**/*.{sass,scss}', gulp.series('sass'));
+
   watcher.on('all', config.syncChange(path => {
     return path
       .replace('\\sass\\', '\\css\\')
       .replace(/\.sass|\.scss?/gi, '.css')
       .replace('.css', '.min.css');
   }));
+  
   cb()
 });
 

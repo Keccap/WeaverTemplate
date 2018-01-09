@@ -8,20 +8,29 @@ gulp.task('svgo', () => {
     return gulp
         .src(config.src.img + '/svgo/**/*.svg')
         .pipe(plumber({
-            errorHandler: config.errorHandler
+            errorHandler: config.errorHandler('SVGO')
         }))
         .pipe(changed(config.dest.img))
         .pipe(svgmin({
             js2svg: {
                 pretty: true
             },
-            plugins: [{
-                removeDesc: true
-            }, {
-                cleanupIDs: true
-            }, {
-                mergePaths: false
-            }]
+            plugins: [
+                {
+                    removeDesc: true
+                },
+                {
+                    cleanupIDs: true
+                },
+                {
+                    mergePaths: false
+                },
+                {
+                    cleanupNumericValues: {
+                        floatPrecision: 2
+                    }
+                }
+            ]
         }))
         .pipe(gulp.dest(config.dest.img));
 });

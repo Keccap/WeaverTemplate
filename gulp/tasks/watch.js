@@ -4,14 +4,14 @@ const config         = require('../config');
 
 
 
-gulp.task('watch', function (cb) {
+gulp.task('watch', cb => {
   gulp.parallel(
-    'copy:watch',
-    'nunjucks:watch',
     'sprite:svg:watch',
     'sass:watch',
+    'nunjucks:watch',
     'scripts:watch',
     'svgo:watch',
-    'imagemin:watch'
+    'imagemin:watch',
+    'copy:watch'
   )(cb)
 });

@@ -15,17 +15,17 @@ gulp.task('imagemin', () => {
     config.src.img + '/**/*.{jpg,jpeg,png,gif}',
     '!' + config.src.img + '/{imagemin-exceptions,svgo}/**/*.*'
   ])
-    .pipe(plumber({
-      errorHandler: config.errorHandler
-    }))
-    .pipe(changed(config.dest.img))
-    .pipe(cache(imagemin([
-      pngquant(),
-      mozjpeg({
-        progressive: true
-      })
-    ]))) // Cache Images
-    .pipe(gulp.dest(config.dest.img));
+  .pipe(plumber({
+    errorHandler: config.errorHandler('Imagemin')
+  }))
+  .pipe(changed(config.dest.img))
+  .pipe(cache(imagemin([
+    pngquant(),
+    mozjpeg({
+      progressive: true
+    })
+  ]))) // Cache Images
+  .pipe(gulp.dest(config.dest.img));
 });
 
 

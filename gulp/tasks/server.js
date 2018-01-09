@@ -6,7 +6,6 @@ const config         = require('../config');
 
 
 
-// in CL 'gulp server --open' to open current project in browser
 // in CL 'gulp server --tunnel siteName' to make project available over http://siteName.localtunnel.me
 
 
@@ -31,5 +30,6 @@ gulp.task('server', (cb) => {
     online: Boolean(util.env.tunnel),
     tunnel: util.env.tunnel || null
   });
+  
   cb();
 });
