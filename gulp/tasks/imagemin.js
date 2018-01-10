@@ -24,7 +24,7 @@ gulp.task('imagemin', () => {
     mozjpeg({
       progressive: true
     })
-  ]))) // Cache Images
+  ])))
   .pipe(gulp.dest(config.dest.img));
 });
 

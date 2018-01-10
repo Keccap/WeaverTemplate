@@ -1,13 +1,12 @@
 const gulp         = require('gulp');
 const sass         = require('gulp-sass');
-const csscomb      = require('gulp-csscomb');
 const plumber      = require('gulp-plumber');
 const rename       = require('gulp-rename');
 const sourcemaps   = require('gulp-sourcemaps');
 const postcss      = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');       // (postcss)
-const mqpacker     = require('css-mqpacker');       // Группирует медиазапросы и помещает их в конец CSS документа (postcss)
-const csso         = require('postcss-csso');       // минимизатор CSS (postcss)
+const autoprefixer = require('autoprefixer');        // (postcss)
+const mqpacker     = require('css-mqpacker');        // Group media queries and put them into the end of the CSS document (postcss)
+const csso         = require('postcss-csso');        // CSS minifier (postcss)
 const gulpif       = require('gulp-if');
 const config       = require('../config');
 
@@ -21,7 +20,7 @@ const processorsDev = [
     cascade: false
   }),
   mqpacker({
-    sort: sortMediaQueries // функция сортировки запросов в правильном порядке (не поддерживает диапазоны экранов min:480 - max:780)
+    sort: sortMediaQueries // the function of sorting media queries in the correct order (does not support screen ranges: min:480 - max:780)
   })
 ];
 
@@ -41,8 +40,6 @@ gulp.task('sass', () => {
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5
     }))
-    .pipe(csscomb('./.csscomb.json'))
-    .on('error', config.errorHandler)
     .pipe(rename({suffix: '.min', prefix : ''}))
     .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))
     .pipe(gulpif(!config.production, sourcemaps.write()))
@@ -56,8 +53,7 @@ gulp.task('sass:watch', cb => {
   watcher.on('all', config.syncChange(path => {
     return path
       .replace('\\sass\\', '\\css\\')
-      .replace(/\.sass|\.scss?/gi, '.css')
-      .replace('.css', '.min.css');
+      .replace(/\.sass|\.scss?/gi, '.min.css');
   }));
   
   cb()

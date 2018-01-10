@@ -1,5 +1,9 @@
 const util = require('gulp-util');
 const del  = require('del');
+const path = require('path');
+
+
+
 
 const production = util.env.production || util.env.prod || false;
 const srcPath = 'src';
@@ -15,7 +19,6 @@ const config = {
     sassGen      : srcPath + '/sass/generated',
     css          : srcPath + '/css',
     js           : srcPath + '/js',
-    jsTemp       : srcPath + '/js/.temp',
     libs         : srcPath + '/libs',
     img          : srcPath + '/img',
     fonts        : srcPath + '/fonts',
@@ -54,31 +57,46 @@ const config = {
     );
   },
 
-  syncChange(pathEditCallback) {
-    return function (event, filePath) {
-
-      if (event === 'unlink' || event === 'add') {
-        let destPath = filePath.replace(config.src.root + '\\', config.dest.root + '\\');
-
-        if (typeof pathEditCallback === 'function') {
-          destPath = pathEditCallback(destPath) || destPath;
-        }
-        if (event === 'unlink') {
-          return del([destPath]).then(() => {
-            util.log(util.colors.red('Deleted: ' + destPath));
-          });
-        }
-        if (event === 'add') {
-          util.log(util.colors.green('Added: ' + destPath));
-        }
-      }
-
-    }
-  },
+  syncChange: syncChange,
 
   errorHandler: require('./util/handle-errors')
 };
 
 config.setEnv(production ? 'production' : 'development');
 
+
 module.exports = config;
+
+
+
+
+
+
+
+function syncChange(pathEditFunc) {
+  return function (event, filePath) {
+
+    if (event === 'unlink' || event === 'add') {
+      const srcPath = path.relative(path.resolve(config.src.root), filePath);
+      let destPath = path.resolve(config.dest.root, srcPath);
+
+      if (typeof pathEditFunc === 'function') {
+        destPath = pathEditFunc(destPath) || destPath;
+      }
+
+      const pathForLog = path.relative(config.dest.root, destPath).replace(/\\/g, '/');
+
+      // Delete
+      if (event === 'unlink') {
+        return del([destPath]).then(() => {
+          util.log(util.colors.red('Deleted: ' + pathForLog));
+        });
+      }
+      // Add
+      if (event === 'add') {
+        util.log(util.colors.green('Added: ' + pathForLog));
+      }
+    }
+
+  }
+}

@@ -35,7 +35,7 @@ gulp.task('svgo', () => {
         .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('svgo:watch', (cb) => {
+gulp.task('svgo:watch', cb => {
     let watcher = gulp.watch([
         config.src.img + '/svgo/**/*.svg',
     ], gulp.series('svgo'));

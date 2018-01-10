@@ -9,7 +9,7 @@ const config         = require('../config');
 // in CL 'gulp server --tunnel siteName' to make project available over http://siteName.localtunnel.me
 
 
-gulp.task('server', (cb) => {
+gulp.task('server', cb => {
   server.init({
     server: {
       baseDir: config.dest.root,
