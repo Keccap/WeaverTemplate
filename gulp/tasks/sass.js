@@ -8,6 +8,7 @@ const autoprefixer = require('autoprefixer');        // (postcss)
 const mqpacker     = require('css-mqpacker');        // Group media queries and put them into the end of the CSS document (postcss)
 const csso         = require('postcss-csso');        // CSS minifier (postcss)
 const gulpif       = require('gulp-if');
+const rev          = require('gulp-rev');
 const config       = require('../config');
 
 
@@ -30,8 +31,7 @@ const processorsProd = [
 
 
 gulp.task('sass', () => {
-  return gulp
-    .src(config.src.sass + '/*.{sass,scss}')
+  return gulp.src(config.src.sass + '/*.{sass,scss}')
     .pipe(plumber({
       errorHandler: config.errorHandler('Sass')
     }))
@@ -40,10 +40,14 @@ gulp.task('sass', () => {
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5
     }))
-    .pipe(rename({suffix: '.min', prefix : ''}))
     .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))
+    .pipe(rename({suffix: '.min', prefix : ''}))
+    .pipe(gulpif(config.production, rev())) // rev
     .pipe(gulpif(!config.production, sourcemaps.write()))
     .pipe(gulp.dest(config.dest.css))
+    // rev
+    .pipe(gulpif(config.production, rev.manifest('css.json')))
+    .pipe(gulpif(config.production, gulp.dest(config.dest.manifests)));
 });
 
 

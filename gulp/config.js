@@ -14,33 +14,33 @@ const config = {
   production: production,
 
   src: {
-    root         : srcPath,
-    sass         : srcPath + '/sass',
-    sassGen      : srcPath + '/sass/generated',
-    css          : srcPath + '/css',
-    js           : srcPath + '/js',
-    libs         : srcPath + '/libs',
-    img          : srcPath + '/img',
-    fonts        : srcPath + '/fonts',
+    root      : srcPath,
+    sass      : srcPath + '/sass',
+    sassGen   : srcPath + '/sass/generated',
+    css       : srcPath + '/css',
+    js        : srcPath + '/js',
+    libs      : srcPath + '/libs',
+    img       : srcPath + '/img',
+    svg       : srcPath + '/img/svg',
+    fonts     : srcPath + '/fonts',
 
-    svg          : srcPath + '/img/svg',
+    icons     : srcPath + '/icons',
+    iconsPng  : srcPath + '/icons',
+    iconsSvg  : srcPath + '/icons',
+    iconsFont : srcPath + '/icons',
 
-    icons        : srcPath + '/icons',
-    iconsPng     : srcPath + '/icons',
-    iconsSvg     : srcPath + '/icons',
-
-    iconsFont    : srcPath + '/icons',
-
-    templates    : srcPath + '/templates',
+    templates : srcPath + '/templates',
+    manifests : srcPath + '/manifests',
   },
 
   dest: {
-    root : destPath,
-    html : destPath,
-    css  : destPath + '/css',
-    js   : destPath + '/js',
-    img  : destPath + '/img',
-    fonts: destPath + '/fonts',
+    root      : destPath,
+    html      : destPath,
+    css       : destPath + '/css',
+    js        : destPath + '/js',
+    img       : destPath + '/img',
+    fonts     : destPath + '/fonts',
+    manifests : destPath + '/manifests',
   },
 
   setEnv: function (env) {

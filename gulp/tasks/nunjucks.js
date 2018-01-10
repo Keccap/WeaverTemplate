@@ -5,7 +5,11 @@ const gulpif         = require('gulp-if');
 const changed        = require('gulp-changed');
 const frontMatter    = require('gulp-front-matter');
 const prettify       = require('gulp-prettify');
+const revReplace     = require('gulp-rev-replace');
 const config         = require('../config');
+
+
+
 
 function renderHtml(onlyChanged) {
     nunjucksRender.nunjucks.configure({
@@ -31,6 +35,9 @@ function renderHtml(onlyChanged) {
             unformatted: ["a", "code", "pre"],
             end_with_newline: true
         }))
+        .pipe(gulpif(config.production, revReplace({
+            manifest: gulp.src(config.dest.manifests + '/*.json', {allowEmpty: true})
+        })))
         .pipe(gulp.dest(config.dest.root));
 }
 
