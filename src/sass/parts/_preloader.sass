@@ -10,12 +10,11 @@
 	opacity: 1
 	visibility: visible
 	&.loaded
-		transition: all 1s ease
+		transition: opacity 1s ease, visibility 1s ease
 		opacity: 0
 		visibility: hidden
 	&.no-anim
 		.preloader__svg
-			animation: none
 			.circle
 				animation: none
 

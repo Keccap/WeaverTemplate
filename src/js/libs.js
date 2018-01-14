@@ -12,6 +12,10 @@
 @@include('./polyfills/js/promise/es6-promise.auto.min.js') // es6
 @@include('./polyfills/js/Array.prototype.includes.js') // es6
 @@include('./polyfills/js/String.prototype.includes.js') // es6
+@@include('./polyfills/js/Node.remove.js')
+@@include('./polyfills/js/Element.matches.js')
+@@include('./polyfills/js/Element.closest.js')
+
 // css
 @@include('./polyfills/css/object-fit-images/my-lazySizes-version/OFLwithLazyload.js')
 

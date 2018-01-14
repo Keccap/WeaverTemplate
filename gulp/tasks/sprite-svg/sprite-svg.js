@@ -8,9 +8,11 @@ const through2     = require('through2');
 const consolidate  = require('gulp-consolidate');
 const config       = require('../../config');
 
-gulp.task('sprite:svg', function() {
-    return gulp
-        .src(config.src.iconsSvg + '/*.svg')
+
+
+
+gulp.task('sprite:svg', () => {
+    return gulp.src(config.src.iconsSvg + '/*.svg')
         .pipe(plumber({
             errorHandler: config.errorHandler('Sprite:svg')
         }))
@@ -84,7 +86,7 @@ gulp.task('sprite:svg', function() {
         .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('sprite:svg:watch', function(cb) {
+gulp.task('sprite:svg:watch', cb => {
     gulp.watch(config.src.iconsSvg + '/*.svg', gulp.series('sprite:svg'));
     cb()
 });

@@ -7,7 +7,6 @@ const concat       = require('gulp-concat');
 const fileInclude  = require('gulp-file-include');
 const babel        = require("gulp-babel");
 const gulpif       = require('gulp-if');
-const rev          = require('gulp-rev');
 const config       = require('../config');
 
 
@@ -29,12 +28,8 @@ gulp.task('scripts', () => {
   .pipe(gulpif(file => file.stem === 'common', babel()))
   .pipe(concat('bundle.min.js'))
   .pipe(gulpif(config.production, uglify()))
-  .pipe(gulpif(config.production, rev())) // rev
   .pipe(gulpif(!config.production, sourcemaps.write()))
-  .pipe(gulp.dest(config.dest.js))
-  // rev
-  .pipe(gulpif(config.production, rev.manifest('js.json')))
-  .pipe(gulpif(config.production, gulp.dest(config.dest.manifests)));
+  .pipe(gulp.dest(config.dest.js));
 });
 
 
