@@ -15,7 +15,7 @@ const config       = require('../config');
 gulp.task('scripts', () => {
   return gulp
     .src([
-      config.src.js + '/libs.js',
+      config.src.js + '/vendor.js',
       config.src.js + '/common.js'
     ])
     .pipe(plumber({
