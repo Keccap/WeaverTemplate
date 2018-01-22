@@ -3,7 +3,7 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 
 =grid-clearfix
 	&::after
-		content: ""
+		content: ''
 		display: table
 		clear: both
 
@@ -14,9 +14,10 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 
 =wrapper
 	max-width: #{$max-container-width + $grid-gutter}px
-	padding-left: #{$grid-gutter / 2}px
-	padding-right: #{$grid-gutter / 2}px
 	margin: 0 auto
+	padding-right: #{$grid-gutter / 2}px
+	padding-left: #{$grid-gutter / 2}px
+
 
 
 
@@ -24,13 +25,13 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 =row($margin: $grid-gutter)
 	display: flex
 	flex-wrap: wrap
-	margin-left: -#{$margin / 2}px
 	margin-right: -#{$margin / 2}px
+	margin-left: -#{$margin / 2}px
 	+grid-clearfix
 	// fallback
 	#{$no-calc-selector} &
+		margin-right: -#{$percent-gutter-fallback / 2 + '%'}	
 		margin-left: -#{$percent-gutter-fallback / 2 + '%'}
-		margin-right: -#{$percent-gutter-fallback / 2 + '%'}		
 	// fallback
 	#{$no-flex-wrap-selector} &
 		display: block
@@ -41,8 +42,8 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 	display: flex
 	flex-wrap: wrap
 	+grid-clearfix
-	margin-left: 0
 	margin-right: 0
+	margin-left: 0
 	// fallback
 	#{$no-flex-wrap-selector} &
 		display: block
@@ -62,21 +63,21 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 // Стартовые стили колонки
 =col()
 	position: relative
-	float: left
 	flex: none
-	min-height: 1px
+	float: left
 	min-width: 0
+	min-height: 1px
 	// fallback
 	#{$no-calc-selector} &
-		margin-left: #{$percent-gutter-fallback / 2 + '%'}
 		margin-right: #{$percent-gutter-fallback / 2 + '%'}		
-	
+		margin-left: #{$percent-gutter-fallback / 2 + '%'}
+
 
 // Параметры обычной колонки
 =size($n: $grid-columns, $max-column: $grid-columns, $gutter: $grid-gutter)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
-	margin-left: #{$gutter / 2}px
 	margin-right: #{$gutter / 2}px
+	margin-left: #{$gutter / 2}px
 	// fallback
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback
@@ -85,84 +86,84 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 // Колонка с полным отступом слева
 =sizeML($n: $grid-columns, $max-column: $grid-columns, $gutter: $grid-gutter)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
-	margin-left: #{$gutter}px
 	margin-right: 0
+	margin-left: #{$gutter}px
 	// fallback
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback
-		margin-left: #{$percent-gutter-fallback + '%'}
 		margin-right: 0
-		
+		margin-left: #{$percent-gutter-fallback + '%'}
+
 
 // Колонка с полным отступом справа
 =sizeMR($n: $grid-columns, $max-column: $grid-columns, $gutter: $grid-gutter)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
-	margin-left: 0
 	margin-right: #{$gutter}px
+	margin-left: 0
 	// fallback
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback
-		margin-left: 0
 		margin-right: #{$percent-gutter-fallback + '%'}
+		margin-left: 0
 
 
 
 // Колонка с половинным отступом слева
 =sizeML-small($n: $grid-columns, $max-column: $grid-columns, $gutter: $grid-gutter)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter / 2 + 0.5 + 'px'})
-	margin-left: #{$gutter / 2}px
 	margin-right: 0
+	margin-left: #{$gutter / 2}px
 	// fallback
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback / 2
-		margin-left: #{$percent-gutter-fallback / 2 + '%'}
 		margin-right: 0
+		margin-left: #{$percent-gutter-fallback / 2 + '%'}
 
 
 // Колонка с половинным отступом справа
 =sizeMR-small($n: $grid-columns, $max-column: $grid-columns, $gutter: $grid-gutter)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter / 2 + 0.5 + 'px'})
-	margin-left: 0
 	margin-right: #{$gutter / 2}px
+	margin-left: 0
 	// fallback
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback / 2
-		margin-left: 0
 		margin-right: #{$percent-gutter-fallback / 2 + '%'}
+		margin-left: 0
 
 
 
 // Колонка без отступов
 =sizeF($n: $grid-columns, $max-column: $grid-columns)
 	width: (100% / $max-column) * $n
-	margin-left: 0
 	margin-right: 0
+	margin-left: 0
 	// fallback
 	#{$no-calc-selector} &
-		margin-left: 0
 		margin-right: 0
+		margin-left: 0
 
 
 
 // Изменение размера отступов в обычной колонке
 =gutter($gutter, $n: $grid-columns, $max-column: $grid-columns)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
-	margin-left: $gutter / 2
 	margin-right: $gutter / 2
+	margin-left: $gutter / 2
 
 
 // Изменение размера отступов в колонке с полным отступом справа
 =gutterMR($gutter, $n: $grid-columns, $max-column: $grid-columns)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
-	margin-left: 0
 	margin-right: #{$gutter}px
+	margin-left: 0
 
 
 // Изменение размера отступов в колонке с полным отступом слева
 =gutterML($gutter, $n: $grid-columns, $max-column: $grid-columns)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
-	margin-left: #{$gutter}px
 	margin-right: 0
+	margin-left: #{$gutter}px
 
 
 

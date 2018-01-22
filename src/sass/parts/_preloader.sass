@@ -3,16 +3,16 @@
 	position: fixed
 	top: 0
 	left: 0
+	z-index: 90000
 	width: 100%
 	height: 100%
-	z-index: 90000
 	background-color: #fff
 	opacity: 1
 	visibility: visible
 	&.loaded
-		transition: opacity 1s ease, visibility 1s ease
 		opacity: 0
 		visibility: hidden
+		transition: opacity 1s ease, visibility 1s ease
 	&.no-anim
 		.preloader__svg
 			.circle
@@ -22,8 +22,8 @@
 		position: absolute
 		top: 50%
 		left: 50%
-		transform: translate(-50%, -50%)
 		width: 50px
+		transform: translate(-50%, -50%)
 		&::before
 			content: ''
 			display: block
@@ -36,15 +36,16 @@
 		width: 100%
 		height: 100%
 		margin: auto
-		transform-origin: center center
 		animation: rotate 2s linear infinite
+		transform-origin: center center
 		
 		.circle
 			stroke: #E38482
 			stroke-dasharray: 1, 200
 			stroke-dashoffset: 0
-			animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
 			stroke-linecap: round
+			animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+
 
 @keyframes rotate
 	to

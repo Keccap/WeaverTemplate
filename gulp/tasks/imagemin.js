@@ -11,21 +11,22 @@ const config         = require('../config');
 
 
 gulp.task('imagemin', () => {
-  return gulp.src([
-    config.src.img + '/**/*.{jpg,jpeg,png,gif}',
-    '!' + config.src.img + '/{imagemin-exceptions,svgo}/**/*.*'
-  ])
-  .pipe(plumber({
-    errorHandler: config.errorHandler('Imagemin')
-  }))
-  .pipe(changed(config.dest.img))
-  .pipe(cache(imagemin([
-    pngquant(),
-    mozjpeg({
-      progressive: true
-    })
-  ])))
-  .pipe(gulp.dest(config.dest.img));
+  return gulp
+    .src([
+      config.src.img + '/**/*.{jpg,jpeg,png,gif}',
+      '!' + config.src.img + '/{imagemin-exceptions,svgo}/**/*.*'
+    ])
+    .pipe(plumber({
+      errorHandler: config.errorHandler('Imagemin')
+    }))
+    .pipe(changed(config.dest.img))
+    .pipe(cache(imagemin([
+      pngquant(),
+      mozjpeg({
+        progressive: true
+      })
+    ])))
+    .pipe(gulp.dest(config.dest.img));
 });
 
 
@@ -37,7 +38,7 @@ gulp.task('imagemin:watch', cb => {
   ], gulp.series('imagemin'));
 
   watcher.on('all', config.syncChange());
-  
+
   cb();
 });
 

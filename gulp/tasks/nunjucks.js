@@ -8,54 +8,56 @@ const prettify       = require('gulp-prettify');
 const config         = require('../config');
 
 function renderHtml(onlyChanged) {
-    nunjucksRender.nunjucks.configure({
-        watch: false,
-        trimBlocks: true,
-        lstripBlocks: false
-    });
+  nunjucksRender.nunjucks.configure({
+    watch: false,
+    trimBlocks: true,
+    lstripBlocks: false
+  });
 
-    return gulp.src([config.src.templates + '/**/[^_]*.twig'])
-        .pipe(plumber({
-            errorHandler: config.errorHandler('Nunjucks')
-        }))
-        .pipe(gulpif(onlyChanged, changed(config.dest.root)))
-        .pipe(frontMatter({ property: 'data' }))
-        .pipe(nunjucksRender({
-            path: [config.src.templates]
-        }))
-        .pipe(prettify({
-            indent_size: 2,
-            wrap_attributes: 'auto', // 'force'  (Wrap attributes to new lines) 
-            preserve_newlines: true, // preserve existing line-breaks
-            max_preserve_newlines: 1,
-            unformatted: ["a", "code", "pre"],
-            end_with_newline: true
-        }))
-        .pipe(gulp.dest(config.dest.root));
+  return gulp
+    .src([config.src.templates + '/**/[^_]*.twig'])
+    .pipe(plumber({
+      errorHandler: config.errorHandler('Nunjucks')
+    }))
+    .pipe(gulpif(onlyChanged, changed(config.dest.root)))
+    .pipe(frontMatter({ property: 'data' }))
+    .pipe(nunjucksRender({
+      path: [config.src.templates]
+    }))
+    .pipe(prettify({
+      indent_size: 2,
+      wrap_attributes: 'auto', // 'force'  (Wrap attributes to new lines)
+      preserve_newlines: true, // preserve existing line-breaks
+      max_preserve_newlines: 1,
+      unformatted: ['a', 'code', 'pre'],
+      end_with_newline: true
+    }))
+    .pipe(gulp.dest(config.dest.root));
 }
 
 gulp.task('nunjucks', function() {
-    return renderHtml();
+  return renderHtml();
 });
 
 gulp.task('nunjucks:changed', function() {
-    return renderHtml(true);
+  return renderHtml(true);
 });
 
 
 gulp.task('nunjucks:watch', function(cb) {
-    let watcher = gulp.watch([
-        config.src.templates + '/**/[^_]*.twig'
-    ], gulp.series('nunjucks:changed'));
+  let watcher = gulp.watch([
+    config.src.templates + '/**/[^_]*.twig'
+  ], gulp.series('nunjucks:changed'));
 
-    watcher.on('all', config.syncChange(path => {
-        return path
-            .replace('.twig', '.html')
-            .replace('\\templates\\', '\\');
-    }))
+  watcher.on('all', config.syncChange(path => {
+    return path
+      .replace('.twig', '.html')
+      .replace('\\templates\\', '\\');
+  }));
 
-    let watcher2 = gulp.watch([
-        config.src.templates + '/**/_*.twig'
-    ], gulp.series('nunjucks'));
-    cb();
+  let watcher2 = gulp.watch([
+    config.src.templates + '/**/_*.twig'
+  ], gulp.series('nunjucks'));
+
+  cb();
 });

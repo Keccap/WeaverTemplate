@@ -7,9 +7,9 @@ const config = require('../config');
 
 
 gulp.task('clean', cb => {
-    return del([
-        config.dest.root
-    ]).then(function(paths) {
-        util.log('Deleted:', util.colors.magenta(paths.join('\n')));
-    });
+  return del([
+    config.dest.root
+  ]).then(function(paths) {
+    util.log('Deleted:', util.colors.magenta(paths.join('\n')));
+  });
 });

@@ -15,7 +15,7 @@ gulp.task('server', cb => {
       baseDir: config.dest.root,
       directory: false,
       serveStaticOptions: {
-        extensions: ["html"]
+        extensions: ['html']
       }
     },
     files: [
@@ -30,6 +30,6 @@ gulp.task('server', cb => {
     online: Boolean(util.env.tunnel),
     tunnel: util.env.tunnel || null
   });
-  
+
   cb();
 });

@@ -13,7 +13,7 @@ const config       = require('../config');
 
 
 
-//postcss plugins
+// postcss plugins
 const processorsDev = [
   autoprefixer({
     browsers: ['last 4 versions'],
@@ -40,10 +40,10 @@ gulp.task('sass', () => {
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5
     }))
-    .pipe(rename({suffix: '.min', prefix : ''}))
+    .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))
     .pipe(gulpif(!config.production, sourcemaps.write()))
-    .pipe(gulp.dest(config.dest.css))
+    .pipe(gulp.dest(config.dest.css));
 });
 
 
@@ -55,8 +55,8 @@ gulp.task('sass:watch', cb => {
       .replace('\\sass\\', '\\css\\')
       .replace(/\.sass|\.scss?/gi, '.min.css');
   }));
-  
-  cb()
+
+  cb();
 });
 
 

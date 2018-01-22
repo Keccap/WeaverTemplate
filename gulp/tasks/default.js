@@ -9,12 +9,12 @@ gulp.task('default', function(cb) {
     'build:dev',
     'server',
     'watch'
-  )(cb)
+  )(cb);
 });
 
 
 
-/* 
+/*
 
 АХТУНГ! АХТУНГ! АХТУНГ!
 
@@ -25,7 +25,7 @@ gulp.task('default', gulp.series(
   'build:dev',
   'server',
   'watch'
-)); 
+));
 
 Случится сбой в работе require-dir и таск "server" будет не найден,
 ибо он расположен выше, чем таск "default".
@@ -36,7 +36,7 @@ gulp.task('default', gulp.series(
 который находится в начале файла, таск который находится в конце.
 В gulp 4 так уже нельзя если использовать в чистом виде gulp.series и gulp.parallel.
 
-Но вызов через 
+Но вызов через
 
 gulp.task('default', function(cb) {
   gulp.series(

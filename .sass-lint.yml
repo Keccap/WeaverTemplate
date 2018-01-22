@@ -23,10 +23,7 @@ rules:
   clean-import-paths: 
     - 2
     - filename-extension: false
-  hex-notation:
-    - 1
-    -
-      style: uppercase
+
   declarations-before-nesting: 1
   shorthand-values: 1
 
@@ -89,6 +86,8 @@ rules:
         - max-height
         - min-width
         - min-height
+
+        - object-fit
         
         - margin
         - margin-top

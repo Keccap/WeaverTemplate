@@ -16,7 +16,7 @@ function build(cb) {
       'imagemin'
     ),
     'copy'
-  )(cb)
+  )(cb);
 }
 
 gulp.task('build', cb => {

@@ -1,14 +1,14 @@
 ;(function(global, window, document, undefined) {
   'use strict';
 
-  noDragElements('img, a');
+
 
 
 
   // onload
   window.onload = function() {
-    
-    OFLwithLazyload()
+
+    OFLwithLazyload();
 
     // preloader
     const preloader = document.getElementById('preloader');
@@ -16,13 +16,8 @@
       preloader.classList.add('loaded');
       setTimeout(() => {
         preloader.classList.add('no-anim');
-      }, 1000)
+      }, 1000);
     }
-
-    // aos
-
-    // ...
-
 
   };
   // onload end
@@ -32,8 +27,8 @@
   function noDragElements(selector) {
     const noDragObjects = document.querySelectorAll(selector);
     Array.prototype.forEach.call(noDragObjects, el => {
-      el.addEventListener("dragstart", event => event.preventDefault()); 
-    })
+      el.addEventListener('dragstart', event => event.preventDefault());
+    });
   }
 
   function OFLwithLazyload() {
@@ -47,7 +42,7 @@
       }
       Array.prototype.forEach.call(imgs, function(img) {
         img.addEventListener('lazyloaded', function() {
-          objectFitImages('img.lazyloaded')
+          objectFitImages('img.lazyloaded');
         });
       });
     }
@@ -56,4 +51,3 @@
 
 
 })(this, window, window.document);
- 
