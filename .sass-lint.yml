@@ -75,6 +75,7 @@ rules:
 
         - flex-direction
         - flex-wrap
+        - justify-content
         - align-content
         - align-items
 
@@ -127,7 +128,6 @@ rules:
         - line-height
         - letter-spacing
         - word-spacing
-        - color
         - text-align
         - text-decoration
         - text-indent
@@ -149,14 +149,19 @@ rules:
         - pointer-events
         - cursor
 
+        - color
+
+        - fill
+        
         - background
-        - background-attachment
         - background-color
         - background-image
+        - background-size
         - background-position
         - background-repeat
-        - background-size
         - background-clip
+        - background-attachment
+
 
         - border
         - border-collapse
@@ -203,6 +208,7 @@ rules:
         - filter
         - zoom
         - transform
+        - transform-origin
         - will-change
 
 

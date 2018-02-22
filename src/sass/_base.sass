@@ -54,9 +54,6 @@ picture
 		width: 100%
 		height: auto
 
-img.object-fit-cover
-	object-fit: cover
-	font-family: 'object-fit: cover'
 
 .br
 	+br
@@ -84,3 +81,19 @@ img.object-fit-cover
 			font-size: 25px
 		+r(480)
 			font-size: 18px
+
+
+
+// plugins
+
+img.object-fit-cover
+	object-fit: cover
+	font-family: 'object-fit: cover'
+
+
+img[class*=lazyload]
+	opacity: 0
+	transition: opacity .5s ease
+
+img.lazyloaded
+	opacity: 1

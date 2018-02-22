@@ -5,9 +5,10 @@ const path = require('path');
 
 
 
-const production = util.env.production || util.env.prod || false;
 const srcPath = 'src';
 const destPath = 'build';
+const production = util.env.production || util.env.prod || false;
+
 
 const config = {
   env       : 'development',
@@ -21,17 +22,15 @@ const config = {
     js           : srcPath + '/js',
     libs         : srcPath + '/libs',
     img          : srcPath + '/img',
-    fonts        : srcPath + '/fonts',
-
     svg          : srcPath + '/img/svg',
+    fonts        : srcPath + '/fonts',
 
     icons        : srcPath + '/icons',
     iconsPng     : srcPath + '/icons',
     iconsSvg     : srcPath + '/icons',
-
     iconsFont    : srcPath + '/icons',
 
-    templates    : srcPath + '/templates',
+    templates    : srcPath + '/templates'
   },
 
   dest: {
@@ -40,24 +39,24 @@ const config = {
     css  : destPath + '/css',
     js   : destPath + '/js',
     img  : destPath + '/img',
-    fonts: destPath + '/fonts',
+    fonts: destPath + '/fonts'
   },
 
-  setEnv: function (env) {
+  setEnv(env) {
     if (typeof env !== 'string') return;
     this.env = env;
     this.production = env === 'production';
     process.env.NODE_ENV = env;
   },
 
-  logEnv: function () {
+  logEnv() {
     util.log(
       'Environment:',
       util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
     );
   },
 
-  syncChange: syncChange,
+  syncChange,
 
   errorHandler: require('./util/handle-errors')
 };
@@ -88,7 +87,7 @@ function syncChange(pathEditFunc) {
 
       // Delete
       if (event === 'unlink') {
-        return del([destPath]).then(() => {
+        del([destPath]).then(() => {
           util.log(util.colors.red('Deleted: ' + pathForLog));
         });
       }
