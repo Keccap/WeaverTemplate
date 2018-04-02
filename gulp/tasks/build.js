@@ -1,3 +1,4 @@
+'use strict';
 const gulp         = require('gulp');
 const config       = require('../config');
 
@@ -11,7 +12,7 @@ function build(cb) {
     gulp.parallel(
       'sass',
       'nunjucks',
-      'scripts',
+      'webpack',
       'svgo',
       'imagemin'
     ),

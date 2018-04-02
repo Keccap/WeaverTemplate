@@ -1,12 +1,13 @@
+'use strict';
 const gulp         = require('gulp');
 const sass         = require('gulp-sass');
 const plumber      = require('gulp-plumber');
 const rename       = require('gulp-rename');
 const sourcemaps   = require('gulp-sourcemaps');
 const postcss      = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');        // (postcss)
-const mqpacker     = require('css-mqpacker');        // Group media queries and put them into the end of the CSS document (postcss)
-const csso         = require('postcss-csso');        // CSS minifier (postcss)
+const autoprefixer = require('autoprefixer'); // (postcss)
+const mqpacker     = require('css-mqpacker'); // Group media queries and put them into the end of the CSS document (postcss)
+const csso         = require('postcss-csso'); // CSS minifier (postcss)
 const gulpif       = require('gulp-if');
 const config       = require('../config');
 
@@ -20,7 +21,8 @@ const processorsDev = [
     cascade: false
   }),
   mqpacker({
-    sort: sortMediaQueries // the function of sorting media queries in the correct order (does not support screen ranges: min:480 - max:780)
+    sort: sortMediaQueries /* функция сортировки медиа запросов в правильном порядке
+                           (не поддерживает диапазоны экранов: min:480 - max:780) */
   })
 ];
 
@@ -38,7 +40,7 @@ gulp.task('sass', () => {
     .pipe(gulpif(!config.production, sourcemaps.init()))
     .pipe(sass({
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
-      precision: 5
+      precision: 5 // точность значений в css (число цифр после запятой)
     }))
     .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))
@@ -48,7 +50,7 @@ gulp.task('sass', () => {
 
 
 gulp.task('sass:watch', cb => {
-  let watcher = gulp.watch(config.src.sass + '/**/*.{sass,scss}', gulp.series('sass'));
+  const watcher = gulp.watch(config.src.sass + '/**/*.{sass,scss}', gulp.series('sass'));
 
   watcher.on('all', config.syncChange(path => {
     return path
@@ -58,6 +60,7 @@ gulp.task('sass:watch', cb => {
 
   cb();
 });
+
 
 
 function sortMediaQueries(a, b) {

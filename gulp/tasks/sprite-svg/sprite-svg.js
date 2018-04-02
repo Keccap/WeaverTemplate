@@ -1,3 +1,4 @@
+'use strict';
 const gulp         = require('gulp');
 const plumber      = require('gulp-plumber');
 const svgmin       = require('gulp-svgmin');
@@ -6,6 +7,7 @@ const rename       = require('gulp-rename');
 const cheerio      = require('gulp-cheerio');
 const through2     = require('through2');
 const consolidate  = require('gulp-consolidate');
+const path         = require('path');
 const config       = require('../../config');
 
 
@@ -44,14 +46,14 @@ gulp.task('sprite:svg', () => {
     .pipe(rename({ prefix: 'icon-' }))
     .pipe(svgStore({ inlineSvg: false }))
     .pipe(through2.obj(function(file, encoding, cb) {
-      var $ = file.cheerio;
-      var data = $('svg > symbol').map(function() {
-        var $this  = $(this);
-        var size   = $this.attr('viewBox').split(' ').splice(2);
-        var name   = $this.attr('id');
-        var ratio  = size[0] / size[1]; // symbol width / symbol height
-        var fill   = $this.find('[fill]:not([fill="currentColor"])').attr('fill');
-        var stroke = $this.find('[stroke]').attr('stroke');
+      const $ = file.cheerio;
+      const data = $('svg > symbol').map(function() {
+        const $this  = $(this);
+        const size   = $this.attr('viewBox').split(' ').splice(2);
+        const name   = $this.attr('id');
+        const ratio  = size[0] / size[1]; // symbol width / symbol height
+        const fill   = $this.find('[fill]:not([fill="currentColor"])').attr('fill');
+        const stroke = $this.find('[stroke]').attr('stroke');
         return {
           name: name,
           ratio: +ratio.toFixed(2),
@@ -62,13 +64,13 @@ gulp.task('sprite:svg', () => {
 
       this.push(file);
 
-      gulp.src(__dirname + '/_sprite-svg.scss')
+      gulp.src(path.join(__dirname, '_sprite-svg.scss'))
         .pipe(consolidate('lodash', {
           symbols: data
         }))
         .pipe(gulp.dest(config.src.sassGen));
 
-      // gulp.src(__dirname + '/sprite.html')
+      // gulp.src(path.join(__dirname, 'sprite.html'))
       //   .pipe(consolidate('lodash', {
       //     symbols: data
       //   }))
@@ -77,7 +79,7 @@ gulp.task('sprite:svg', () => {
       cb();
     }))
     .pipe(cheerio({
-      run: function($, file) {
+      run($, file) {
         $('[fill]:not([fill="currentColor"])').removeAttr('fill');
         $('[stroke]').removeAttr('stroke');
       },

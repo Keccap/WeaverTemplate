@@ -1,6 +1,6 @@
 {
   "name": "start_template",
-  "version": "0.8.2",
+  "version": "0.9.7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,11 +10,16 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
-    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-object-set-prototype-of-to-assign": "^6.22.0",
     "babel-plugin-transform-proto-to-assign": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
+    "babel-runtime": "^6.26.0",
     "browser-sync": "^2.23.3",
     "css-mqpacker": "^6.0.1",
     "del": "^3.0.0",
@@ -24,15 +29,12 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "sass-lint": "^1.12.1",
     "gulp": "^4.0.0",
-    "gulp-babel": "^7.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-changed": "^3.2.0",
     "gulp-cheerio": "^0.6.2",
     "gulp-concat": "^2.6.1",
     "gulp-consolidate": "^0.1.2",
-    "gulp-file-include": "^2.0.1",
     "gulp-front-matter": "^1.3.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
@@ -42,7 +44,6 @@
     "gulp-postcss": "^7.0.1",
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^1.2.2",
-    "node-sass": "^4.7.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.3",
     "gulp-svgmin": "^1.2.4",
@@ -51,9 +52,15 @@
     "gulp-util": "^3.0.8",
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^5.0.1",
+    "node-sass": "^4.7.2",
     "postcss-csso": "^3.0.0",
     "require-dir": "^0.3.2",
-    "through2": "^2.0.3"
+    "sass-lint": "^1.12.1",
+    "through2": "^2.0.3",
+    "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.11.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "swiper": "^4.2.0"
+  }
 }

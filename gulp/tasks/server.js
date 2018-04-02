@@ -1,3 +1,4 @@
+'use strict';
 const gulp           = require('gulp');
 const server         = require('browser-sync').create();
 const util           = require('gulp-util');

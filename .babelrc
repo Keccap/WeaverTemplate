@@ -1,6 +1,19 @@
 {
   "presets": [
-	  ["env", { "modules": false }]
+	  ["env", { 
+      "targets": {
+          "browsers": [
+            "last 4 versions"
+          ]
+        },
+      "modules": false
+    }]
   ],
-  "plugins": ["transform-proto-to-assign", "transform-object-set-prototype-of-to-assign", "transform-object-rest-spread"]
+  "plugins": [
+    "transform-runtime",
+    "syntax-dynamic-import",
+    "transform-object-rest-spread",
+    "transform-proto-to-assign",
+    "transform-object-set-prototype-of-to-assign" 
+  ]
 }

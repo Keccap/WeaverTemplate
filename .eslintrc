@@ -1,21 +1,40 @@
 {
+  "globals": {
+    // "_": true,
+    // "$": true,
+    // "jQuery": true
+  },
   "extends": "standard",
   "plugins": [
     "standard",
     "promise"
   ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "allowImportExportEverywhere": true
+  },
   "env": {
     "browser": true,
     "node": true,
     "es6": true
 //    "jquery": true
   },
-  "rules": {
+
+  "rules": { 
+    "key-spacing": "off",
     "semi": ["error", "always"],
     "no-multiple-empty-lines": "off",
     "space-before-function-paren": "off", // ["error", "always"]
-    "no-unused-vars": "off",
-    "no-unused-labels": "off",
-    "padded-blocks": "off"
+    "no-unused-vars": 1,
+    // "no-unused-labels": "off",
+    "padded-blocks": "off",
+    "no-multi-spaces": [
+      1,
+      {
+        "exceptions": {
+          "VariableDeclarator": true
+        }
+      }
+    ]
   }
 }

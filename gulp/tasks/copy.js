@@ -1,6 +1,6 @@
+'use strict';
 const gulp         = require('gulp');
 const config       = require('../config');
-
 
 
 
@@ -44,7 +44,7 @@ gulp.task('copy', gulp.parallel(
 
 
 gulp.task('copyRoot:watch', cb => {
-  let watcher = gulp.watch([
+  const watcher = gulp.watch([
     config.src.root + '/*.*',
     config.src.root + '/.htaccess'
   ], gulp.series('copy:rootfiles'));
@@ -56,7 +56,7 @@ gulp.task('copyRoot:watch', cb => {
 
 
 gulp.task('copyImg:watch', cb => {
-  let watcher = gulp.watch([
+  const watcher = gulp.watch([
     config.src.img + '/**/*.{svg,webp,ico}',
     config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}',
     '!' + config.src.img + '/svgo/**/*.*'
@@ -71,7 +71,7 @@ gulp.task('copyImg:watch', cb => {
 
 
 gulp.task('copyFont:watch', cb => {
-  let watcher = gulp.watch([
+  const watcher = gulp.watch([
     config.src.fonts + '/**/*.{ttf,eot,woff,woff2}',
     config.src.fonts + '/*'
   ], gulp.series('copy:fonts'));

@@ -6,13 +6,14 @@ if (window.lazySizes && window.AOS) {
 
 // AOS + LAZYSIZES
 function AOSwithLazyload() {
-  var imgs = document.getElementsByTagName('img');
-  if (imgs === null) {
-    return;
-  }
+  var imgs = document.querySelectorAll('img.lazyload:not([data-aos-lazyfix])');
+
+  if (!imgs.length) return;
+
   Array.prototype.forEach.call(imgs, function(img) {
     img.addEventListener('load', function() {
       AOS.refresh();
     });
+    img.setAttribute('data-aos-lazyfix', '');
   });
 }

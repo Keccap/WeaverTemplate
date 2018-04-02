@@ -1,3 +1,4 @@
+'use strict';
 const gulp           = require('gulp');
 const plumber        = require('gulp-plumber');
 const changed        = require('gulp-changed');
@@ -32,7 +33,7 @@ gulp.task('imagemin', () => {
 
 
 gulp.task('imagemin:watch', cb => {
-  let watcher = gulp.watch([
+  const watcher = gulp.watch([
     config.src.img + '/**/*.{jpg,jpeg,png,gif}',
     '!' + config.src.img + '/{imagemin-exceptions,svgo}/**/*.*'
   ], gulp.series('imagemin'));
@@ -45,5 +46,5 @@ gulp.task('imagemin:watch', cb => {
 
 
 
-gulp.task('clearcache', () => { return cache.clearAll(); });
+gulp.task('clearcache', () => cache.clearAll());
 

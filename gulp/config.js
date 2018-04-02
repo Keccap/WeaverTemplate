@@ -1,6 +1,7 @@
-const util = require('gulp-util');
-const del  = require('del');
-const path = require('path');
+const del          = require('del');
+const path         = require('path');
+const util         = require('gulp-util');
+const errorHandler = require('./util/handle-errors');
 
 
 
@@ -34,12 +35,12 @@ const config = {
   },
 
   dest: {
-    root : destPath,
-    html : destPath,
-    css  : destPath + '/css',
-    js   : destPath + '/js',
-    img  : destPath + '/img',
-    fonts: destPath + '/fonts'
+    root    : destPath,
+    html    : destPath,
+    css     : destPath + '/css',
+    js      : destPath + '/js',
+    img     : destPath + '/img',
+    fonts   : destPath + '/fonts'
   },
 
   setEnv(env) {
@@ -57,12 +58,11 @@ const config = {
   },
 
   syncChange,
-
-  errorHandler: require('./util/handle-errors')
+  errorHandler
 };
 
-config.setEnv(production ? 'production' : 'development');
 
+config.setEnv(production ? 'production' : 'development');
 
 module.exports = config;
 
@@ -70,32 +70,40 @@ module.exports = config;
 
 
 
-
-
+/**
+ * Возвращает функцию, которая синхронизирует удаленные файлы в src директории с файлами в dest директории
+ * @param  {Function} pathEditFunc функция для уточнения dest пути для файла
+ * нужна если разница между src и dest путями не ограничивается изменением директории src на dest
+ * например изменилось расширение файла, у файла появился префикс, файл поместился в отдельную папку
+ */
 function syncChange(pathEditFunc) {
   return function (event, filePath) {
 
+    /* если файл был удален или добавлен */
     if (event === 'unlink' || event === 'add') {
       const srcPath = path.relative(path.resolve(config.src.root), filePath);
       let destPath = path.resolve(config.dest.root, srcPath);
 
+      /* если была передана функция уточнения dest пути */
       if (typeof pathEditFunc === 'function') {
         destPath = pathEditFunc(destPath) || destPath;
       }
 
+      /* путь для отображения в консоли */
       const pathForLog = path.relative(config.dest.root, destPath).replace(/\\/g, '/');
 
-      // Delete
+      // если файл был удален, удалить его в dest директории и вывести инф. в консоль
       if (event === 'unlink') {
-        del([destPath]).then(() => {
+        del(destPath).then(() => {
           util.log(util.colors.red('Deleted: ' + pathForLog));
         });
       }
-      // Add
+
+      // если файл был добавлен вывести инф. в консоль
       if (event === 'add') {
         util.log(util.colors.green('Added: ' + pathForLog));
       }
     }
 
-  }
+  };
 }

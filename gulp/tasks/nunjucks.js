@@ -1,3 +1,4 @@
+'use strict';
 const gulp           = require('gulp');
 const nunjucksRender = require('gulp-nunjucks-render');
 const plumber        = require('gulp-plumber');
@@ -6,6 +7,9 @@ const changed        = require('gulp-changed');
 const frontMatter    = require('gulp-front-matter');
 const prettify       = require('gulp-prettify');
 const config         = require('../config');
+
+
+
 
 function renderHtml(onlyChanged) {
   nunjucksRender.nunjucks.configure({
@@ -35,17 +39,15 @@ function renderHtml(onlyChanged) {
     .pipe(gulp.dest(config.dest.root));
 }
 
-gulp.task('nunjucks', function() {
-  return renderHtml();
-});
 
-gulp.task('nunjucks:changed', function() {
-  return renderHtml(true);
-});
+gulp.task('nunjucks', () => renderHtml());
+
+gulp.task('nunjucks:changed', () => renderHtml(true));
 
 
-gulp.task('nunjucks:watch', function(cb) {
-  let watcher = gulp.watch([
+
+gulp.task('nunjucks:watch', cb => {
+  const watcher = gulp.watch([
     config.src.templates + '/**/[^_]*.twig'
   ], gulp.series('nunjucks:changed'));
 
@@ -55,7 +57,8 @@ gulp.task('nunjucks:watch', function(cb) {
       .replace('\\templates\\', '\\');
   }));
 
-  let watcher2 = gulp.watch([
+
+  gulp.watch([
     config.src.templates + '/**/_*.twig'
   ], gulp.series('nunjucks'));
 

@@ -1,3 +1,4 @@
+'use strict';
 const gulp         = require('gulp');
 const svgmin       = require('gulp-svgmin');
 const changed      = require('gulp-changed');
@@ -36,7 +37,7 @@ gulp.task('svgo', () => {
 });
 
 gulp.task('svgo:watch', cb => {
-  let watcher = gulp.watch([
+  const watcher = gulp.watch([
     config.src.img + '/svgo/**/*.svg'
   ], gulp.series('svgo'));
 

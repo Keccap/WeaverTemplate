@@ -1,5 +1,5 @@
+'use strict';
 const gulp           = require('gulp');
-const config         = require('../config');
 
 
 
@@ -9,7 +9,7 @@ gulp.task('watch', cb => {
     'sprite:svg:watch',
     'sass:watch',
     'nunjucks:watch',
-    'scripts:watch',
+    'webpack:watch',
     'svgo:watch',
     'imagemin:watch',
     'copy:watch'
