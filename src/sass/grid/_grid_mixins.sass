@@ -52,14 +52,6 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 
 // COLUMN:
 
-// Универсальная колонка
-
-// Универсальная колонка, вызывается без аргументов вместе с медиа-колонками
-// определяет обязательные стартовые стили;
-// если передать второй аргумент($max-column) - можно переопределить 
-//    максимальное значение колонок($grid-columns);
-//  ПРИМЕР: +size(6, 24) сделает колонку равную 1/4 макс колонок, что равно +size(3, 12)
-
 // Стартовые стили колонки
 =col()
 	position: relative
@@ -73,7 +65,15 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 		margin-left: #{$percent-gutter-fallback / 2 + '%'}
 
 
-// Параметры обычной колонки
+// Параметры колонок
+
+// Параметры колонок, вызываются без аргументов если нужна колонка на всю ширину
+// 	$n - размер колонки (по умолчанию = $max-column, т.е 100% ширина)
+// 	$max-column - максимум колонок от которого расчитывается размер в %, на случай переопределения (по умолчанию = глобальный $grid-columns)
+// 	$gutter - отступ между колонками, на случай переопределения (по умолчанию = глобальный $grid-gutter) 
+//  ПРИМЕР: +size(6, 24) сделает колонку равную 1/4 макс колонок, что равно +size(3, 12)
+
+// Параметры обычной колонки (отступы с обоих сторон = половине $gutter)
 =size($n: $grid-columns, $max-column: $grid-columns, $gutter: $grid-gutter)
 	width: calc(#{(100% / $max-column) * $n} - #{$gutter + 0.5 + 'px'})
 	margin-right: #{$gutter / 2}px
@@ -81,6 +81,18 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 	// fallback
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback
+
+
+// Колонка без отступов
+=sizeF($n: $grid-columns, $max-column: $grid-columns)
+	width: (100% / $max-column) * $n
+	margin-right: 0
+	margin-left: 0
+	// fallback
+	#{$no-calc-selector} &
+		margin-right: 0
+		margin-left: 0
+
 
 
 // Колонка с полным отступом слева
@@ -129,18 +141,6 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 	#{$no-calc-selector} &
 		width: (100% / $max-column) * $n - $percent-gutter-fallback / 2
 		margin-right: #{$percent-gutter-fallback / 2 + '%'}
-		margin-left: 0
-
-
-
-// Колонка без отступов
-=sizeF($n: $grid-columns, $max-column: $grid-columns)
-	width: (100% / $max-column) * $n
-	margin-right: 0
-	margin-left: 0
-	// fallback
-	#{$no-calc-selector} &
-		margin-right: 0
 		margin-left: 0
 
 

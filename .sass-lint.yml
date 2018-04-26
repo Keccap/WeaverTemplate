@@ -82,10 +82,10 @@ rules:
         - float
 
         - width
-        - height
         - max-width
-        - max-height
         - min-width
+        - height
+        - max-height
         - min-height
 
         - object-fit
