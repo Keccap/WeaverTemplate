@@ -89,6 +89,7 @@ rules:
         - min-height
 
         - object-fit
+        - object-position
         
         - margin
         - margin-top

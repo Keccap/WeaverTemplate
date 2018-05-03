@@ -107,3 +107,39 @@ export function noDragElements(selector) {
     el.addEventListener('dragstart', event => event.preventDefault());
   });
 }
+
+
+export function getScrollWidth() {
+  const element = document.createElement('div');
+  Object.assign(element.style, {
+    overflowY: 'scroll',
+    height: '50px',
+    width: '50px',
+    visibility: 'hidden'
+  });
+  document.body.append(element);
+  const scrollWidth = element.offsetWidth - element.clientWidth;
+  element.remove();
+
+  return scrollWidth;
+}
+
+export function getWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
+}
+
+export function getHeight() {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight
+  );
+}

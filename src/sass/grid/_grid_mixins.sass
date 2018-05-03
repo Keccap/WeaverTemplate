@@ -195,5 +195,5 @@ $percent-gutter-fallback: $grid-gutter / ($max-container-width / 100)
 	@return (100% / $max-column) * $n
 
 @function get-gutter()
-	@return $grid-gutter
+	@return #{$grid-gutter + px}
 
