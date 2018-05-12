@@ -1,3 +1,24 @@
+// WIDTH
+=w($width, $max-width)
+	width: ($width * 100%) / $max-width
+	margin-right: 0
+	margin-left: 0
+
+=w-mr($width, $max-width, $margin)
+	width: calc(#{($width * 100%) / $max-width} - #{$margin - .5 + 'px'})
+	margin-right: #{$margin + 'px'}
+	margin-left: 0
+
+=w-ml($width, $max-width, $margin)
+	width: calc(#{($width * 100%) / $max-width} - #{$margin - .5 + 'px'})
+	margin-right: 0
+	margin-left: #{$margin + 'px'}
+
+=w-m($width, $max-width, $margin)
+	width: calc(#{($width * 100%) / $max-width} - #{$margin - .5 + 'px'})
+	margin-right: #{$margin / 2 + 'px'}
+	margin-left: #{$margin / 2 + 'px'}
+
 
 // CLEARFIX
 =clearfix

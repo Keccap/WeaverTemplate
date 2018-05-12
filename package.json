@@ -1,13 +1,15 @@
 {
-  "name": "start_template",
-  "version": "0.9.7",
-  "description": "",
+  "name": "WeaverTemplate",
+  "version": "1.0.0",
+  "description": "start template",
   "main": "index.js",
   "scripts": {
-    "start": "gulp"
+    "gulp": "./node_modules/.bin/gulp",
+    "start": "gulp",
+    "build": "gulp build"
   },
   "author": "Alex Keccap",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.0",
@@ -59,8 +61,5 @@
     "through2": "^2.0.3",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.11.1"
-  },
-  "dependencies": {
-    "swiper": "^4.2.0"
   }
 }
