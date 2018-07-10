@@ -6,8 +6,8 @@
 		font-style: $style
 		font-weight: $weight
 		font-display: swap
-		
-		@if $asset-pipeline == true 
+
+		@if $asset-pipeline == true
 			src: font-url('#{$file-path}.eot')
 			src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff2') format('woff2'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype')
 		@else
@@ -18,14 +18,14 @@
 
 // converting to em / rem
 
-$browser-context: $baseFontSize // $baseFontSize из _vars.sass
+$browser-context: $baseFontSize // $baseFontSize из _vars.scss
 
 // px to em
 @function em($pixels, $context: $browser-context)
 
-	@if (unitless($pixels)) 
+	@if (unitless($pixels))
 		$pixels: $pixels * 1px
-	@if (unitless($context)) 
+	@if (unitless($context))
 		$context: $context * 1px
 
 	@return $pixels / $context * 1em

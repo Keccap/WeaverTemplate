@@ -40,7 +40,7 @@ function handler(err, stats, cb) {
 
   gutil.log('[webpack]', stats.toString({
     colors: true,
-    chunks: true // информация о распределении модулей по чанкам в консоли
+    chunks: false // информация о распределении модулей по чанкам в консоли
   }));
 
   if (typeof cb === 'function') cb();

@@ -64,26 +64,67 @@ gulp.task('sass:watch', cb => {
 
 
 function sortMediaQueries(a, b) {
-  const A = a.replace(/\D/g, '');
-  const B = b.replace(/\D/g, '');
 
-  if (isMax(a) && isMax(b)) {
-    return B - A;
-  } else if (isMin(a) && isMin(b)) {
-    return A - B;
-  } else if (isMax(a) && isMin(b)) {
+  // width
+  if (isMinMaxW(a) && (isMaxW(b) || isMinW(b))) {
     return 1;
-  } else if (isMin(a) && isMax(b)) {
+  } else if ((isMaxW(a) || isMinW(a)) && isMinMaxW(b)) {
+    return -1;
+  } else if (isMaxW(a) && isMaxW(b)) {
+    const A = a.replace(/\D/g, '');
+    const B = b.replace(/\D/g, '');
+    return B - A;
+  } else if (isMinW(a) && isMinW(b)) {
+    const A = a.replace(/\D/g, '');
+    const B = b.replace(/\D/g, '');
+    return A - B;
+  } else if (isMaxW(a) && isMinW(b)) {
+    return 1;
+  } else if (isMinW(a) && isMaxW(b)) {
     return -1;
   }
+
+  else if (isMaxH(a) && isMaxH(b)) {
+    const A = a.replace(/\D/g, '');
+    const B = b.replace(/\D/g, '');
+    return B - A;
+  } else if (isMinH(a) && isMinH(b)) {
+    const A = a.replace(/\D/g, '');
+    const B = b.replace(/\D/g, '');
+    return A - B;
+  } else if (isMaxH(a) && isMinH(b)) {
+    return 1;
+  } else if (isMinH(a) && isMaxH(b)) {
+    return -1;
+  }
+
+  else if ((isMaxH(a) || isMinH(a)) && (isMaxW(b) || isMinW(b) || isMinMaxW(b))) {
+    return -1;
+  } else if ((isMaxW(a) || isMinW(a) || isMinMaxW(a)) && (isMaxH(b) || isMinH(b))) {
+    return 1;
+  }
+
 
   return 1;
 }
 
-function isMax(mq) {
+function isMaxW(mq) {
   return /max-width/.test(mq);
 }
 
-function isMin(mq) {
+function isMinW(mq) {
   return /min-width/.test(mq);
+}
+
+function isMinMaxW(mq) {
+  return /((?=min-width).+(?=max-width))|((?=max-width).+(?=min-width))/.test(mq);
+}
+
+
+function isMaxH(mq) {
+  return /max-height/.test(mq);
+}
+
+function isMinH(mq) {
+  return /min-height/.test(mq);
 }

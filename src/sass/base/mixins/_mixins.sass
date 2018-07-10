@@ -20,6 +20,16 @@
 	margin-left: #{$margin / 2 + 'px'}
 
 
+// COLLUMNS
+=c($columns, $gutter)
+	$width: 100% / $columns
+	width: calc(#{$width} - #{($gutter * ($columns - 1) ) / $columns})
+	margin-right: $gutter
+
+	&:nth-child(#{$columns}n)
+		margin-right: 0
+
+
 // CLEARFIX
 =clearfix
 	&::before, &::after
@@ -65,11 +75,6 @@
 
 =selection
 	& ::selection
-		@content
-
-
-=nth($n)
-	&:nth-child($n)
 		@content
 
 

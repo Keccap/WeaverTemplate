@@ -1,8 +1,3 @@
-// GRID
-import './grid/Element.classList.js';
-import './grid/checkSupports.js';
-
-
 // SVG-SPRITES
 import './svg-sprite/svgxuse/svgxuse.min.js';
 
