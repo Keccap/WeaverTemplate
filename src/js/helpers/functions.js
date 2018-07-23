@@ -143,3 +143,9 @@ export function getHeight() {
     document.documentElement.clientHeight
   );
 }
+
+
+export function isTouchDevice() {
+  return 'ontouchstart' in window       
+    || navigator.maxTouchPoints;
+};
