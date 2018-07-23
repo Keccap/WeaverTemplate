@@ -104,15 +104,15 @@
 
 // СОХРАНЕНИЕ БЛОКОМ ПРОПОРЦИЙ 
 
-// от текущего блока (   +prop(16, 9); +prop(4, 3); +prop(342.2, 582.34)   )
-=prop($width, $height: $width)
+// от текущего блока (   +ratio(16, 9); +ratio(4, 3); +ratio(342.2, 582.34)   )
+=ratio($width, $height: $width)
 	&:after
 		content: ''
 		display: block
 		padding-top: 1 / ($width / $height) * 100%
 
 // от родительского блока
-=propOnWrap($width, $height)
+=ratioOnWrap($width, $height)
 	padding-top: 1 / ($width / $height) * 100%
 
 
