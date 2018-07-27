@@ -1,6 +1,7 @@
 'use strict';
 const gulp         = require('gulp');
 const sass         = require('gulp-sass');
+const sassGlob     = require('gulp-sass-glob');
 const plumber      = require('gulp-plumber');
 const rename       = require('gulp-rename');
 const sourcemaps   = require('gulp-sourcemaps');
@@ -38,6 +39,7 @@ gulp.task('sass', () => {
       errorHandler: config.errorHandler('Sass')
     }))
     .pipe(gulpif(!config.production, sourcemaps.init()))
+    .pipe(sassGlob())
     .pipe(sass({
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5 // точность значений в css (число цифр после запятой)
