@@ -93,7 +93,7 @@
 	@else if $axis == h
 		position: absolute
 		top: 50%
-		transform: translateY(-50%)	
+		transform: translateY(-50%)
 
 =vfx
 	display: flex
@@ -102,9 +102,9 @@
 
 
 
-// СОХРАНЕНИЕ БЛОКОМ ПРОПОРЦИЙ 
+// СОХРАНЕНИЕ БЛОКОМ ПРОПОРЦИЙ
 
-// от текущего блока (   +ratio(16, 9); +ratio(4, 3); +ratio(342.2, 582.34)   )
+// от текущего блока +ratio(16, 9); +ratio(4, 3); +ratio(342.2, 582.34)
 =ratio($width, $height: $width)
 	&:after
 		content: ''
@@ -146,7 +146,7 @@
 		height: 0px
 		visibility: hidden
 		overflow: hidden
-		
+
 =vertical
 	text-align: center
 	font-size: 0

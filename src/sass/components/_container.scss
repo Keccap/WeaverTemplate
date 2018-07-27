@@ -1,0 +1,21 @@
+.container {
+	$width: 1200;
+	$padding: 20;
+
+	$actualWidth: $width + $padding * 2;
+
+	width: 100%;
+	max-width: #{$actualWidth}px;
+	margin: 0 auto;
+	padding-right: #{$padding}px;
+	padding-left: #{$padding}px;
+
+	&._justify {
+		flex: 0 1 auto;
+		width: #{$actualWidth}px;
+		max-width: none;
+		min-width: 0%;
+		margin: 0;
+	}
+}
+

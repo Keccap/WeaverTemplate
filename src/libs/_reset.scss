@@ -57,6 +57,7 @@ table {
 }
 
 label {
+  display: block;
   -webkit-tap-highlight-color: rgba(#000, 0);
 }
 
@@ -70,6 +71,18 @@ button {
   color: inherit;
   display: block;
 }
+
+input {
+
+  &::-ms-reveal {
+    display: none;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
 
 textarea {
   outline: none;
@@ -100,10 +113,20 @@ select {
   color: inherit;
   outline: none;
   overflow: hidden;
+  appearance: none;
 
   &::-ms-value {
     background: none;
     color: inherit;
+  }
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
   }
 }
 
