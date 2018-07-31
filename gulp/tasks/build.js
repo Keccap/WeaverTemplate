@@ -11,11 +11,11 @@ function build(cb) {
     'sprite:svg',
     gulp.parallel(
       'sass',
-      'nunjucks',
       'webpack',
       'svgo',
       'imagemin'
     ),
+    'nunjucks',
     'copy'
   )(cb);
 }

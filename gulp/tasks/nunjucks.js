@@ -6,6 +6,7 @@ const gulpif         = require('gulp-if');
 const changed        = require('gulp-changed');
 const frontMatter    = require('gulp-front-matter');
 const prettify       = require('gulp-prettify');
+const rev            = require('gulp-rev-append');
 const config         = require('../config');
 
 
@@ -36,7 +37,10 @@ function renderHtml(onlyChanged) {
       unformatted: ['a', 'code', 'pre'],
       end_with_newline: true
     }))
-    .pipe(gulp.dest(config.dest.root));
+    .pipe(gulp.dest(config.dest.root))
+
+    .pipe(gulpif(config.production, rev()))
+    .pipe(gulpif(config.production, gulp.dest(config.dest.root)));
 }
 
 
