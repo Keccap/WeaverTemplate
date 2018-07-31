@@ -1,7 +1,6 @@
 import { documentLoaded } from '../helpers/functions';
 
 
-
 documentLoaded(() => {
   preloaderLoad();
 });

@@ -1,10 +1,10 @@
 export function debounce(fn, ms) {
   let timer = null;
 
-  return function(...args) {
+  return function (...args) {
     if (timer) {
       clearTimeout(timer);
-    };
+    }
 
     timer = setTimeout(() => {
       fn.apply(this, args);
@@ -93,7 +93,7 @@ export function curry(fn) {
     if (args.length >= fn.length) {
       return fn.apply(this, args);
     } else {
-      return function(...moreArgs) {
+      return function (...moreArgs) {
         return curried.apply(this, args.concat(moreArgs));
       };
     }
@@ -146,6 +146,5 @@ export function getHeight() {
 
 
 export function isTouchDevice() {
-  return 'ontouchstart' in window       
-    || navigator.maxTouchPoints;
-};
+  return 'ontouchstart' in window || navigator.maxTouchPoints;
+}

@@ -1,122 +1,103 @@
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 
-	&:before, &:after {
-		box-sizing: border-box;
-	}
+  &:before, &:after {
+    box-sizing: border-box;
+  }
 }
-
-
 
 html {
-	height: 100%;
+  height: 100%;
 }
-
 
 body {
-	position: relative;
-	min-width: 320px;
-	min-height: 100%;
-	margin-top: -.1px;
-	padding-top: .1px;
-	overflow-x: hidden;
-	font-family: $default-font;
-	font-size: #{$baseFontSize}px;
-	line-height: 1.6;
+  position: relative;
+  min-width: 320px;
+  min-height: 100%;
+  margin-top: -.1px;
+  padding-top: .1px;
+  overflow-x: hidden;
+  font-family: $default-font;
+  font-size: #{$baseFontSize}px;
+  line-height: 1.6;
 }
-
-
 
 ::selection {
-	color: #fff;
-	background-color: #111;
+  color: #fff;
+  background-color: #111;
 }
-
 
 ::placeholder {
-	color: #111;
+  color: #111;
 }
-
-
 
 a {
-	text-decoration-skip: ink;
+  text-decoration-skip: ink;
 }
-
 
 img {
-	display: block
+  display: block
 }
 
-
 picture {
-	img {
-		width: 100%;
-		height: auto;
-	}
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 button {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 
 .br {
-	@include br();
+  @include br();
 }
-
-
 
 .noscript {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99999;
-	width: 100%;
-	height: 100%;
-	color: #555;
-	background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  color: #555;
+  background-color: #fff;
 
-	&__text {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		max-width: 800px;
-		font-size: 32px;
-		text-align: center;
-		transform: translate(-50%, -50%);
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 800px;
+    font-size: 32px;
+    text-align: center;
+    transform: translate(-50%, -50%);
 
-		@include r(750) {
-			font-size: 25px;
-		}
+    @include r(750) {
+      font-size: 25px;
+    }
 
-		@include r(480) {
-			font-size: 18px;
-		}
-	}
+    @include r(480) {
+      font-size: 18px;
+    }
+  }
 }
-
-
-
 
 // libs
 
 img.object-fit-cover {
-	object-fit: cover;
-	font-family: 'object-fit: cover';
+  object-fit: cover;
+  font-family: 'object-fit: cover';
 }
-
-
 
 img[class*=lazyload] {
-	opacity: 0;
-	transition: opacity .5s ease;
+  opacity: 0;
+  transition: opacity .5s ease;
 }
 
-
 img.lazyloaded {
-	opacity: 1;
+  opacity: 1;
 }
 

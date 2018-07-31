@@ -3,12 +3,11 @@
 // $max-px - размер от которого высчитывается процент (в любых величинах)
 // width: p(678, 1920)
 @function p($px, $max-px) {
-	@return ($px * 100%) / $max-px
+  @return ($px * 100%) / $max-px
 }
-
 
 // возвращает line-height в относительной величине
 // line-height: lh(14, 19.2);
 @function lh($fz, $lh) {
-	@return $lh / $fz;
+  @return $lh / $fz;
 }

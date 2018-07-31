@@ -2,12 +2,9 @@ import { objectFitImages } from '../polyfills/css/object-fit-images/my-lazySizes
 import { documentLoaded } from '../helpers/functions';
 
 
-
 documentLoaded(() => {
   OFIwithLazyload();
 });
-
-
 
 
 function OFIwithLazyload() {

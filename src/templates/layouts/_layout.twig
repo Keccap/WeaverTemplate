@@ -2,50 +2,50 @@
 <!DOCTYPE html>
 <html lang="ru" class="🕷">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, shrink-to-fit=no">
-	{# maximum-scale=1, user-scalable=no #}
-	{# ya-title=fade, ya-dock=fade для прозрачной верхней панели Яндекс браузера #}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, shrink-to-fit=no">
+    {# maximum-scale=1, user-scalable=no #}
+    {# ya-title=fade, ya-dock=fade для прозрачной верхней панели Яндекс браузера #}
 
-	<meta name="MobileOptimized" content="width" />
-	<meta name="HandheldFriendly" content="true" />
-	<meta name="format-detection" content="telephone=no">
-
-
-	<title>{% if title %}{{ title }}{% else %}Title{% endif %}</title> {# Title no longer than 78 characters #}
-	<meta name="description" content="{{ description }}"> {# Description no longer than 155 characters #}
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="format-detection" content="telephone=no">
 
 
-	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-	{#<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">#}
-
-	<meta name="theme-color" content="#fff">
-	<meta name="msapplication-navbutton-color" content="#fff">
-	<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
-
-	{# {% include "../parts/_media-tags.twig" %} #}
+    <title>{% if title %}{{ title }}{% else %}Title{% endif %}</title> {# Title no longer than 78 characters #}
+    <meta name="description" content="{{ description }}"> {# Description no longer than 155 characters #}
 
 
-	{# <link rel="preload" as="font" href="fonts/Lato-regular.woff2" type="font/woff2" crossorigin />
-	<link rel="preload" as="font" href="fonts/Lato-bold.woff2" type="font/woff2" crossorigin /> #}
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    {#<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">#}
 
-	<link rel="stylesheet" href="css/app.min.css?rev=hash">
+    <meta name="theme-color" content="#fff">
+    <meta name="msapplication-navbutton-color" content="#fff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+
+    {# {% include "../parts/_media-tags.twig" %} #}
+
+
+    {# <link rel="preload" as="font" href="fonts/Lato-regular.woff2" type="font/woff2" crossorigin />
+    <link rel="preload" as="font" href="fonts/Lato-bold.woff2" type="font/woff2" crossorigin /> #}
+
+    <link rel="stylesheet" href="css/app.min.css?rev=hash">
 
 </head>
 <body>
-	{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
 
-	<noscript>
-		<div class="noscript">
-			<p class="noscript__text">Для работы приложения необходимо включить JavaScript.</p>
-		</div>
-	</noscript>
+    <noscript>
+        <div class="noscript">
+            <p class="noscript__text">Для работы приложения необходимо включить JavaScript.</p>
+        </div>
+    </noscript>
 
-	<script defer src="js/app.bundle.js?rev=hash"></script>
+    <script defer src="js/app.bundle.js?rev=hash"></script>
 
 </body>
 </html>

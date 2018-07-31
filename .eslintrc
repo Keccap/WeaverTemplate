@@ -20,7 +20,8 @@
 //    "jquery": true
   },
 
-  "rules": { 
+  "rules": {
+    "indent": ["error", 2],
     "key-spacing": "off",
     "semi": ["error", "always"],
     "no-multiple-empty-lines": "off",
