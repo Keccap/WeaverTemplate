@@ -62,6 +62,7 @@
     "sass-lint": "^1.12.1",
     "through2": "^2.0.3",
     "webpack": "^2.2.1",
-    "webpack-bundle-analyzer": "^2.11.1"
+    "webpack-bundle-analyzer": "^2.11.1",
+    "require-yaml": "^0.0.1"
   }
 }

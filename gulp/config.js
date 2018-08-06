@@ -31,7 +31,9 @@ const config = {
     iconsSvg     : srcPath + '/icons',
     iconsFont    : srcPath + '/icons',
 
-    templates    : srcPath + '/templates'
+    templates    : srcPath + '/templates',
+
+    pagelist     : 'src/index.yaml'
   },
 
   dest: {

@@ -16,7 +16,8 @@ function build(cb) {
       'imagemin'
     ),
     'nunjucks',
-    'copy'
+    'copy',
+    'list-pages'
   )(cb);
 }
 

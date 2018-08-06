@@ -1,0 +1,9 @@
+ProjectTitle: Project
+ProjectColor: '#A12224' # NovaTest: #A12224
+
+PageList:
+- file: page.html
+  ready: 75 # percentage of readiness
+
+#- file: page2.html
+#  ready: 75

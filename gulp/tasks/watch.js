@@ -12,6 +12,7 @@ gulp.task('watch', cb => {
     'webpack:watch',
     'svgo:watch',
     'imagemin:watch',
-    'copy:watch'
+    'copy:watch',
+    'list-pages:watch'
   )(cb);
 });
