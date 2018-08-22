@@ -1,3 +1,3 @@
 import '../libs/lazysizes/lazysizes';
 import './components/OFIwithLazyload';
-import './components/preloader';
+import './components/site-preloader';

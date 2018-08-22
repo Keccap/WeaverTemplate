@@ -9,14 +9,14 @@ function build(cb) {
   gulp.series(
     'clean',
     'sprite:svg',
+    'nunjucks',
+    'copy',
     gulp.parallel(
       'sass',
       'webpack',
       'svgo',
       'imagemin'
     ),
-    'nunjucks',
-    'copy',
     'list-pages'
   )(cb);
 }

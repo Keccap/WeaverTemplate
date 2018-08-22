@@ -16,7 +16,6 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: middle;
 }
 
 article, aside, details, figcaption, figure,
@@ -36,6 +35,10 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+}
+
+strong, b {
+  font-weight: bolder;
 }
 
 ol, ul {

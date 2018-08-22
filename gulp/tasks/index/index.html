@@ -429,14 +429,15 @@
         <% i = 0;%>
         <% _.each(pages.PageList, function(page) { i++; %>
         <li <% if(!page.ready) { %> class="is-notready" <% } %>>
+        <% if(!page.ready) page.ready = 0; %>
 
-        <a class="pagelist__title <% if(i==1){ %> is-active <% } %>" target="_blank" href="<%= page.file %>"><span><%= i %>.</span><em><%= _.split(page.file, '.', 1) %></em></a>
+        <a title="<%= page.ready %>%" class="pagelist__title <% if(i==1){ %> is-active <% } %>" target="_blank" href="<%= page.file %>"><span><%= i %>.</span><em><%= page.name || _.split(page.file, '.', 1) %></em></a>
         <a href="<%= page.file %>" class="pagelist__url">
             <svg class="icon icon-link"><use xlink:href="#icon-link"></use></svg>
         </a>
 
+
         <div class="pagelist__progress">
-            <% if(!page.ready) page.ready = 0; %>
             <i style="width:<%= page.ready %>%"></i>
         </div>
 
@@ -458,13 +459,7 @@
     var previewButtons = document.querySelectorAll('.pagelist__title');
     var iframe = document.getElementById('preview');
     var previewWrapper = document.getElementById('preview-wrapper');
-    // colors
-    var colors = ['<%= pages.ProjectColor %>','#ddd','#afd702','#add8e6','#f03a96'];
-    body.addEventListener('dblclick', function(event) {
-        colors = colors.concat(colors.splice(0,1));
-        document.documentElement.style.setProperty(`--main-color`, colors[0]);
-    });
-    // end colors
+
     function removeActive(){
         [].forEach.call(previewButtons, function(button) {
             button.classList.remove('is-active');

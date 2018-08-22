@@ -9,6 +9,7 @@
 
 html {
   height: 100%;
+  font-size: #{$baseFontSize}px; // for rem
 }
 
 body {
@@ -21,11 +22,12 @@ body {
   font-family: $default-font;
   font-size: #{$baseFontSize}px;
   line-height: 1.6;
+  color: $text-base;
 }
 
 ::selection {
-  color: #fff;
-  background-color: #111;
+  //color: #fff;
+  background-color: rgba($color-base, .4);
 }
 
 ::placeholder {
@@ -52,38 +54,25 @@ button {
   padding: 0;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .br {
   @include br();
 }
 
-.noscript {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999;
-  width: 100%;
-  height: 100%;
-  color: #555;
-  background-color: #fff;
 
-  &__text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    max-width: 800px;
-    font-size: 32px;
-    text-align: center;
-    transform: translate(-50%, -50%);
-
-    @include r(750) {
-      font-size: 25px;
-    }
-
-    @include r(480) {
-      font-size: 18px;
-    }
-  }
+.color-base {
+  color: $color-base;
 }
+
+
+.hidden-zone {
+  display: none;
+}
+
+
 
 // libs
 
@@ -94,7 +83,12 @@ img.object-fit-cover {
 
 img[class*=lazyload] {
   opacity: 0;
-  transition: opacity .5s ease;
+  transition: opacity .25s ease;
+
+  @include ie10-11 {
+    opacity: 1;
+    transition: none;
+  }
 }
 
 img.lazyloaded {

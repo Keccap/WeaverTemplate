@@ -3,6 +3,9 @@ const consolidate = require('gulp-consolidate');
 const config      = require('../../config');
 require('require-yaml');
 
+
+
+
 gulp.task('list-pages', () => {
   delete require.cache[require.resolve('../../../' + config.src.pagelist)];
 

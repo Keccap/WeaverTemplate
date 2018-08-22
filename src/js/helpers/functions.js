@@ -85,7 +85,7 @@ export function documentLoaded(fn) {
   // Otherwise, wait until document is loaded
   window.addEventListener('load', fn, false);
 
-};
+}
 
 
 export function curry(fn) {
@@ -124,7 +124,7 @@ export function getScrollWidth() {
   return scrollWidth;
 }
 
-export function getWidth() {
+export function getScreenWidth() {
   return Math.max(
     document.body.scrollWidth,
     document.documentElement.scrollWidth,
@@ -134,7 +134,7 @@ export function getWidth() {
   );
 }
 
-export function getHeight() {
+export function getScreenHeight() {
   return Math.max(
     document.body.scrollHeight,
     document.documentElement.scrollHeight,
@@ -145,6 +145,64 @@ export function getHeight() {
 }
 
 
+export function getCoords(elem) {
+  const box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset
+  };
+}
+
+export function getSiteScroll() {
+  return {
+    top: window.pageYOffset,
+    bottom: window.pageYOffset + document.documentElement.clientHeight
+  };
+}
+
+
+
 export function isTouchDevice() {
   return 'ontouchstart' in window || navigator.maxTouchPoints;
+}
+
+
+
+/**
+ * Returns an array with arrays of the given size.
+ *
+ * @param myArray {Array} Array to split
+ * @param chunkSize {Integer} Size of every group
+ */
+export function chunkArray(myArray, chunkSize) {
+  var newArr = myArray.slice();
+  var results = [];
+
+  while (newArr.length) {
+    results.push(newArr.splice(0, chunkSize));
+  }
+
+  return results;
+}
+
+
+// const unique = a.filter(onlyUnique);
+export function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
+
+export function delegate(elem, targetSelector, eventName, cb, flag = false) {
+
+  if (!elem || !elem.addEventListener) throw new Error('Cannot delegate of not element node');
+
+  function handler(event) {
+    const target = event.target.closest(targetSelector);
+    if (!target) return;
+
+    cb.call(target, event);
+  }
+
+  elem.addEventListener(eventName, handler, flag);
 }

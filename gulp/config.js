@@ -33,7 +33,7 @@ const config = {
 
     templates    : srcPath + '/templates',
 
-    pagelist     : 'src/index.yaml'
+    pagelist     : srcPath + '/index.yaml'
   },
 
   dest: {
