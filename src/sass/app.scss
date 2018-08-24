@@ -1,5 +1,6 @@
 @import 'base/vars';
 @import 'base/mixins/all';
+@import 'base/breakpoints';
 @import 'base/grid/grid';
 @import 'components/preloader';
 @import 'base/fonts';
@@ -9,3 +10,4 @@
 @import 'common';
 
 @import 'components/*.scss';
+@import 'pages/*.scss';

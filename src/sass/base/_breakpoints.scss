@@ -1,0 +1,46 @@
+@mixin desc-sm {
+  @include r(1600) {
+    @content
+  }
+}
+
+
+@mixin desc-xs {
+  @include r(1366) {
+    @content
+  }
+}
+
+
+@mixin tb {
+  @include r(1023) {
+    @content
+  }
+}
+
+
+@mixin tb-sm {
+  @include r(900) {
+    @content
+  }
+}
+
+@mixin mb {
+  @include r(768) {
+    @content
+  }
+}
+
+
+@mixin mb-sm {
+  @include r(650) {
+    @content
+  }
+}
+
+
+@mixin mb-xs {
+  @include r(450) {
+    @content
+  }
+}

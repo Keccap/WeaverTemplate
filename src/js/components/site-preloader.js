@@ -1,9 +1,35 @@
-import { documentLoaded } from '../helpers/functions';
+import { documentReady } from '../helpers/functions';
 
 
-documentLoaded(() => {
-  preloaderLoad();
+documentReady(() => {
+  const images = document.images;
+  const imagesCount = images.length;
+  let currentLoaded = 0;
+  const perc = document.querySelector('#perc');
+  const percNum = document.querySelector('#percNum');
+
+  if (imagesCount) {
+    for (let i = 0; i < imagesCount; i++) {
+      const clone = new Image();
+      clone.addEventListener('load', imageLoaded);
+      clone.addEventListener('error', imageLoaded);
+      clone.src = images[i].src;
+    }
+  } else {
+    preloaderLoad();
+  }
+
+  function imageLoaded() {
+    currentLoaded++;
+
+    if (currentLoaded >= imagesCount) {
+      preloaderLoad();
+    }
+  }
 });
+
+
+
 
 
 function preloaderLoad({selector = '#preloader', transition = 1000} = {}) {
