@@ -9,7 +9,6 @@ function build(cb) {
   gulp.series(
     'clean',
     'sprite:svg',
-    'nunjucks',
     'copy',
     gulp.parallel(
       'sass',
@@ -17,6 +16,7 @@ function build(cb) {
       'svgo',
       'imagemin'
     ),
+    'nunjucks', // after assets because gulp-rev-append
     'list-pages'
   )(cb);
 }
