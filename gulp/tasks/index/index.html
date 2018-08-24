@@ -1,8 +1,14 @@
 <!doctype html>
 <html>
-<head lang="en">
+<head lang="en" class="🕷">
     <meta charset="UTF-8">
     <title><%= pages.ProjectTitle %></title>
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+    <meta name="theme-color" content="<%= pages.ProjectColor %>">
+    <meta name="msapplication-navbutton-color" content="<%= pages.ProjectColor %>">
+    <meta name="apple-mobile-web-app-status-bar-style" content="<%= pages.ProjectColor %>">
+
     <style>
         *{margin:0;padding: 0;box-sizing: border-box}
         @font-face {
@@ -455,7 +461,7 @@
 
 <script>
     var navs = document.querySelectorAll('button');
-    var body = document.querySelectorAll('body')[0];
+    var body = document.querySelector('body');
     var previewButtons = document.querySelectorAll('.pagelist__title');
     var iframe = document.getElementById('preview');
     var previewWrapper = document.getElementById('preview-wrapper');

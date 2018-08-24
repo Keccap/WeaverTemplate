@@ -5,8 +5,6 @@ documentReady(() => {
   const images = document.images;
   const imagesCount = images.length;
   let currentLoaded = 0;
-  const perc = document.querySelector('#perc');
-  const percNum = document.querySelector('#percNum');
 
   if (imagesCount) {
     for (let i = 0; i < imagesCount; i++) {
