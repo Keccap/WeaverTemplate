@@ -22,8 +22,8 @@ gulp.task('server', cb => {
     files: [
       config.dest.root + '/*.html',
       config.dest.css + '/**/*.css',
-      config.dest.js + '/**/*.js',
-      config.dest.img + '/**/*'
+      config.dest.img + '/**/*',
+      // config.dest.js + '/**/*.js', // вместо этого сервер вручную перезагружается в webpack.js (иначе browsersync будет ловить несколько событий при изменении => неск. перезагрузок)
     ],
     notify: false,
     open: true,
@@ -34,3 +34,6 @@ gulp.task('server', cb => {
 
   cb();
 });
+
+
+module.exports = server;

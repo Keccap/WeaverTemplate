@@ -1,6 +1,7 @@
 'use strict';
 const gulp          = require('gulp');
 const webpack       = require('webpack');
+const server        = require('./server');
 const gutil         = require('gulp-util');
 const notify        = require('gulp-notify');
 const config        = require('../config');
@@ -42,6 +43,8 @@ function handler(err, stats, cb) {
     colors: true,
     chunks: false // информация о распределении модулей по чанкам в консоли
   }));
+
+  server.reload();
 
   if (typeof cb === 'function') cb();
 }
