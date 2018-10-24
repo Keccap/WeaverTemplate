@@ -1,16 +1,16 @@
 'use strict';
-const gulp         = require('gulp');
-const sass         = require('gulp-sass');
-const sassGlob     = require('gulp-sass-glob');
-const plumber      = require('gulp-plumber');
-const rename       = require('gulp-rename');
-const sourcemaps   = require('gulp-sourcemaps');
-const postcss      = require('gulp-postcss');
-const autoprefixer = require('autoprefixer'); // (postcss)
-const mqpacker     = require('css-mqpacker'); // Group media queries and put them into the end of the CSS document (postcss)
-const csso         = require('postcss-csso'); // CSS minifier (postcss)
-const gulpif       = require('gulp-if');
-const config       = require('../config');
+const gulp          = require('gulp');
+const sass          = require('gulp-sass');
+const sassGlob      = require('gulp-sass-glob');
+const plumber       = require('gulp-plumber');
+const rename        = require('gulp-rename');
+const sourcemaps    = require('gulp-sourcemaps');
+const postcss       = require('gulp-postcss');
+const autoprefixer  = require('autoprefixer'); // (postcss)
+const mqpacker      = require('css-mqpacker'); // Group media queries and put them into the end of the CSS document (postcss)
+const cssnano       = require('cssnano'); // CSS minifier (postcss)
+const gulpif        = require('gulp-if');
+const config        = require('../config');
 
 
 
@@ -20,15 +20,20 @@ const processorsDev = [
   autoprefixer({
     browsers: ['last 4 versions'],
     cascade: false
-  }),
-  mqpacker({
-    sort: sortMediaQueries /* функция сортировки медиа запросов в правильном порядке
-                           (не поддерживает диапазоны экранов: min:480 - max:780) */
   })
 ];
 
+if (config.mergeMediaQueries) {
+  processorsDev.push(
+    mqpacker({
+      sort: sortMediaQueries // функция сортировки медиа запросов
+    })
+  );
+}
+
+
 const processorsProd = [
-  csso
+  cssnano
 ];
 
 
@@ -42,7 +47,10 @@ gulp.task('sass', () => {
     .pipe(sassGlob())
     .pipe(sass({
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
-      precision: 5 // точность значений в css (число цифр после запятой)
+      precision: 5, // точность значений в css (число цифр после запятой)
+      includePaths: [
+        config.nodeModules // быстрое обращение к node_modules '@import "node_modules/..."'
+      ]
     }))
     .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(postcss(config.production ? processorsDev.concat(processorsProd) : processorsDev))

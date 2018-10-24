@@ -14,7 +14,8 @@ function build(cb) {
       'sass',
       'webpack',
       'svgo',
-      'imagemin'
+      'imagemin',
+      'data'
     ),
     'nunjucks', // after assets because gulp-rev-append
     'list-pages'

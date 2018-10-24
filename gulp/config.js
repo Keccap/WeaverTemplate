@@ -5,9 +5,13 @@ const errorHandler = require('./util/handle-errors');
 
 
 
-
 const srcPath = 'src';
-const destPath = 'build';
+
+const devPath = 'build';
+const prodPath = devPath;
+
+let destPath = null;
+
 const production = util.env.production || util.env.prod || false;
 
 
@@ -33,23 +37,37 @@ const config = {
 
     templates    : srcPath + '/templates',
 
+
+    sdata        : srcPath + '/sdata',
+    data         : srcPath + '/data',
+    dataFile     : 'data.json',
+
     pagelist     : srcPath + '/index.yaml'
   },
 
   dest: {
-    root    : destPath,
-    html    : destPath,
-    css     : destPath + '/css',
-    js      : destPath + '/js',
-    img     : destPath + '/img',
-    fonts   : destPath + '/fonts'
+    root    : () => destPath,
+    html    : () => destPath,
+    css     : () => destPath + '/css',
+    js      : () => destPath + '/js',
+    img     : () => destPath + '/img',
+    fonts   : () => destPath + '/fonts'
   },
+
+  nodeModules: path.resolve('node_modules'),
+  mergeMediaQueries: true,
 
   setEnv(env) {
     if (typeof env !== 'string') return;
     this.env = env;
     this.production = env === 'production';
     process.env.NODE_ENV = env;
+
+    if (this.production) {
+      destPath = prodPath || devPath;
+    } else {
+      destPath = devPath;
+    }
   },
 
   logEnv() {
@@ -63,8 +81,11 @@ const config = {
   errorHandler
 };
 
+toGetters(config.dest); // for dinamic dest path
 
 config.setEnv(production ? 'production' : 'development');
+
+
 
 module.exports = config;
 
@@ -108,4 +129,23 @@ function syncChange(pathEditFunc) {
     }
 
   };
+}
+
+
+
+function toGetters(...objects) {
+  objects.forEach(obj => {
+    for (const key in obj) {
+      const value = obj[key];
+
+      if (typeof value === 'function') {
+        Object.defineProperty(obj, key, {
+          get() {
+            return value();
+          }
+        });
+      }
+
+    }
+  });
 }

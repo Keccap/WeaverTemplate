@@ -8,6 +8,7 @@ gulp.task('watch', cb => {
   gulp.parallel(
     'sprite:svg:watch',
     'sass:watch',
+    'data:watch',
     'nunjucks:watch',
     'webpack:watch',
     'svgo:watch',

@@ -4,7 +4,7 @@ options:
 files:
   include: '**/*.s+(a|c)ss'
   ignore:
-    - 'src/libs/**/*.*'
+    - 'src/vendor/**/*.*'
     - 'src/sass/generated/**/*.*'
 rules:
   # Extends
@@ -17,10 +17,10 @@ rules:
     - max-depth: 4
 
   quotes: 1
-  leading-zero: 
+  leading-zero:
     - 1
     - include: false
-  clean-import-paths: 
+  clean-import-paths:
     - 2
     - filename-extension: false
 
@@ -69,7 +69,7 @@ rules:
         - flex-shrink
         - flex-basis
         - align-self
-        
+
 
         - display
 
@@ -90,7 +90,7 @@ rules:
 
         - object-fit
         - object-position
-        
+
         - margin
         - margin-top
         - margin-right
@@ -153,7 +153,7 @@ rules:
         - color
 
         - fill
-        
+
         - background
         - background-color
         - background-image

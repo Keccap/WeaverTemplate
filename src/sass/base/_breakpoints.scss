@@ -1,45 +1,45 @@
-@mixin desc-sm {
+@mixin desktop-sm {
   @include r(1600) {
     @content
   }
 }
 
 
-@mixin desc-xs {
+@mixin desktop-xs {
   @include r(1366) {
     @content
   }
 }
 
 
-@mixin tb {
+@mixin tablet {
   @include r(1023) {
     @content
   }
 }
 
 
-@mixin tb-sm {
+@mixin tablet-sm {
   @include r(900) {
     @content
   }
 }
 
-@mixin mb {
+@mixin mobile {
   @include r(768) {
     @content
   }
 }
 
 
-@mixin mb-sm {
+@mixin mobile-sm {
   @include r(650) {
     @content
   }
 }
 
 
-@mixin mb-xs {
+@mixin mobile-xs {
   @include r(450) {
     @content
   }
