@@ -1,0 +1,189 @@
+@mixin aspect-ratio($width, $height: $width) {
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 1 / ($width / $height) * 100%;
+  }
+}
+
+
+@mixin round($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+
+@mixin clickable() {
+  cursor: pointer;
+  user-select: none;
+}
+
+
+@mixin responsive-svg() {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+@mixin bg-cover() {
+  background-size: cover;
+  background-position: center;
+}
+
+
+@mixin center($axis) {
+  @if $axis == both {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @else if $axis == w {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if $axis == h {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+
+@mixin scrollable() {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+@mixin placeholder() {
+  ::-webkit-input-placeholder {@content} //use inside input-container element as
+  ::-ms-input-placeholder {@content}     //@include placeholder {
+  :-ms-input-placeholder {@content}      //  color: $faded-base;
+  ::-moz-placeholder {@content}          //  font-weight: 300;
+  :-moz-placeholder {@content}           //  opacity: 1;
+  ::placeholder {@content}               //}
+}
+
+
+@mixin hidden-input() {
+  -webkit-appearance: none;
+  height: 1px;
+  left: -9999px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  z-index: -1;
+}
+
+
+@mixin columns($columns, $gutter) {
+  $width: 100% / $columns;
+  width: calc(#{$width} - #{($gutter * ($columns - 1) ) / $columns});
+  margin-right: $gutter;
+
+  &:nth-child(#{$columns}n) {
+    margin-right: 0;
+  }
+}
+
+
+@mixin gpu() {
+  transform: translate3d(0, 0, 0);
+}
+
+
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+
+@mixin arrow($color, $thickness, $size, $direction) { // $direction: up, right, down, left
+  $rotation: -135;
+
+  @if $direction == right {
+    $rotation: -45;
+  } @else if $direction == down {
+    $rotation: 45;
+  } @else if $direction == left {
+    $rotation: 135;
+  }
+
+  border: solid $color;
+  border-width: 0 $thickness $thickness 0;
+  padding: $size;
+  transform: rotate($rotation+deg);
+}
+
+
+@mixin triangle($size, $color, $direction) { // $direction: up, down, left, right, up-right, up-left, down-right, down-left
+  $width: nth($size, 1);
+  $height: nth($size, length($size));
+  $foreground-color: nth($color, 1);
+  $background-color: if(length($color) == 2, nth($color, 2), transparent);
+  height: 0;
+  width: 0;
+
+  @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
+    $width: $width / 2;
+    $height: if(length($size) > 1, $height, $height / 2);
+    @if $direction == up {
+      border-bottom: $height solid $foreground-color;
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+    } @else if $direction == right {
+      border-bottom: $width solid $background-color;
+      border-left: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    } @else if $direction == down {
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+      border-top: $height solid $foreground-color;
+    } @else if $direction == left {
+      border-bottom: $width solid $background-color;
+      border-right: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    }
+  } @else if ($direction == up-right) or ($direction == up-left) {
+    border-top: $height solid $foreground-color;
+    @if $direction == up-right {
+      border-left: $width solid $background-color;
+    } @else if $direction == up-left {
+      border-right: $width solid $background-color;
+    }
+  } @else if ($direction == down-right) or ($direction == down-left) {
+    border-bottom: $height solid $foreground-color;
+
+    @if $direction == down-right {
+      border-left: $width solid $background-color;
+    } @else if $direction == down-left {
+      border-right: $width solid $background-color;
+    }
+  }
+}
+
+
+@mixin br() {
+  &::after {
+    content: '\A';
+    white-space: pre;
+  }
+}
+
+
+@mixin force-new-lines-for-long-words() {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
