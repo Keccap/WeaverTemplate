@@ -58,7 +58,7 @@ gulp.task('nunjucks', () => renderHtml());
 gulp.task('nunjucks:changed', () => renderHtml(true));
 
 
-
+// todo убрать именование с _*.*
 gulp.task('nunjucks:watch', cb => {
   const watcher = gulp.watch([
     config.src.templates + '/**/[^_]*.twig',

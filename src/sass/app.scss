@@ -1,6 +1,11 @@
 @import 'base/includes';
+@import 'base/supports/normalize';
+@import 'base/supports/reset';
+@import 'base/fonts';
+@import 'base/global';
 @import 'modules/preloader';
 @import 'generated/sprite-svg';
 @import 'vendor';
 @import 'modules/*.scss';
+
 @import 'common';
