@@ -3,7 +3,7 @@ const gulp           = require('gulp');
 const plumber        = require('gulp-plumber');
 const changed        = require('gulp-changed');
 const imagemin       = require('gulp-imagemin');
-const mozjpeg        = require('imagemin-mozjpeg');
+const jpegrecompress = require('imagemin-jpeg-recompress');
 const pngquant       = require('imagemin-pngquant');
 const cache          = require('gulp-cache');
 const config         = require('../config');
@@ -22,11 +22,10 @@ gulp.task('imagemin', () => {
     }))
     .pipe(changed(config.dest.img))
     .pipe(cache(imagemin([
+      imagemin.gifsicle({interlaced: true}),
       pngquant(),
-      mozjpeg({
-        progressive: true
-      })
-    ])))
+      jpegrecompress({quality: 'high', min: 80})
+    ], {verbose: true})))
     .pipe(gulp.dest(config.dest.img));
 });
 

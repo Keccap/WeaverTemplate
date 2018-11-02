@@ -1,4 +1,4 @@
-// Перевод пиксельных значений в %.
+// Перевод значений в проценты.
 // $value - значение,
 // $max-px - значение от которого высчитывается процент
 // width: percent(678, 1920);
@@ -10,4 +10,28 @@
 // line-height: lh(14, 19.2);
 @function lh($fz, $lh) {
   @return $lh / $fz;
+}
+
+
+
+$browser-context: $rootFontSize;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px
+  }
+  @return $pixels / $context * 1em;
+}
+
+@function rem($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem
 }

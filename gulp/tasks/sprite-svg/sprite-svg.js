@@ -15,7 +15,7 @@ const config       = require('../../config');
 
 gulp.task('sprite:svg', () => {
   return gulp
-    .src(config.src.iconsSvg + '/*.svg')
+    .src(config.src.icons + '/*.svg')
     .pipe(plumber({
       errorHandler: config.errorHandler('Sprite:svg')
     }))
@@ -92,7 +92,7 @@ gulp.task('sprite:svg', () => {
 
 
 gulp.task('sprite:svg:watch', cb => {
-  gulp.watch(config.src.iconsSvg + '/*.svg', gulp.series('sprite:svg'));
+  gulp.watch(config.src.icons + '/*.svg', gulp.series('sprite:svg'));
 
   cb();
 });

@@ -18,10 +18,6 @@ import './js/DOM/ParentNode.append.js';
 import './js/DOM/ParentNode.prepend.js';
 
 
-// CSS
-import './css/object-fit-images/my-lazySizes-version/OFLwithLazyload.js';
-
-
 // WEBPACK
 import Promise from 'babel-runtime/core-js/promise';
 if (!('Promise' in window)) window.Promise = Promise;

@@ -1,13 +1,6 @@
-@import 'base/settings';
-@import 'base/mixins/all';
-@import 'base/breakpoints';
-//@import 'base/grid/grid';
-@import 'components/preloader';
-@import 'base/fonts';
+@import 'base/includes';
+@import 'modules/preloader';
 @import 'generated/sprite-svg';
-@import 'base/base';
 @import 'vendor';
+@import 'modules/*.scss';
 @import 'common';
-
-@import 'components/*.scss';
-@import 'pages/*.scss';

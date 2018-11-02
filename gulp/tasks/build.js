@@ -18,7 +18,7 @@ function build(cb) {
       'data'
     ),
     'nunjucks', // after assets because gulp-rev-append
-    'list-pages'
+    'pagelist'
   )(cb);
 }
 

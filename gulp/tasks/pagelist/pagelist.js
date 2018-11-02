@@ -6,7 +6,7 @@ require('require-yaml');
 
 
 
-gulp.task('list-pages', () => {
+gulp.task('pagelist', () => {
   delete require.cache[require.resolve('../../../' + config.src.pagelist)];
 
   const pages = require('../../../' + config.src.pagelist);
@@ -20,6 +20,6 @@ gulp.task('list-pages', () => {
 });
 
 
-gulp.task('list-pages:watch', () => {
-  gulp.watch(config.src.root + '/*', gulp.series('list-pages'));
+gulp.task('pagelist:watch', () => {
+  gulp.watch(config.src.root + '/*', gulp.series('pagelist'));
 });

@@ -29,20 +29,12 @@ const config = {
     img          : srcPath + '/img',
     svg          : srcPath + '/img/svg',
     fonts        : srcPath + '/fonts',
-
     icons        : srcPath + '/icons',
-    iconsPng     : srcPath + '/icons',
-    iconsSvg     : srcPath + '/icons',
-    iconsFont    : srcPath + '/icons',
-
     templates    : srcPath + '/templates',
-
-
     sdata        : srcPath + '/sdata',
     data         : srcPath + '/data',
     dataFile     : 'data.json',
-
-    pagelist     : srcPath + '/index.yaml'
+    pagelist     : srcPath + '/pagelist.yaml'
   },
 
   dest: {

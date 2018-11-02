@@ -7,6 +7,7 @@
 }
 
 
+
 @mixin round($size) {
   width: $size;
   height: $size;
@@ -14,10 +15,12 @@
 }
 
 
+
 @mixin clickable() {
   cursor: pointer;
   user-select: none;
 }
+
 
 
 @mixin responsive-svg() {
@@ -27,10 +30,12 @@
 }
 
 
+
 @mixin bg-cover() {
   background-size: cover;
   background-position: center;
 }
+
 
 
 @mixin center($axis) {
@@ -53,10 +58,12 @@
 }
 
 
+
 @mixin scrollable() {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 
 
 @mixin placeholder() {
@@ -67,6 +74,7 @@
   :-moz-placeholder {@content}           //  opacity: 1;
   ::placeholder {@content}               //}
 }
+
 
 
 @mixin hidden-input() {
@@ -81,6 +89,7 @@
 }
 
 
+
 @mixin columns($columns, $gutter) {
   $width: 100% / $columns;
   width: calc(#{$width} - #{($gutter * ($columns - 1) ) / $columns});
@@ -92,10 +101,6 @@
 }
 
 
-@mixin gpu() {
-  transform: translate3d(0, 0, 0);
-}
-
 
 @mixin clearfix() {
   &::after {
@@ -104,6 +109,7 @@
     clear: both;
   }
 }
+
 
 
 @mixin arrow($color, $thickness, $size, $direction) { // $direction: up, right, down, left
@@ -122,6 +128,7 @@
   padding: $size;
   transform: rotate($rotation+deg);
 }
+
 
 
 @mixin triangle($size, $color, $direction) { // $direction: up, down, left, right, up-right, up-left, down-right, down-left
@@ -171,12 +178,14 @@
 }
 
 
+
 @mixin br() {
   &::after {
     content: '\A';
     white-space: pre;
   }
 }
+
 
 
 @mixin force-new-lines-for-long-words() {
@@ -186,4 +195,41 @@
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
+}
+
+
+
+@mixin css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px) {
+  #{$property}: #{$max-size}#{$unit};
+  #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+
+  @media (max-width: #{$min-width}px) {
+    #{$property}: #{$min-size}#{$unit};
+  }
+
+  @media (min-width: #{$max-width}px) {
+    #{$property}: #{$max-size}#{$unit}
+  }
+}
+
+
+
+@mixin css-lock-full($min-size: 1, $mid-size: 1.2, $max-size: 1.4,  $min-width: 20, $mid-width: 30, $max-width: 100, $property: font-size, $unit: px) {
+  #{$property}: #{$mid-size}#{$unit};
+
+  @media only screen and (max-width: $mid-width + 'px') and (min-width: $min-width + 'px') {
+    #{$property}: calc(#{$min-size}#{$unit} + (#{$mid-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$mid-width} - #{$min-width})));
+  }
+
+  @media only screen and (max-width: $max-width + 'px') and (min-width: $mid-width + 'px') {
+    #{$property}: calc(#{$mid-size}#{$unit} + (#{$max-size} - #{$mid-size}) * ((100vw - #{$mid-width}#{$unit}) / (#{$max-width} - #{$mid-width})));
+  }
+
+  @media (max-width: #{$min-width}px) {
+    #{$property}: #{$min-size}#{$unit};
+  }
+
+  @media (min-width: #{$max-width}px) {
+    #{$property}: #{$max-size}#{$unit};
+  }
 }

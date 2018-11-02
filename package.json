@@ -1,17 +1,20 @@
 {
   "name": "WeaverTemplate",
   "version": "1.0.0",
-  "description": "start template",
-  "main": "index.js",
+  "description": "",
+  "license": "MIT",
+  "author": "Alex Vorobyov",
+  "homepage": "https://github.com/Keccap/WeaverTemplate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Keccap/WeaverTemplate.git"
+  },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
     "start": "gulp",
     "build": "gulp build",
-    "server": "gulp server",
-    "nun": "gulp nunjucks"
+    "server": "gulp server"
   },
-  "author": "Alex Keccap",
-  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.0",
@@ -58,6 +61,7 @@
     "gulp-svgstore": "^5.0.5",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
+    "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^5.0.1",
     "node-sass": "^4.7.2",

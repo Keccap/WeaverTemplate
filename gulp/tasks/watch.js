@@ -14,6 +14,6 @@ gulp.task('watch', cb => {
     'svgo:watch',
     'imagemin:watch',
     'copy:watch',
-    'list-pages:watch'
+    'pagelist:watch'
   )(cb);
 });

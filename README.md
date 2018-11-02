@@ -1,1 +1,0 @@
-# Стартовый шаблон "Weaver Template"
