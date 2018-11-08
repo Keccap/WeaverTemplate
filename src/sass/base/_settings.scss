@@ -1,16 +1,44 @@
-// todo добавить больше настроек
+// Size
+$outer-w: 1400px;
+$inner-pd: 120px;
+$inner-pd-ld: 40px;
+$inner-pd-tab: 25px;
+$inner-pd-mob: 15px;
 
-$rootFontSize: 100;
-$baseFontSize: 16;
-$default-font: 'Arial', sans-serif;
-
-
+// Colors
+$black-true: #000;
+$white-true: #fff;
 
 // UI Colors
-$color-base: #E57373;
-$accent-base: #fdd615;
-$accent-hover: #fdef15;
-$text-base: #1a1a1a;
+$color-base: $white-true;
+$accent-base: #1a8cff;
+$action-base: #f42f3e;
+$text-base: #3b4256;
 $border-base: #e6ecf2;
 $link-base: #1964b1;
 $shadow-base: #004484;
+
+
+// Backgrounds
+$bg-main: $white-true;
+$bg-alt: #f0f0f0;
+$bg-footer: #ccc;
+
+
+// Fonts
+$font-family-main: 'Open Sans';
+$font-family-alt: 'Meta';
+$font-size: 16px;
+$line-height: 1.33;
+$font-base: $font-family-main, Arial, Helvetica, sans-serif;
+$font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
+
+
+// Screen sizes
+$wide-desktop-width: 1600px;
+$desktop-width: 1340px;
+$low-desktop-width: 1024px;
+$tablet-width: 768px;
+
+
+$rootFontSize: 100; // for rem

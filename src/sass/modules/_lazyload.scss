@@ -1,0 +1,13 @@
+img[class*=lazyload] {
+  opacity: 0;
+  transition: opacity .25s ease;
+
+  @include ie10-11 {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+img.lazyloaded {
+  opacity: 1;
+}

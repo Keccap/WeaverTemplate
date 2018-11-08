@@ -1,5 +1,3 @@
-// todo пересмотреть
-
 * {
   box-sizing: border-box;
 
@@ -9,17 +7,20 @@
 }
 
 html {
-  height: 100%;
   font-size: #{$rootFontSize}px;
 }
 
 body {
   position: relative;
   min-width: 320px;
-  font-family: $default-font;
-  font-size: #{$baseFontSize}px;
-  line-height: 1.6;
+  height: 100%;
+  font-family: $font-base;
+  font-size: $font-size;
+  font-weight: normal;
+  line-height: $line-height;
   color: $text-base;
+  background: $bg-main;
+  text-rendering: geometricPrecision;
 }
 
 ::selection {
@@ -32,65 +33,93 @@ body {
   text-shadow: none;
 }
 
-
-a {
-  text-decoration-skip: ink;
+._g-outer-width {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $outer-w;
 }
 
-img {
-  display: block
-}
+._g-inner-padding {
+  padding-left: $inner-pd;
+  padding-right: $inner-pd;
 
-picture {
-  img {
-    width: 100%;
-    height: auto;
+  @include low-desktop-only {
+    padding-left: $inner-pd-ld;
+    padding-right: $inner-pd-ld;
+  }
+
+  @include tablet-only {
+    padding-left: $inner-pd-tab;
+    padding-right: $inner-pd-tab;
+  }
+
+  @include mobile {
+    padding-left: $inner-pd-mob;
+    padding-right: $inner-pd-mob;
   }
 }
 
-button {
-  margin: 0;
-  padding: 0;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.br {
-  @include br();
-}
-
-
-.color-base {
-  color: $color-base;
-}
-
-
-.hidden-zone {
-  display: none;
-}
-
-
-
-// libs
-
-img.object-fit-cover {
-  object-fit: cover;
-  font-family: 'object-fit: cover';
-}
-
-img[class*=lazyload] {
-  opacity: 0;
-  transition: opacity .25s ease;
-
-  @include ie10-11 {
-    opacity: 1;
-    transition: none;
+._g-visible-low-desktop {
+  @include desktop-min {
+    display: none !important;
   }
 }
 
-img.lazyloaded {
-  opacity: 1;
+._g-visible-tablet {
+  @include low-desktop-min {
+    display: none !important;
+  }
+}
+
+._g-visible-mobile {
+  @include tablet-min {
+    display: none !important;
+  }
+}
+
+._g-hidden-low-desktop {
+  @include low-desktop {
+    display: none !important;
+  }
+}
+
+._g-hidden-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+._g-hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+._g-font-alt {
+  font-family: $font-alt;
+}
+
+._g-alt-bg {
+  background-color: $bg-alt;
+}
+
+._g-hidden-input {
+  @include hidden-input();
+}
+
+._g-clearfix {
+  @include clearfix();
+}
+
+._g-valign-inline {
+  font-size: 0;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+  }
 }
 

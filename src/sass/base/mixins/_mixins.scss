@@ -38,6 +38,37 @@
 
 
 
+@mixin full-pos($coord) {
+  top: $coord;
+  right: $coord;
+  bottom: $coord;
+  left: $coord;
+}
+
+
+
+@mixin full-abs($coord) {
+  @include full-pos($coord);
+  position: absolute;
+}
+
+
+
+@mixin full-fix($coord) {
+  @include full-pos($coord);
+  position: fixed;
+}
+
+
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 @mixin center($axis) {
   @if $axis == both {
     position: absolute;
@@ -78,14 +109,14 @@
 
 
 @mixin hidden-input() {
-  -webkit-appearance: none;
-  height: 1px;
-  left: -9999px;
-  opacity: 0;
-  overflow: hidden;
   position: absolute;
-  width: 1px;
+  left: -9999px;
   z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-appearance: none;
 }
 
 
