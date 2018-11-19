@@ -30,8 +30,13 @@
 
 </head>
 <body>
-    {% block content %}{% endblock %}
-
+    <div class="_g-wrapper">
+        {% include 'modules/_header.twig' %}
+        <main class="_g-main">
+            {% block content %}{% endblock %}
+        </main>
+        {% include 'modules/_footer.twig' %}
+    </div>
 
     <script src="js/app.bundle.js?rev=hash"></script>
 

@@ -1,0 +1,39 @@
+@mixin columnWidth($c, $max, $left: 0, $right: $left) {
+  $width: $c * (100% / $max);
+  width: calc(#{$width} - #{$left + $right}px);
+}
+
+
+@mixin column($c, $max, $left: 0, $right: $left) {
+  flex: 0 0 auto;
+  margin-left: #{$left}px;
+  margin-right: #{$right}px;
+  @include columnWidth($c, $max, $left, $right);
+}
+
+
+
+@mixin columns-nth($columns, $gutter) {
+  $width: 100% / $columns;
+  width: calc(#{$width} - #{($gutter * ($columns - 1) ) / $columns});
+  margin-right: $gutter;
+
+  &:nth-child(#{$columns}n) {
+    margin-right: 0;
+  }
+}
+
+
+/*
+$selector is a string:
+  @include last-row('&', 2) {
+    margin-bottom: 0;
+  }
+*/
+@mixin last-row($selector, $cols-number) {
+  $selector: $selector + unquote("");
+  #{$selector}:nth-child(#{$cols-number}n+1):nth-last-child(-n+#{$cols-number}),
+  #{$selector}:nth-child(#{$cols-number}n+1):nth-last-child(-n+#{$cols-number}) ~ #{$selector} {
+    @content;
+  }
+}

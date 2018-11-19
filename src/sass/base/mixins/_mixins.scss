@@ -121,18 +121,6 @@
 
 
 
-@mixin columns($columns, $gutter) {
-  $width: 100% / $columns;
-  width: calc(#{$width} - #{($gutter * ($columns - 1) ) / $columns});
-  margin-right: $gutter;
-
-  &:nth-child(#{$columns}n) {
-    margin-right: 0;
-  }
-}
-
-
-
 @mixin clearfix() {
   &::after {
     content: '';
