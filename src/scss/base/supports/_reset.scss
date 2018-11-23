@@ -17,6 +17,7 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
+  vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure,
@@ -62,7 +63,8 @@ table {
 
 label {
   display: block;
-  -webkit-tap-highlight-color: rgba(#000, 0);
+  user-select: none;
+  -webkit-tap-highlight-color: rgba($black-true, 0);
 }
 
 input,
@@ -104,7 +106,7 @@ button {
 }
 
 button, input {
-  -webkit-tap-highlight-color: rgba(#000, 0);
+  -webkit-tap-highlight-color: rgba($black-true, 0);
 }
 
 button:focus, input:focus {
@@ -118,6 +120,7 @@ select {
   outline: none;
   overflow: hidden;
   appearance: none;
+  border-radius: 0;
 
   &::-ms-value {
     background: none;
@@ -130,7 +133,7 @@ select {
 
   &:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 #000;
+    text-shadow: 0 0 0 $black-true;
   }
 }
 
@@ -141,8 +144,12 @@ abbr[title], acronym[title] {
 a {
   color: inherit;
   outline: none;
-  -webkit-tap-highlight-color: rgba(#000, 0);
+  -webkit-tap-highlight-color: rgba($black-true, 0);
   text-decoration: none;
+}
+
+svg {
+  fill: currentColor;
 }
 
 a, area, button, input, label, select, summary, textarea, [tabindex] {

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>object-fit-images demo</title>
+	<script src="../dist/ofi.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.2/picturefill.min.js"></script>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<h1>
+		<a href="https://github.com/bfred-it/object-fit-images">object-fit-images</a> demo
+	</h1>
+	<script>
+		var yes = '<strong style="color: green">natively supported by this browser</strong>';
+		var no = '<strong style="color: red">not natively supported by this browser</strong>';
+		var testImg = new Image();
+	</script>
+	<div class="intro">
+		<h3><code>object-fit</code> is <script>document.write('object-fit' in testImg.style ? yes : no)</script></h3>
+		<h3><code>object-position</code> is <script>document.write('object-position' in testImg.style ? yes : no)</script></h3>
+		<p class="of-supported">
+			OFI is automatically skipped. <button type="button" onclick="applyOFI(true)">Apply OFI anyway</button>
+		</p>
+		<p class="of-not-supported">
+			<button type="button" onclick="applyOFI()">Apply OFI</button>
+		</p>
+		<p>Resize the window to see how they behave.</p>
+	</div>
+	<figure>
+		<img src="image.jpg">
+		<figcaption>unmodified <code>&lt;img&gt;</code></figcaption>
+	</figure>
+	<section>
+		<h1>
+			<code>object-fit</code>
+		</h1>
+		<figure>
+			<img class="OF-fill" src="image.jpg">
+			<figcaption><code>fill</code> (default)</figcaption>
+		</figure>
+		<figure>
+			<img class="OF-contain" src="image.jpg">
+			<figcaption><code>contain</code></figcaption>
+		</figure>
+		<figure>
+			<img class="OF-cover" src="image.jpg">
+			<figcaption><code>cover</code></figcaption>
+		</figure>
+		<figure>
+			<img class="OF-none" src="image.jpg">
+			<figcaption><code>none</code></figcaption>
+		</figure>
+		<figure>
+			<img class="OF-scaleDown" src="image.jpg">
+			<figcaption><code>scale-down</code></figcaption>
+		</figure>
+		<figure>
+			<img class="xs--OF-cover" src="image.jpg">
+			<figcaption><code class="caption-contain">(no object-fit)</code> <br> <code class="caption-cover">cover</code> @ &lt;700px</figcaption>
+		</figure>
+	</section>
+	<section>
+		<h1>
+			<code>object-fit</code> + <code>object-position</code>
+		</h1>
+		<figure>
+			<img class="OF-cover object-position" src="image.jpg">
+			<figcaption><code>object-fit: cover</code></figcaption>
+		</figure>
+		<figure>
+			<img class="OF-cover-op object-position" src="image.jpg">
+			<figcaption><code>object-fit: cover</code> <br><code>object-position: center 80%</code></figcaption>
+		</figure>
+	</section>
+	<section>
+		<h1>
+			Responsive images (with <a href="https://github.com/scottjehl/picturefill">picturefill</a> where needed)
+		</h1>
+		<figure>
+			<img class="OF-contain responsiveimg" src="https://webkit.org/demos/srcset/image-src.png" srcset="https://webkit.org/demos/srcset/image-1x.png 1x, https://webkit.org/demos/srcset/image-2x.png 2x, https://webkit.org/demos/srcset/image-3x.png 3x">
+			<figcaption><code>srcset</code> + <code>contain</code> (@1x, @2x, @3x)</figcaption>
+		</figure>
+	</section>
+	<section>
+		<h1>
+			Detect new images automatically <br> <button type="button" onclick="addImage(this)">Add image</button>
+		</h1>
+	</section>
+	<script>
+
+	function applyOFI(forced, viaUrl) {
+		var btn = document.querySelector('button');
+		btn.disabled = true;
+		objectFitImages(false, {
+			watchMQ: true,
+			skipTest: forced
+		});
+		if (objectFitImages.supportsObjectPosition) {
+			btn.innerHTML = 'Fix applied anyway' + (viaUrl ? ' via URL' : '');
+		} else {
+			btn.innerHTML = 'Fix applied';
+		}
+	}
+
+	function addImage(btn) {
+		var div = document.createElement('figure');
+		var ofit = ['fill', 'contain', 'cover', 'none', 'scaleDown'][Math.random() * 4 | 0];
+		div.innerHTML = '<img class="OF-' + ofit + '" src="image.jpg"><figcaption>new image with <code>' + ofit + '</code></figcaption>';
+		btn.parentNode.parentNode.appendChild(div);
+	}
+
+	// apply automatically if requested non-interactively
+	if (location.search === '?interactive=false') {
+		applyOFI(true, true);
+	}
+
+	var wrong = document.querySelector(objectFitImages.supportsObjectPosition ? '.of-not-supported' : '.of-supported');
+	wrong.parentNode.removeChild(wrong);
+	</script>
+</body>

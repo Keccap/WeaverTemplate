@@ -26,7 +26,7 @@ gulp.task('server', cb => {
       // config.dest.js + '/**/*.js', // вместо этого сервер вручную перезагружается в webpack.js (иначе browsersync будет ловить несколько событий при изменении => неск. перезагрузок)
     ],
     notify: false,
-    open: true,
+    open: false,
     ghostMode: false,
     online: Boolean(util.env.tunnel),
     tunnel: util.env.tunnel || null

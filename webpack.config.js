@@ -19,7 +19,7 @@ function createConfig(env) {
   const webpackConfig = {
     context: path.resolve(__dirname, config.src.js),
     entry: {
-      app: ['./polyfills/polyfills', './app']
+      app: ['./polyfills', './app']
     },
 
     output: {
@@ -80,6 +80,9 @@ function createConfig(env) {
     resolve: {
       extensions: ['.js'],
       alias: {
+        vendor: path.resolve(config.src.vendor),
+        jquery: path.resolve('node_modules', 'jquery/dist/jquery.min'),
+        Swiper: path.resolve('node_modules', 'swiper/dist/js/swiper.min'),
         TweenLite: path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
         TweenMax: path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
         TimelineLite: path.resolve('node_modules', 'gsap/src/uncompressed/TimelineLite.js'),

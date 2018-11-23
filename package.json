@@ -71,5 +71,8 @@
     "through2": "^2.0.3",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.11.1"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
   }
 }

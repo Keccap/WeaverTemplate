@@ -1,4 +1,4 @@
-@mixin aspect-ratio($width, $height: $width) {
+@mixin aspect-ratio($width: 1, $height: $width) {
   &::after {
     content: '';
     display: block;

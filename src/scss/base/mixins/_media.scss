@@ -1,0 +1,96 @@
+// MEDIA QUERIES
+
+// width
+@mixin r($width, $min-width: null) {
+	@if ($min-width) {
+		@media only screen and (max-width: $width + 'px') and (min-width: $min-width + 'px') {
+			@content;
+		}
+	} @else {
+		@media only screen and (max-width: $width + 'px') {
+			@content;
+		}
+	}
+}
+
+
+@mixin rmin($width) {
+	@media only screen and (min-width: $width + 'px') {
+		@content;
+	}
+}
+
+
+// height
+@mixin rh($height) {
+	@media only screen and (max-height: $height + 'px') {
+		@content;
+	}
+}
+
+
+@mixin rhmin($height) {
+	@media only screen and (min-height: $height + 'px') {
+		@content;
+	}
+}
+
+
+// orientations
+@mixin landscape {
+	@media only screen and (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin portrait {
+	@media only screen and (orientation: portrait) {
+		@content;
+	}
+}
+
+
+// retina, also available as +hdpi
+@mixin retina {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+
+// Microsoft Edge Browser 12+ (All)
+@mixin Edge {
+	@supports (-ms-ime-align: auto) {
+		@content;
+	}
+}
+
+
+// IE10, IE11
+// If you want it to cover ONLY Internet Explorer 10,
+// use the slash 9 as above in my own single-line IE 10 hack to limit it as well for the same purpose
+// +IE
+//		background-color: green\9
+@mixin IE {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		@content;
+	}
+}
+
+
+// IE9 only
+@mixin IE9 {
+	@media screen and (min-width: 0\0) and (min-resolution: .001dpcm) {
+		@content;
+	}
+}
+
+
+
+
+@mixin Safari {
+	@media not all and (min-resolution: .001dpcm) {
+		@content;
+	}
+}
+

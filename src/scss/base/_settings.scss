@@ -17,22 +17,25 @@ $text-base: #3b4256;
 $border-base: #e6ecf2;
 $link-base: #1964b1;
 $shadow-base: #004484;
-
+$preloader-inner: #e57373;
 
 // Backgrounds
 $bg-main: $white-true;
 $bg-alt: #f0f0f0;
 $bg-footer: #ccc;
 
-
 // Fonts
-$font-family-main: 'Open Sans';
+$font-family-main: 'Arial';
 $font-family-alt: 'Meta';
 $font-size: 16px;
 $line-height: 1.33;
 $font-base: $font-family-main, Arial, Helvetica, sans-serif;
 $font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
 
+// Transition
+$g-transition-duration: .25s;
+$g-transition-easing: ease-out;
+$g-transition: all $g-transition-duration $g-transition-easing;
 
 // Screen sizes
 $wide-desktop-width: 1600px;
@@ -40,5 +43,5 @@ $desktop-width: 1340px;
 $low-desktop-width: 1024px;
 $tablet-width: 768px;
 
-
-$rootFontSize: 100; // for rem
+// rem
+$rootFontSize: 100;

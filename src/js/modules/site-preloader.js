@@ -1,40 +1,40 @@
-import { documentReady } from '../helpers/functions';
+export default {
+  imagesNumber: 0,
+  imagesLoaded: 0,
+  transition: 1000,
 
+  init() {
+    const images = [...document.images];
+    this.imagesNumber = images.length;
 
-documentReady(() => {
-  const images = document.images;
-  const imagesCount = images.length;
-  let currentLoaded = 0;
-
-  if (imagesCount) {
-    for (let i = 0; i < imagesCount; i++) {
-      const clone = new Image();
-      clone.addEventListener('load', imageLoaded);
-      clone.addEventListener('error', imageLoaded);
-      clone.src = images[i].src;
+    if (this.imagesNumber) {
+      images.forEach(image => {
+        const clone = new Image();
+        clone.addEventListener('load', this.imageLoaded.bind(this));
+        clone.addEventListener('error', this.imageLoaded.bind(this));
+        clone.src = image.src;
+      });
+    } else {
+      this.preloaderHide();
     }
-  } else {
-    preloaderLoad();
-  }
+  },
 
-  function imageLoaded() {
-    currentLoaded++;
+  preloaderHide(selector = '#site-preloader', transition = this.transition) {
+    const preloader = document.querySelector(selector);
+    if (!preloader) return;
 
-    if (currentLoaded >= imagesCount) {
-      preloaderLoad();
+    preloader.style.transition = `opacity ${transition}ms ease, visibility ${transition}ms ease`;
+    preloader.classList.add('_loaded');
+
+    setTimeout(() => preloader.remove(), transition);
+  },
+
+
+  imageLoaded() {
+    this.imagesLoaded++;
+
+    if (this.imagesLoaded >= this.imagesNumber) {
+      this.preloaderHide();
     }
   }
-});
-
-
-
-
-
-function preloaderLoad({selector = '#preloader', transition = 1000} = {}) {
-  const preloader = document.querySelector(selector);
-  if (!preloader) return;
-
-  preloader.style.transition = `opacity ${transition}ms ease, visibility ${transition}ms ease`;
-  preloader.classList.add('loaded');
-  setTimeout(() => preloader.remove(), transition);
-}
+};

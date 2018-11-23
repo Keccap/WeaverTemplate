@@ -6,9 +6,9 @@
 
 @mixin column($c, $max, $left: 0, $right: $left) {
   flex: 0 0 auto;
+  @include columnWidth($c, $max, $left, $right);
   margin-left: #{$left}px;
   margin-right: #{$right}px;
-  @include columnWidth($c, $max, $left, $right);
 }
 
 

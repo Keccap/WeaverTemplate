@@ -21,11 +21,10 @@ const config = {
 
   src: {
     root         : srcPath,
-    sass         : srcPath + '/sass',
-    sassGen      : srcPath + '/sass/generated',
+    sass         : srcPath + '/scss',
+    sassGen      : srcPath + '/scss/generated',
     css          : srcPath + '/css',
     js           : srcPath + '/js',
-    libs         : srcPath + '/libs',
     img          : srcPath + '/img',
     svg          : srcPath + '/img/svg',
     fonts        : srcPath + '/fonts',
@@ -34,7 +33,8 @@ const config = {
     sdata        : srcPath + '/sdata',
     data         : srcPath + '/data',
     dataFile     : 'data.json',
-    pagelist     : srcPath + '/pagelist.yaml'
+    pagelist     : srcPath + '/pagelist.yaml',
+    vendor       : srcPath + '/vendor'
   },
 
   dest: {
@@ -47,7 +47,7 @@ const config = {
   },
 
   nodeModules: path.resolve('node_modules'),
-  mergeMediaQueries: true,
+  mergeMediaQueries: false,
 
   setEnv(env) {
     if (typeof env !== 'string') return;

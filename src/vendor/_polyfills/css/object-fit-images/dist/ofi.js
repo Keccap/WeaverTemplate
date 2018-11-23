@@ -13,26 +13,29 @@ var nativeGetAttribute = testImg.getAttribute;
 var nativeSetAttribute = testImg.setAttribute;
 var autoModeEnabled = false;
 
-// Keccap edit
-function checkWebpSupport() {
-    var elem = document.createElement('canvas');
-
-    if (!!(elem.getContext && elem.getContext('2d'))) {
-        // was able or not to get WebP representation
-        return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
-    }
-    else {
-        // very old browser like IE 8, canvas not supported
-        return false;
-    }
-}
-// Keccap edit end
-
-
 function createPlaceholder(w, h) {
 	return ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" + w + "' height='" + h + "'%3E%3C/svg%3E");
 }
 
+function polyfillCurrentSrc(el) {
+	if (el.srcset && !supportsCurrentSrc && window.picturefill) {
+		var pf = window.picturefill._;
+		// parse srcset with picturefill where currentSrc isn't available
+		if (!el[pf.ns] || !el[pf.ns].evaled) {
+			// force synchronous srcset parsing
+			pf.fillImg(el, {reselect: true});
+		}
+
+		if (!el[pf.ns].curSrc) {
+			// force picturefill to parse srcset
+			el[pf.ns].supported = false;
+			pf.fillImg(el, {reselect: true});
+		}
+
+		// retrieve parsed currentSrc, if any
+		el.currentSrc = el[pf.ns].curSrc || el.src;
+	}
+}
 
 function getStyle(el) {
 	var style = getComputedStyle(el).fontFamily;
@@ -89,10 +92,8 @@ function fixOne(el) {
 	// keep a clone in memory while resetting the original to a blank
 	if (!ofi.img) {
 		ofi.img = new Image(el.width, el.height);
-		// Keccap edit ( || (checkWebpSupport() ? nativeGetAttribute.call(el, "data-webp-src") : el.srcset)  вместо  || el.srcset )
-		ofi.img.srcset = nativeGetAttribute.call(el, "data-ofi-srcset") || (checkWebpSupport() ? nativeGetAttribute.call(el, "data-webp-src") : el.srcset);
-		// Keccap edit ( || (checkWebpSupport() ? nativeGetAttribute.call(el, "data-webp-src") : el.src)  вместо  || el.src )
-		ofi.img.src = nativeGetAttribute.call(el, "data-ofi-src") || (checkWebpSupport() ? nativeGetAttribute.call(el, "data-webp-src") : el.src);
+		ofi.img.srcset = nativeGetAttribute.call(el, "data-ofi-srcset") || el.srcset;
+		ofi.img.src = nativeGetAttribute.call(el, "data-ofi-src") || el.src;
 
 		// preserve for any future cloneNode calls
 		// https://github.com/bfred-it/object-fit-images/issues/53
@@ -116,8 +117,9 @@ function fixOne(el) {
 		}
 	}
 
+	polyfillCurrentSrc(ofi.img);
 
-	el.style.backgroundImage = "url(\"" + ((ofi.img.srcset || ofi.img.src).replace(/"/g, '\\"')) + "\")";
+	el.style.backgroundImage = "url(\"" + ((ofi.img.currentSrc || ofi.img.src).replace(/"/g, '\\"')) + "\")";
 	el.style.backgroundPosition = style['object-position'] || 'center';
 	el.style.backgroundRepeat = 'no-repeat';
 	el.style.backgroundOrigin = 'content-box';

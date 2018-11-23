@@ -10,6 +10,7 @@ const autoprefixer  = require('autoprefixer'); // (postcss)
 const mqpacker      = require('css-mqpacker'); // Group media queries and put them into the end of the CSS document (postcss)
 const cssnano       = require('cssnano'); // CSS minifier (postcss)
 const gulpif        = require('gulp-if');
+const path          = require('path');
 const config        = require('../config');
 
 
@@ -49,7 +50,8 @@ gulp.task('sass', () => {
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5, // точность значений в css (число цифр после запятой)
       includePaths: [
-        config.nodeModules // быстрое обращение к node_modules '@import "node_modules/..."'
+        config.nodeModules, // быстрое обращение к node_modules '@import "node_modules/..."'
+        config.src.root // быстрое обращение к vendor '@import "vendor/..."'
       ]
     }))
     .pipe(rename({suffix: '.min', prefix: ''}))
