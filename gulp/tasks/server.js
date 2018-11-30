@@ -28,7 +28,7 @@ gulp.task('server', cb => {
     notify: false,
     open: false,
     ghostMode: false,
-    online: Boolean(util.env.tunnel),
+    online: Boolean(util.env.tunnel) || config.server.online,
     tunnel: util.env.tunnel || null
   });
 

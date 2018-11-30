@@ -8,6 +8,7 @@ const config       = require('../config');
 gulp.task('copy:rootfiles', () => {
   return gulp
     .src([
+      config.src.root + '/*.pdf',
       config.src.root + '/.htaccess'
     ])
     .pipe(gulp.dest(config.dest.root));

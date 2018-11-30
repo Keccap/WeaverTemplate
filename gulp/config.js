@@ -49,6 +49,10 @@ const config = {
   nodeModules: path.resolve('node_modules'),
   mergeMediaQueries: false,
 
+  server: {
+    online: true
+  },
+
   setEnv(env) {
     if (typeof env !== 'string') return;
     this.env = env;
