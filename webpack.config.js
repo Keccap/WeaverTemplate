@@ -81,6 +81,7 @@ function createConfig(env) {
       extensions: ['.js'],
       alias: {
         vendor: path.resolve(config.src.vendor),
+        vue: 'vue/dist/vue.js',
         jquery: path.resolve('node_modules', 'jquery/dist/jquery.min'),
         Swiper: path.resolve('node_modules', 'swiper/dist/js/swiper.min'),
         TweenLite: path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
