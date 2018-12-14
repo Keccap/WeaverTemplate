@@ -1,3 +1,6 @@
+import PubSub from './PubSub';
+
+
 export default {
   imagesNumber: 0,
   imagesLoaded: 0,
@@ -25,8 +28,12 @@ export default {
 
     preloader.style.transition = `opacity ${transition}ms ease, visibility ${transition}ms ease`;
     preloader.classList.add('_loaded');
+    PubSub.publish('site-preloader.hiding');
 
-    setTimeout(() => preloader.remove(), transition);
+    setTimeout(() => {
+      preloader.remove();
+      PubSub.publish('site-preloader.removed');
+    }, transition);
   },
 
 

@@ -19,6 +19,10 @@ const config = {
   env       : 'development',
   production: production,
 
+  mergeMediaQueries: false,
+
+  nodeModules: path.resolve('node_modules'),
+
   src: {
     root         : srcPath,
     sass         : srcPath + '/scss',
@@ -45,9 +49,6 @@ const config = {
     img     : () => destPath + '/img',
     fonts   : () => destPath + '/fonts'
   },
-
-  nodeModules: path.resolve('node_modules'),
-  mergeMediaQueries: false,
 
   server: {
     online: true

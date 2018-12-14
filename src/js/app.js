@@ -1,4 +1,4 @@
-import { documentReady, documentLoaded, throttle } from './helpers/functions';
+import { documentReady, documentLoaded, throttle } from './general/functions';
 import globals from './modules/globals';
 import sitePreloader from './modules/site-preloader';
 
@@ -10,11 +10,11 @@ documentReady(() => {
 
 
 function onResize() {
-  if ($(window).width() !== globals.windowWidth) {
-    globals.windowWidth = $(window).width();
+  const windowWidth = $(window).width();
+  if (windowWidth !== globals.windowWidth) {
+    globals.windowWidth = windowWidth;
   }
 }
-
 window.addEventListener('resize', throttle(onResize, 200));
 
 
