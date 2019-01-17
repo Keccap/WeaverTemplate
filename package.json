@@ -1,9 +1,12 @@
 {
-  "name": "WeaverTemplate",
+  "name": "weaver-template",
   "version": "1.0.0",
   "description": "",
   "license": "MIT",
-  "author": "Alex Vorobyov",
+  "author": {
+    "name": "Alex Vorobyov",
+    "email": "alexkeccap@ya.ru"
+  },
   "homepage": "https://github.com/Keccap/WeaverTemplate",
   "repository": {
     "type": "git",

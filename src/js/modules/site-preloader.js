@@ -1,4 +1,4 @@
-import PubSub from './PubSub';
+import Mediator from './Mediator';
 
 
 export default {
@@ -28,11 +28,11 @@ export default {
 
     preloader.style.transition = `opacity ${transition}ms ease, visibility ${transition}ms ease`;
     preloader.classList.add('_loaded');
-    PubSub.publish('site-preloader.hiding');
+    Mediator.publish('site-preloader.hiding');
 
     setTimeout(() => {
       preloader.remove();
-      PubSub.publish('site-preloader.removed');
+      Mediator.publish('site-preloader.removed');
     }, transition);
   },
 
