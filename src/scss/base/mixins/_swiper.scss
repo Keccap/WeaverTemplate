@@ -1,0 +1,23 @@
+// swiperSlider - миксин более удобной записи обязательных стилей для блока-контейнера слайдера от плагина swiper
+
+@mixin swiperSlider() {
+  position: relative;
+  overflow: hidden;
+}
+
+
+// swiperWrapper - миксин более удобной записи обязательных стилей для обертки слайдера от плагина swiper
+
+@mixin swiperWrapper() {
+  position: relative;
+  display: flex;
+  width: 100%;
+  box-sizing: content-box;
+}
+
+
+// swiperSlide - миксин более удобной записи обязательных стилей для слайда от плагина swiper
+
+@mixin swiperSlide() {
+  flex-shrink: 0;
+}
