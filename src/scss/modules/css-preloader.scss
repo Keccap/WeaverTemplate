@@ -1,11 +1,9 @@
-$preloader-color: $preloader-inner;
-$preloader-background: $white-true;
-$preloader-transition: 1s;
-$preloader-easing: ease;
-
-
-
 .css-preloader {
+  $preloader-color: $preloader-inner;
+  $preloader-background: $white-true;
+  $preloader-transition: 1s;
+  $preloader-easing: ease;
+
   position: absolute;
   top: 0;
   left: 0;

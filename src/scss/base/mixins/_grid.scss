@@ -1,6 +1,11 @@
-@mixin columnWidth($c, $max, $left: 0, $right: $left) {
-  $width: $c * (100% / $max);
-  width: calc(#{$width} - #{$left + $right}px);
+@mixin columnWidth($cols, $max-cols, $left-gutter: 0, $right-gutter: $left-gutter) {
+  $width: $cols * (100% / $max-cols);
+
+  @if ($left-gutter == 0 and $right-gutter == 0) {
+    width: $width;
+  } @else {
+    width: calc(#{$width} - #{$left-gutter + $right-gutter}px);
+  }
 }
 
 

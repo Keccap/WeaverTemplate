@@ -1,10 +1,9 @@
-$preloader-color: $preloader-inner;
-$preloader-background: $white-true;
-$preloader-transition: 1s;
-$preloader-easing: ease;
-
-
 .preloader {
+  $preloader-color: $preloader-inner;
+  $preloader-background: $white-true;
+  $preloader-transition: 1s;
+  $preloader-easing: ease;
+
   position: fixed;
   top: 0;
   left: 0;
