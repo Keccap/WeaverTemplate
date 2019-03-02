@@ -21,7 +21,7 @@ function renderHtml(onlyChanged) {
   });
 
   return gulp
-    .src([config.src.templates + '/**/[^_]*.twig'])
+    .src([config.src.templates + '/*.twig'])
     .pipe(plumber({
       errorHandler: config.errorHandler('Nunjucks')
     }))
@@ -58,10 +58,9 @@ gulp.task('nunjucks', () => renderHtml());
 gulp.task('nunjucks:changed', () => renderHtml(true));
 
 
-// todo убрать именование с _*.*
 gulp.task('nunjucks:watch', cb => {
   const watcher = gulp.watch([
-    config.src.templates + '/**/[^_]*.twig',
+    config.src.templates + '/*.twig',
     config.src.data
   ], gulp.series('nunjucks:changed'));
 
@@ -73,7 +72,8 @@ gulp.task('nunjucks:watch', cb => {
 
 
   gulp.watch([
-    config.src.templates + '/**/_*.twig'
+    config.src.templates + '/**/*.twig',
+    '!' +  config.src.templates + '/*.twig'
   ], gulp.series('nunjucks'));
 
   cb();

@@ -232,6 +232,20 @@
 }
 
 
+@mixin css-lock-h($min-size: 1, $max-size: 1.4, $min-height: 20, $max-height: 100, $property: font-size, $unit: px) {
+  #{$property}: #{$max-size}#{$unit};
+  #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vh - #{$min-height}#{$unit}) / (#{$max-height} - #{$min-height})));
+
+  @media (max-height: #{$min-height}px) {
+    #{$property}: #{$min-size}#{$unit};
+  }
+
+  @media (min-height: #{$max-height}px) {
+    #{$property}: #{$max-size}#{$unit}
+  }
+}
+
+
 
 @mixin css-lock-full($min-size: 1, $mid-size: 1.2, $max-size: 1.4,  $min-width: 20, $mid-width: 30, $max-width: 100, $property: font-size, $unit: px) {
   #{$property}: #{$mid-size}#{$unit};

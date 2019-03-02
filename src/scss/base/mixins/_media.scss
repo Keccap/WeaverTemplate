@@ -22,10 +22,16 @@
 
 
 // height
-@mixin rh($height) {
-	@media only screen and (max-height: $height + 'px') {
-		@content;
-	}
+@mixin rh($height, $min-height: null) {
+  @if ($min-height) {
+    @media only screen and (max-height: $height + 'px') and (min-height: $min-height + 'px') {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-height: $height + 'px') {
+      @content;
+    }
+  }
 }
 
 
@@ -34,6 +40,46 @@
 		@content;
 	}
 }
+
+
+
+@mixin below($width) {
+  @include r($width) {
+    @content;
+  }
+}
+
+@mixin above($width) {
+  @include rmin($width) {
+    @content;
+  }
+}
+
+@mixin between($width, $min-width) {
+  @include r($width, $min-width) {
+    @content;
+  }
+}
+
+
+@mixin below-h($height) {
+  @include rh($height) {
+    @content;
+  }
+}
+
+@mixin above-h($height) {
+  @include rhmin($height) {
+    @content;
+  }
+}
+
+@mixin between-h($height, $min-height) {
+  @include rh($height, $min-height) {
+    @content;
+  }
+}
+
 
 
 // orientations

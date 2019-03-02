@@ -15,6 +15,11 @@
   visibility: visible;
   transition: opacity $preloader-transition $preloader-easing, visibility $preloader-transition $preloader-easing;
 
+  &._site-preloader {
+    position: fixed;
+    height: 100vh;
+  }
+
   &._loaded {
     pointer-events: none;
     opacity: 0;

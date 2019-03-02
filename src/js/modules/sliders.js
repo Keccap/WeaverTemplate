@@ -4,6 +4,7 @@ import Swiper from 'Swiper';
 export default {
   init() {
     this.sliderExample();
+    this.handlers();
   },
 
 

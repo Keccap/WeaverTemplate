@@ -21,7 +21,7 @@
     <meta name="msapplication-navbutton-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
 
-    {# {% include "../modules/_media-tags.twig" %} #}
+    {# {% include "../modules/media-tags.twig" %} #}
 
     {# <link rel="preload" as="font" href="fonts/Lato-regular.woff2" type="font/woff2" crossorigin />
     <link rel="preload" as="font" href="fonts/Lato-bold.woff2" type="font/woff2" crossorigin /> #}
@@ -31,11 +31,11 @@
 </head>
 <body>
     <div class="_g-wrapper">
-        {% include 'modules/_header.twig' %}
+        {% include 'modules/header.twig' %}
         <main class="_g-main">
             {% block content %}{% endblock %}
         </main>
-        {% include 'modules/_footer.twig' %}
+        {% include 'modules/footer.twig' %}
     </div>
 
     <script src="js/app.bundle.js?rev=hash"></script>
