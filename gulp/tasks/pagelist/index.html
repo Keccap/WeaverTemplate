@@ -34,6 +34,11 @@
             line-height: 1.6;
             font-family: 'Politica', serif;
         }
+        ::selection {
+            background: <%= pages.ProjectColor %>;
+            color: #ffffff;
+            text-shadow: none;
+        }
         .icon-logo { width: 3.66em; height: 1em; fill: #221F20; }
         .icon-desktop { width: 1.41em; height: 1em; fill: #000; }
         .icon-link { width: 2em; height: 1em; fill: #000; }
@@ -226,6 +231,7 @@
             position: absolute;
             right: 40px;
             top: 24px;
+            user-select: none;
         }
         .types button,.types button:active{
             height: 46px;
@@ -239,6 +245,8 @@
             padding-left: 38px;
             position: relative;
             outline: none;
+            cursor: pointer;
+            user-select: none;
         }
         .types strong{
             font-weight: normal;
