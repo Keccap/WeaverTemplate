@@ -15,6 +15,9 @@ import 'vendor/_polyfills/js/DOM/Node.replaceWith.js';
 import 'vendor/_polyfills/js/DOM/ParentNode.append.js';
 import 'vendor/_polyfills/js/DOM/ParentNode.prepend.js';
 
+// customElements
+// import 'vendor/_polyfills/document-register-element.max.js';
+
 // WEBPACK
 import Promise from 'babel-runtime/core-js/promise';
 if (!('Promise' in window)) window.Promise = Promise;

@@ -1,19 +1,30 @@
 {
-  "presets": [
-	  ["env", { 
-      "targets": {
-          "browsers": [
-            "last 4 versions"
-          ]
-        },
-      "modules": false
-    }]
-  ],
-  "plugins": [
-    "transform-runtime",
-    "syntax-dynamic-import",
-    "transform-object-rest-spread",
-    "transform-proto-to-assign",
-    "transform-object-set-prototype-of-to-assign" 
-  ]
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "last 4 versions"
+                    ]
+                },
+                "modules": false
+            }
+        ]
+    ],
+    "plugins": [
+        [
+            "transform-builtin-classes",
+            {
+                "globals": [
+                    "HTMLElement"
+                ]
+            }
+        ],
+        "transform-runtime",
+        "syntax-dynamic-import",
+        "transform-object-rest-spread",
+        "transform-proto-to-assign",
+        "transform-object-set-prototype-of-to-assign"
+    ]
 }
