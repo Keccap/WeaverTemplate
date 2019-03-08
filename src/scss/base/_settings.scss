@@ -36,6 +36,7 @@ $font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
 $g-transition-duration: .25s;
 $g-transition-easing: ease-out;
 $g-transition: all $g-transition-duration $g-transition-easing;
+$transition-easing-alt: cubic-bezier(0.77, 0, 0.19, 1);
 
 // Screen sizes
 $wide-desktop-width: 1600px;

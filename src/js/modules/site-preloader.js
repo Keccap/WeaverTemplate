@@ -1,14 +1,16 @@
-import Mediator from './Mediator';
+import eventEmitter from './eventEmitter';
 
 
 export default {
-  images: null,
-  backgroundEls: null,
+  el: null,
+  images: [],
+  backgroundEls: [],
   imagesNumber: 0,
   imagesLoaded: 0,
   transition: 1000,
 
   init() {
+    this.el = document.querySelector('#site-preloader');
     this.images = [...document.images];
     this.backgroundEls = [...document.querySelectorAll('.js-preloader-bg')];
 
@@ -33,21 +35,21 @@ export default {
     }
   },
 
-  preloaderHide(selector = '#site-preloader', transition = this.transition) {
-    const preloader = document.querySelector(selector);
+  preloaderHide(transition = this.transition) {
+    const preloader = this.el;
     if (!preloader) return;
 
-    Mediator.publish('site-preloader.hiding');
+    eventEmitter.publish('site-preloader:hiding');
 
     preloader.style.transition = `opacity ${transition}ms ease, visibility ${transition}ms ease`;
     preloader.classList.add('_loaded');
     document.body.classList.add('_site-loaded');
 
     setTimeout(() => {
-      Mediator.publish('site-preloader.removed');
+      eventEmitter.publish('site-preloader:removed');
 
       preloader.remove();
-      document.body.classList.add('_preloader-hidden');
+      document.body.classList.add('_site-preloader-hidden');
     }, transition);
   },
 
