@@ -7,7 +7,6 @@
 }
 
 
-
 @mixin round($size) {
   width: $size;
   height: $size;
@@ -15,12 +14,10 @@
 }
 
 
-
 @mixin clickable() {
   cursor: pointer;
   user-select: none;
 }
-
 
 
 @mixin responsive-svg() {
@@ -30,12 +27,10 @@
 }
 
 
-
 @mixin bg-cover() {
   background-size: cover;
   background-position: center;
 }
-
 
 
 @mixin full-pos($coord) {
@@ -46,12 +41,10 @@
 }
 
 
-
 @mixin full-abs($coord) {
   @include full-pos($coord);
   position: absolute;
 }
-
 
 
 @mixin full-fix($coord) {
@@ -60,13 +53,11 @@
 }
 
 
-
 @mixin flex-center() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 
 @mixin center($axis) {
@@ -89,12 +80,10 @@
 }
 
 
-
 @mixin scrollable() {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
-
 
 
 @mixin placeholder() {
@@ -105,7 +94,6 @@
   :-moz-placeholder {@content}           //  opacity: 1;
   ::placeholder {@content}               //}
 }
-
 
 
 @mixin hidden-input() {
@@ -120,7 +108,6 @@
 }
 
 
-
 @mixin clearfix() {
   &::after {
     content: '';
@@ -128,7 +115,6 @@
     clear: both;
   }
 }
-
 
 
 @mixin arrow($color, $thickness, $size, $direction) { // $direction: up, right, down, left
@@ -147,7 +133,6 @@
   padding: $size;
   transform: rotate($rotation+deg);
 }
-
 
 
 @mixin triangle($size, $color, $direction) { // $direction: up, down, left, right, up-right, up-left, down-right, down-left
@@ -197,14 +182,12 @@
 }
 
 
-
 @mixin br() {
   &::after {
     content: '\A';
     white-space: pre;
   }
 }
-
 
 
 @mixin force-new-lines-for-long-words() {
@@ -217,7 +200,8 @@
 }
 
 
-
+// SCALING:
+// @include css-lock(65, 100, 768, 1200);
 @mixin css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px) {
   #{$property}: #{$max-size}#{$unit};
   #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
@@ -231,7 +215,7 @@
   }
 }
 
-
+// @include css-lock-h(65, 100, 630, 950);
 @mixin css-lock-h($min-size: 1, $max-size: 1.4, $min-height: 20, $max-height: 100, $property: font-size, $unit: px) {
   #{$property}: #{$max-size}#{$unit};
   #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vh - #{$min-height}#{$unit}) / (#{$max-height} - #{$min-height})));
@@ -245,8 +229,7 @@
   }
 }
 
-
-
+// @include css-lock-full(65, 100, 500, 768, 1920, 9600);
 @mixin css-lock-full($min-size: 1, $mid-size: 1.2, $max-size: 1.4,  $min-width: 20, $mid-width: 30, $max-width: 100, $property: font-size, $unit: px) {
   #{$property}: #{$mid-size}#{$unit};
 
@@ -266,3 +249,63 @@
     #{$property}: #{$max-size}#{$unit};
   }
 }
+
+
+// @include css-lock-h-full(65, 100, 200, 630, 950, 1900);
+@mixin css-lock-h-full($min-size: 1, $mid-size: 1.2, $max-size: 1.4,  $min-height: 20, $mid-height: 30, $max-height: 100, $property: font-size, $unit: px) {
+  #{$property}: #{$mid-size}#{$unit};
+
+  @media only screen and (max-height: $mid-height + 'px') and (min-height: $min-height + 'px') {
+    #{$property}: calc(#{$min-size}#{$unit} + (#{$mid-size} - #{$min-size}) * ((100vh - #{$min-height}#{$unit}) / (#{$mid-height} - #{$min-height})));
+  }
+
+  @media only screen and (max-height: $max-height + 'px') and (min-height: $mid-height + 'px') {
+    #{$property}: calc(#{$mid-size}#{$unit} + (#{$max-size} - #{$mid-size}) * ((100vh - #{$mid-height}#{$unit}) / (#{$max-height} - #{$mid-height})));
+  }
+
+  @media (max-height: #{$min-height}px) {
+    #{$property}: #{$min-size}#{$unit};
+  }
+
+  @media (min-height: #{$max-height}px) {
+    #{$property}: #{$max-size}#{$unit};
+  }
+}
+
+/*
+ПРИМЕРЫ:
+
+Равномерный скейл по ширине:
+$min-screen-width: 768;
+$mid-screen-width: 1920;
+
+@include css-lock(#{$min-screen-width * 100 / $mid-screen-width}, 100, $min-screen-width, $mid-screen-width);
+
+
+Равномерный скейл по высоте:
+$min-screen-height: 768;
+$mid-screen-height: 1920;
+
+@include tablet-min {
+  @include css-lock-(#{$min-screen-height * 100 / $mid-screen-height}, 100, $min-screen-height, $mid-screen-height);
+}
+
+
+Равномерный полный скейл по высоте:
+$min-screen-height: 630;
+$mid-screen-height: 950;
+$max-screen-height: 2000;
+
+@include tablet-min {
+  @include css-lock-h-full(#{$min-screen-height * 100 / $mid-screen-height}, 100, #{$max-screen-height * 100 / $mid-screen-height}, $min-screen-height, $mid-screen-height, $max-screen-height);
+}
+
+
+Равномерный полный скейл по ширине:
+$min-screen-width: 768;
+$mid-screen-width: 1920;
+$max-screen-width: 9000;
+
+@include css-lock-full(#{$min-screen-width * 100 / $mid-screen-width}, 100, #{$max-screen-width * 100 / $mid-screen-width}, $min-screen-width, $mid-screen-width, $max-screen-width);
+*/
+

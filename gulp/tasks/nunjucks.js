@@ -16,6 +16,7 @@ const config         = require('../config');
 function renderHtml(onlyChanged) {
   nunjucksRender.nunjucks.configure({
     watch: false,
+    autoescape: false,
     trimBlocks: true,
     lstripBlocks: false
   });
