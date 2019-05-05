@@ -23,7 +23,7 @@
     height: 100vh;
     background: $site-preloader-background;
 
-    .spinner-layer {
+    .css-preloader__spinner-layer {
       border-color: $site-preloader-inner;
     }
   }
@@ -46,7 +46,7 @@
     animation: container-rotate 1568ms linear infinite;
   }
 
-  .spinner-layer {
+  &__spinner-layer {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -55,21 +55,42 @@
     animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   }
 
-  .circle-clipper {
+  &__circle-clipper {
     display: inline-block;
     position: relative;
     width: 50%;
     height: 100%;
     overflow: hidden;
     border-color: inherit;
+
+    &._left {
+      float: left;
+
+      .css-preloader__circle {
+        animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+        left: 0;
+        border-right-color: transparent !important;
+        transform: rotate(129deg);
+      }
+    }
+
+    &._right {
+      float: right;
+
+      .css-preloader__circle {
+        animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+        left: -100%;
+        border-left-color: transparent !important;
+        transform: rotate(-129deg);
+      }
+    }
   }
 
-  .circle {
+  &__circle {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
     width: 200%;
     height: 100%;
     border-width: 3px;
@@ -77,13 +98,10 @@
     border-color: inherit;
     border-bottom-color: transparent !important;
     border-radius: 50%;
-    border-right-color: transparent !important;
-    transform: rotate(129deg);
-    animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   }
 
 
-  .gap-patch {
+  &__gap-patch {
     position: absolute;
     top: 0;
     left: 45%;
@@ -92,7 +110,7 @@
     overflow: hidden;
     border-color: inherit;
 
-    .circle {
+    .css-preloader__circle {
       width: 1000%;
       left: -450%;
     }
@@ -145,5 +163,19 @@
   }
   100% {
     transform: rotate(130deg);
+  }
+}
+
+
+@keyframes right-spin {
+  0% {
+    transform: rotate(-130deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-130deg);
   }
 }
