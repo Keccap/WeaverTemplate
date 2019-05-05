@@ -272,40 +272,47 @@
   }
 }
 
-/*
-ПРИМЕРЫ:
 
-Равномерный скейл по ширине:
-$min-screen-width: 768;
-$mid-screen-width: 1920;
+//ПРИМЕРЫ:
+//
+//Равномерный скейл по ширине:
+//$min-screen-width: 768;
+//$mid-screen-width: 1920;
+//
+//@include css-lock(#{$min-screen-width * 100 / $mid-screen-width}, 100, $min-screen-width, $mid-screen-width);
+//
+//
+//Равномерный скейл по ширине до максимального экрана:
+//$mid-screen-width: 1920;
+//$max-screen-width: 2560;
+//
+//@include css-lock(100, #{100 * ($max-screen-width / $mid-screen-width)}, $mid-screen-width, $max-screen-width);
+//
+//
+//Равномерный скейл по высоте:
+//$min-screen-height: 768;
+//$mid-screen-height: 1920;
+//
+//@include tablet-min {
+//  @include css-lock-(#{$min-screen-height * 100 / $mid-screen-height}, 100, $min-screen-height, $mid-screen-height);
+//}
+//
+//
+//Равномерный полный скейл по высоте:
+//$min-screen-height: 630;
+//$mid-screen-height: 950;
+//$max-screen-height: 2000;
+//
+//@include tablet-min {
+//  @include css-lock-h-full(#{$min-screen-height * 100 / $mid-screen-height}, 100, #{$max-screen-height * 100 / $mid-screen-height}, $min-screen-height, $mid-screen-height, $max-screen-height);
+//}
+//
+//
+//Равномерный полный скейл по ширине:
+//$min-screen-width: 768;
+//$mid-screen-width: 1920;
+//$max-screen-width: 9000;
+//
+//@include css-lock-full(#{$min-screen-width * 100 / $mid-screen-width}, 100, #{$max-screen-width * 100 / $mid-screen-width}, $min-screen-width, $mid-screen-width, $max-screen-width);
 
-@include css-lock(#{$min-screen-width * 100 / $mid-screen-width}, 100, $min-screen-width, $mid-screen-width);
-
-
-Равномерный скейл по высоте:
-$min-screen-height: 768;
-$mid-screen-height: 1920;
-
-@include tablet-min {
-  @include css-lock-(#{$min-screen-height * 100 / $mid-screen-height}, 100, $min-screen-height, $mid-screen-height);
-}
-
-
-Равномерный полный скейл по высоте:
-$min-screen-height: 630;
-$mid-screen-height: 950;
-$max-screen-height: 2000;
-
-@include tablet-min {
-  @include css-lock-h-full(#{$min-screen-height * 100 / $mid-screen-height}, 100, #{$max-screen-height * 100 / $mid-screen-height}, $min-screen-height, $mid-screen-height, $max-screen-height);
-}
-
-
-Равномерный полный скейл по ширине:
-$min-screen-width: 768;
-$mid-screen-width: 1920;
-$max-screen-width: 9000;
-
-@include css-lock-full(#{$min-screen-width * 100 / $mid-screen-width}, 100, #{$max-screen-width * 100 / $mid-screen-width}, $min-screen-width, $mid-screen-width, $max-screen-width);
-*/
 

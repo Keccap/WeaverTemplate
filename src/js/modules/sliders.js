@@ -7,11 +7,9 @@ export default {
     this.handlers();
   },
 
-
   handlers() {
 
   },
-
 
   sliderExample() {
     const name = 'js-example-slider';
@@ -72,6 +70,5 @@ export default {
         }
       });
     });
-
   }
 };

@@ -17,7 +17,8 @@ $text-base: #3b4256;
 $border-base: #e6ecf2;
 $link-base: #1964b1;
 $shadow-base: #004484;
-$preloader-inner: #e57373;
+$site-preloader-inner: #e57373;
+$site-preloader-background: $white-true;
 
 // Backgrounds
 $bg-main: $white-true;
@@ -45,4 +46,4 @@ $low-desktop-width: 1024px;
 $tablet-width: 768px;
 
 // rem
-$rootFontSize: 100;
+$root-font-size: 100;

@@ -25,7 +25,7 @@
 }
 
 
-$browser-context: $rootFontSize;
+$browser-context: $root-font-size;
 
 @function em($pixels, $context: $browser-context) {
   @return strip-unit($pixels) / strip-unit($context) * 1em;

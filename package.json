@@ -16,7 +16,10 @@
     "gulp": "./node_modules/.bin/gulp",
     "start": "gulp",
     "build": "gulp build",
-    "server": "gulp server"
+    "server": "gulp server",
+    "server:hot": "yarn gulp",
+    "server:dev": "yarn gulp build:dev",
+    "server:prod": "yarn gulp build"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.4",

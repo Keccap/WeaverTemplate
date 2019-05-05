@@ -1,4 +1,4 @@
-import eventEmitter from './eventEmitter';
+import dispatcher from './dispatcher';
 
 
 export default {
@@ -39,20 +39,23 @@ export default {
     const preloader = this.el;
     if (!preloader) return;
 
-    eventEmitter.publish('site-preloader:hiding');
+    dispatcher.dispatch({
+      type: 'site-preloader:hiding'
+    });
 
     preloader.style.transition = `opacity ${transition}ms ease, visibility ${transition}ms ease`;
     preloader.classList.add('_loaded');
     document.body.classList.add('_site-loaded');
 
     setTimeout(() => {
-      eventEmitter.publish('site-preloader:removed');
+      dispatcher.dispatch({
+        type: 'site-preloader:removed'
+      });
 
       preloader.remove();
       document.body.classList.add('_site-preloader-hidden');
     }, transition);
   },
-
 
   imageLoaded() {
     this.imagesLoaded++;

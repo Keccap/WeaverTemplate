@@ -8,8 +8,7 @@ const config       = require('../config');
 gulp.task('copy:rootfiles', () => {
   return gulp
     .src([
-      config.src.root + '/*.pdf',
-      config.src.root + '/.htaccess'
+      config.src.root + '/*.pdf'
     ])
     .pipe(gulp.dest(config.dest.root));
 });
@@ -45,8 +44,7 @@ gulp.task('copy', gulp.parallel(
 
 gulp.task('copyRoot:watch', cb => {
   const watcher = gulp.watch([
-    config.src.root + '/*.*',
-    config.src.root + '/.htaccess'
+    config.src.root + '/*.*'
   ], gulp.series('copy:rootfiles'));
 
   watcher.on('all', config.syncChange());

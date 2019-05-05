@@ -1,30 +1,22 @@
 export default class EventEmitter {
   constructor() {
-    this.channels = {};
+    this._handlers = [];
   }
 
-  subscribe(channelName, listener) {
-    if (!this.channels[channelName]) {
-      this.channels[channelName] = [];
-    }
-
-    if (this.channels[channelName].indexOf(listener) === -1
-      && typeof listener === 'function') {
-      this.channels[channelName].push(listener);
-    }
+  dispatch(event) {
+    this._handlers.forEach(handler => {
+      handler(event);
+    });
   }
 
-  unsubscribe(channelName, listener) {
-    if (!this.channels[channelName]) return;
-
-    if (this.channels[channelName].indexOf(listener) !== -1) {
-      this.channels[channelName] = this.channels[channelName].filter(l => l !== listener);
+  subscribe(handler) {
+    if (this._handlers.indexOf(handler) === -1
+      && typeof handler === 'function') {
+      this._handlers.push(handler);
     }
   }
 
-  publish(channelName, data) {
-    if (this.channels[channelName]) {
-      this.channels[channelName].forEach(listener => listener(data));
-    }
+  unsubscribe(handler) {
+    this._handlers = this._handlers.filter(h => h !== handler);
   }
 }
