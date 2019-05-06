@@ -34,5 +34,5 @@ bower_components
 build
 
 _materials
-src/sass/generated
+src/scss/generated
 src/data
