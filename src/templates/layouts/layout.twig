@@ -30,7 +30,7 @@
 
 </head>
 <body>
-    <div class="_g-wrapper">
+    <div class="_g-wrapper{% if pageClass %} {{ pageClass }}{% endif %}">
         {% include 'modules/header.twig' %}
         <main class="_g-main">
             {% block content %}{% endblock %}
