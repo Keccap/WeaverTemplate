@@ -1,0 +1,13 @@
+{
+  "example": [
+    {
+      "text": "<b>test1</b>"
+    },
+    {
+      "text": "test2"
+    },
+    {
+      "text": "test3"
+    }
+  ]
+}

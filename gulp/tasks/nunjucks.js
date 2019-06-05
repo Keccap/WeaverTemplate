@@ -37,7 +37,10 @@ function renderHtml(onlyChanged) {
       file.data = resultData;
     })
     .pipe(nunjucksRender({
-      path: [config.src.templates]
+      path: [config.src.templates],
+      envOptions: {
+        autoescape: false
+      }
     }))
     .pipe(prettify({
       indent_size: 4,
