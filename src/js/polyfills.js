@@ -1,5 +1,5 @@
 // SVG-SPRITES
-import 'vendor/_polyfills/svg-sprite/svgxuse/svgxuse.min.js';
+import 'vendor/_polyfills/svg-sprite/svgxuse.min.js';
 
 // JS
 import 'vendor/_polyfills/js/Performance.now.js';
@@ -16,7 +16,7 @@ import 'vendor/_polyfills/js/DOM/ParentNode.append.js';
 import 'vendor/_polyfills/js/DOM/ParentNode.prepend.js';
 
 // customElements
-// import 'vendor/_polyfills/document-register-element.max.js';
+// import 'vendor/_polyfills/customElements/document-register-element.max.js';
 
 // WEBPACK
 import Promise from 'babel-runtime/core-js/promise';
