@@ -95,13 +95,13 @@
   }
 }
 
-@mixin flex-center() {
+@mixin center-flex() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin center($axis) {
+@mixin center-abs($axis) {
   @if $axis == both {
     position: absolute;
     top: 50%;
