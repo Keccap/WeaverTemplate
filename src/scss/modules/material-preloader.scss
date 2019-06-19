@@ -1,4 +1,6 @@
-.material-preloader {
+$b: '.material-preloader';
+
+#{$b} {
   $preloader-inner: $accent-base !default;
   $preloader-background: $white-true !default;
   $preloader-transition: 1s !default;
@@ -23,7 +25,7 @@
     height: 100vh;
     background: $site-preloader-background;
 
-    .material-preloader__spinner-layer {
+    #{$b}__spinner-layer {
       border-color: $site-preloader-inner;
     }
   }
@@ -66,7 +68,7 @@
     &._left {
       float: left;
 
-      .material-preloader__circle {
+      #{$b}__circle {
         animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
         left: 0;
         border-right-color: transparent !important;
@@ -77,7 +79,7 @@
     &._right {
       float: right;
 
-      .material-preloader__circle {
+      #{$b}__circle {
         animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
         left: -100%;
         border-left-color: transparent !important;
@@ -110,7 +112,7 @@
     overflow: hidden;
     border-color: inherit;
 
-    .material-preloader__circle {
+    #{$b}__circle {
       width: 1000%;
       left: -450%;
     }

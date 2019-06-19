@@ -1,4 +1,6 @@
-.dots-preloader {
+$b: '.dots-preloader';
+
+#{$b} {
   $preloader-inner: $accent-base !default;
   $preloader-background: $white-true !default;
   $preloader-transition: 1s !default;
@@ -23,7 +25,7 @@
     height: 100vh;
     background: $site-preloader-background;
 
-    .dots-preloader__dots div {
+    #{$b}__dots div {
       background-color: $site-preloader-inner;
     }
   }

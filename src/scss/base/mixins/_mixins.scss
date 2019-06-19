@@ -95,11 +95,13 @@
   }
 }
 
+
 @mixin center-flex() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 @mixin center-abs($axis) {
   @if $axis == both {
@@ -121,6 +123,7 @@
 }
 
 
+//  @include arrow($border-base, 1px, 4px, down);
 @mixin arrow($color, $thickness, $size, $direction) { // $direction: up, right, down, left
   $rotation: -135;
 
@@ -186,11 +189,27 @@
 }
 
 
-@mixin br() {
-  &::after {
-    content: '\A';
-    white-space: pre;
+// @include dashed-border(3px, 2px, 2px, $border-base, right);
+@mixin dashed-border($dashlength, $spacelength, $borderwidth, $color, $position: top) {
+  $direction: to right;
+
+  @if ($position == top) or ($position == bottom) {
+    background-size: ($dashlength/2 + $spacelength + $dashlength/2) $borderwidth;
+    background-repeat: repeat-x;
+  } @else {
+    background-size: $borderwidth ($dashlength/2 + $spacelength + $dashlength/2);
+    background-repeat: repeat-y;
+    $direction: to bottom;
   }
+
+  background-image: linear-gradient($direction, $color 0, $color $dashlength/2, rgba(0, 0, 0, 0) $dashlength/2, rgba(0, 0, 0, 0) $dashlength/2 + $spacelength, $color $dashlength/2 + $spacelength, $color $dashlength/2 + $spacelength + $dashlength/2);
+  background-position: $position;
+}
+
+
+@mixin no-break-li() {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 
@@ -201,4 +220,12 @@
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
+}
+
+
+@mixin br() {
+  &::after {
+    content: '\A';
+    white-space: pre;
+  }
 }
