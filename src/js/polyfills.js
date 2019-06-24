@@ -2,6 +2,7 @@
 import 'vendor/_polyfills/svg-sprite/svgxuse.min.js';
 
 // JS
+import 'whatwg-fetch';
 import 'vendor/_polyfills/js/Performance.now.js';
 import 'vendor/_polyfills/js/requestAnimationFrame.js';
 

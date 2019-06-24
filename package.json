@@ -80,6 +80,7 @@
     "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "whatwg-fetch": "^3.0.0"
   }
 }

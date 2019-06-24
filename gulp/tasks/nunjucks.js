@@ -33,7 +33,9 @@ function renderHtml(onlyChanged) {
       const frontMatterData = file.data;
       const JSONdata = JSON.parse(fs.readFileSync(config.src.data + '/' + config.src.dataFile));
       const resultData = {};
+
       Object.assign(resultData, JSONdata, frontMatterData); // frontMatterData перезаписывает схожие поля из JSONdata
+      resultData._ENV = config.env; // добавляем переменную окружения
       file.data = resultData;
     })
     .pipe(nunjucksRender({

@@ -1,4 +1,4 @@
-export default function getScreenHeight() {
+export default function getSiteHeight() {
   return Math.max(
     document.body.scrollHeight,
     document.documentElement.scrollHeight,

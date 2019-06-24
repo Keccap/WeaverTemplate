@@ -1,4 +1,4 @@
-export default function getScreenWidth() {
+export default function getSiteWidth() {
   return Math.max(
     document.body.scrollWidth,
     document.documentElement.scrollWidth,
