@@ -12,14 +12,20 @@ pageClass: '_page-example'
 
     {% include 'modules/site-preloader.twig' %}
 
+    {# component loop #}
     {% for item in exampleItems %}
         {{
-        exampleComponent({
-            title: item.title,
-            text: item.text
-        })
+            exampleComponent({
+                title: item.title,
+                text: item.text
+            })
         }}
     {% endfor %}
+
+    {# icon #}
+    <div style="font-size: 70px;">
+        {{ mx.icon('behance') }}
+    </div>
 
 {% endblock %}
 
