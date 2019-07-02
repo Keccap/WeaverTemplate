@@ -1,0 +1,25 @@
+---
+title: 'Title'
+description: ''
+pageClass: '_page-example'
+---
+{% from "components/example.twig" import example as exampleComponent %}
+
+{% extends "layouts/layout.twig" %}
+
+
+{% block content %}
+
+    {% include 'modules/site-preloader.twig' %}
+
+    {% for item in exampleItems %}
+        {{
+        exampleComponent({
+            title: item.title,
+            text: item.text
+        })
+        }}
+    {% endfor %}
+
+{% endblock %}
+
