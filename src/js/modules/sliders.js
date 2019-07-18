@@ -4,10 +4,10 @@ import Swiper from 'Swiper';
 export default {
   init() {
     this.sliderExample();
-    this.handlers();
+    this.handleEvents();
   },
 
-  handlers() {
+  handleEvents() {
 
   },
 
@@ -59,7 +59,7 @@ export default {
         pagination: {
           el: pagination,
           type: 'bullets',
-          clickable: true,
+          clickable: true
         },
 
         breakpoints: {
