@@ -74,8 +74,7 @@
   ::placeholder {@content}               //}
 }
 
-
-@mixin hidden-input() {
+@mixin visually-hidden() {
   position: absolute;
   left: -9999px;
   z-index: -1;
@@ -84,6 +83,10 @@
   overflow: hidden;
   opacity: 0;
   -webkit-appearance: none;
+}
+
+@mixin hidden-input() {
+  @include visually-hidden();
 }
 
 
