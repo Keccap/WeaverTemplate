@@ -1,0 +1,33 @@
+//@include amount-in-between(5, 15) {
+//  border-radius: 10px;
+//}
+
+// стилизация, если количество элементов <= $num
+@mixin amount-at-least($num) {
+  $selector: &;
+  $child: nth(nth($selector, -1), -1);
+  &:nth-last-of-type(n + #{$num}),
+  &:nth-last-of-type(n + #{$num}) ~ #{$child} {
+    @content;
+  }
+}
+
+// стилизация, если количество элементов >= $num
+@mixin amount-at-most($num) {
+  $selector: &;
+  $child: nth(nth($selector, -1), -1);
+  &:nth-last-of-type(-n + #{$num}):first-of-type,
+  &:nth-last-of-type(-n + #{$num}):first-of-type ~ #{$child} {
+    @content;
+  }
+}
+
+// стилизация, если количество элементов >= $min и <= $max
+@mixin amount-in-between($min, $max) {
+  $selector: &;
+  $child: nth(nth($selector, -1), -1);
+  &:nth-last-of-type(n + #{$min}):nth-last-of-type(-n + #{$max}):first-of-type,
+  &:nth-last-of-type(n + #{$min}):nth-last-of-type(-n + #{$max}):first-of-type ~ #{$child} {
+    @content;
+  }
+}
