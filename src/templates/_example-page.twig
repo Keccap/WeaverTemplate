@@ -22,6 +22,11 @@ pageClass: '_page-example'
         }}
     {% endfor %}
 
+    {# range loop #}
+    {% for i in range(1, 5) -%}
+        <div>{{ i }}</div>
+    {%- endfor %}
+
     {# icon #}
     <div style="font-size: 70px;">
         {{ mx.icon('behance') }}
