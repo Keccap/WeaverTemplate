@@ -45,6 +45,13 @@
 }
 
 
+@mixin responsive-img() {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
 @mixin responsive-svg() {
   display: block;
   width: 100%;

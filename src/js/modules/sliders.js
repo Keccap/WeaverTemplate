@@ -1,14 +1,23 @@
 import Swiper from 'Swiper';
-
+import dispatcher from './dispatcher';
 
 export default {
   init() {
     this.sliderExample();
     this.handleEvents();
+    this.handleDispatcher();
   },
 
   handleEvents() {
 
+  },
+
+  handleDispatcher() {
+    dispatcher.subscribe(event => {
+      const { type } = event;
+      if (type === 'example-slider:next') {}
+      if (type === 'example-slider:prev') {}
+    });
   },
 
   sliderExample() {

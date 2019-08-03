@@ -32,5 +32,10 @@ pageClass: '_page-example'
         {{ mx.icon('behance') }}
     </div>
 
+    {# env #}
+    {% if _ENV == 'development' %}
+        {{ _ENV }}
+    {% endif %}
+
 {% endblock %}
 
