@@ -13,11 +13,13 @@ const prodPath = devPath;
 let destPath = null;
 
 const production = util.env.production || util.env.prod || false;
+const isServer = !!util.env.server;
 
 
 const config = {
   env       : 'development',
   production: production,
+  isServer: isServer,
 
   mergeMediaQueries: false,
 

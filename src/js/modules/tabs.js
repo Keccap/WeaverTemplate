@@ -157,8 +157,6 @@ export default {
       contentItemSelector: '.js-tab-content',
       hashSync: true
     });
-
-    console.log(tabsExample);
   },
 
   tabsByName() {
@@ -173,7 +171,15 @@ export default {
       tabItemSelector: '.js-tab',
       contentItemSelector: '.js-tab-content',
       filterByName: true,
-      hashSync: true
+      hashSync: true,
+
+      onChange() {
+        dispatcher.dispatch({
+          type: 'tabs:name-tabs-changed',
+          activeTab: this.activeTab,
+          tabs: this.tabs
+        })
+      }
     });
   }
 };

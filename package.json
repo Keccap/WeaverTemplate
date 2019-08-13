@@ -17,9 +17,9 @@
     "start": "gulp",
     "build": "gulp build",
     "server": "gulp server",
-    "server:hot": "yarn gulp",
-    "server:dev": "yarn gulp build:dev",
-    "server:prod": "yarn gulp build"
+    "server:hot": "yarn gulp --server=1",
+    "server:dev": "yarn gulp build:dev --server=1",
+    "server:prod": "yarn gulp build --server=1"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.4",

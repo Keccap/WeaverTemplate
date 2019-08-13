@@ -26,6 +26,12 @@
 }
 
 
+@mixin decor() {
+  pointer-events: none;
+  user-select: none;
+}
+
+
 @mixin editable-text() {
   word-wrap: break-word;
   overflow-wrap: break-word;
