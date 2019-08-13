@@ -1,19 +1,23 @@
-@mixin columnWidth($cols, $max-cols, $left-gutter: 0, $right-gutter: $left-gutter) {
+@mixin columnWidth($cols, $max-cols, $left-gutter: 0px, $right-gutter: $left-gutter) {
   $width: $cols * (100% / $max-cols);
 
-  @if ($left-gutter == 0 and $right-gutter == 0) {
+  @if (
+      ($left-gutter == 0px and $right-gutter == 0px) or
+      ($left-gutter == 0% and $right-gutter == 0%) or
+      ($left-gutter == 0rem and $right-gutter == 0rem)
+  ) {
     width: $width;
   } @else {
-    width: calc(#{$width} - #{$left-gutter + $right-gutter}px);
+    width: calc(#{$width} - #{$left-gutter} - #{$right-gutter});
   }
 }
 
 
-@mixin column($c, $max, $left: 0, $right: $left) {
+@mixin column($cols, $max-cols, $left-gutter: 0px, $right-gutter: $left-gutter) {
   flex: 0 0 auto;
-  @include columnWidth($c, $max, $left, $right);
-  margin-left: #{$left}px;
-  margin-right: #{$right}px;
+  @include columnWidth($cols, $max-cols, $left-gutter, $right-gutter);
+  margin-left: #{$left-gutter};
+  margin-right: #{$right-gutter};
 }
 
 

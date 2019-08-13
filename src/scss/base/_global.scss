@@ -99,6 +99,10 @@ body {
   @include hidden-input();
 }
 
+._g-visually-hidden {
+  @include visually-hidden();
+}
+
 ._g-clearfix {
   @include clearfix();
 }
@@ -113,6 +117,10 @@ body {
     vertical-align: middle;
     width: 0;
   }
+}
+
+._g-hidden {
+  display: none;
 }
 
 ._g-wrapper {

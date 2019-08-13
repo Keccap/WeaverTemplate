@@ -45,6 +45,13 @@
 }
 
 
+@mixin bg-decor() {
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+
 @mixin responsive-img() {
   display: block;
   width: 100%;
@@ -120,7 +127,7 @@
 }
 
 
-@mixin center-abs($axis) {
+@mixin center-abs($axis: both) {
   @if $axis == both {
     position: absolute;
     top: 50%;

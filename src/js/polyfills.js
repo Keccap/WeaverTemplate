@@ -5,7 +5,7 @@ import 'vendor/_polyfills/svg-sprite/svgxuse.min';
 import 'whatwg-fetch';
 import 'vendor/_polyfills/js/Performance.now';
 import 'vendor/_polyfills/js/requestAnimationFrame';
-import 'vendor/_polyfills/js/Array.find';
+import 'vendor/_polyfills/js/Array.prototype.find';
 import 'vendor/_polyfills/js/Array.prototype.includes';
 import 'vendor/_polyfills/js/String.prototype.includes';
 
