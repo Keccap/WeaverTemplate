@@ -25,6 +25,11 @@ body {
   text-shadow: none;
 }
 
+._g-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 ._g-outer-width {
   margin-left: auto;
   margin-right: auto;
@@ -95,6 +100,10 @@ body {
   background-color: $bg-alt;
 }
 
+._g-hidden {
+  display: none;
+}
+
 ._g-hidden-input {
   @include hidden-input();
 }
@@ -119,11 +128,8 @@ body {
   }
 }
 
-._g-hidden {
-  display: none;
-}
-
-._g-wrapper {
-  position: relative;
-  overflow: hidden;
+._g-tab-content {
+  &:not(._active) {
+    display: none;
+  }
 }
