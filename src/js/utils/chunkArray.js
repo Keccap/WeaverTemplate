@@ -1,12 +1,12 @@
 /**
- * Returns an array with arrays of the given size.
+ * Возвращает массив с массивами заданного размера.
  *
- * @param myArray {Array} Array to split
- * @param chunkSize {Integer} Size of every group
+ * @param array {Array} Исходный массив
+ * @param chunkSize {Integer} Размер каждой группы
  */
-export default function chunkArray(myArray, chunkSize) {
-  var newArr = myArray.slice();
-  var results = [];
+export default function chunkArray(array, chunkSize) {
+  let newArr = array.slice();
+  let results = [];
 
   while (newArr.length) {
     results.push(newArr.splice(0, chunkSize));

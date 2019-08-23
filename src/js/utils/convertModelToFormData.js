@@ -1,3 +1,13 @@
+/**
+ * Конвертация значений в FormData
+ *
+ * @param val - значение, обычно - объект с данными
+ * @param formData - готовый FormData, обычно не требуется
+ * @returns {FormData}
+ *
+ * convertModelToFormData(object)
+ */
+
 export const convertModelToFormData = (val, formData = new FormData(), namespace = '') => {
   if ((typeof val !== 'undefined') && (val !== null)) {
     if (val instanceof Date) {
