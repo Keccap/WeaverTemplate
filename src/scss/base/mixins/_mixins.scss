@@ -45,6 +45,26 @@
 }
 
 
+@mixin hide-text() {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+
+@mixin text-stroke($thickness, $color) {
+  text-shadow: -#{$thickness} -#{$thickness} 0 $color,
+  -#{$thickness} 0 0 $color,
+  -#{$thickness} #{$thickness} 0 $color,
+  0 -#{$thickness} 0 $color,
+  0 0 0 $color,
+  0 #{$thickness} 0 $color,
+  #{$thickness} -#{$thickness} 0 $color,
+  #{$thickness} 0 0 $color,
+  #{$thickness} #{$thickness} 0 $color;
+}
+
+
 @mixin bg-cover() {
   background-size: cover;
   background-position: center;
