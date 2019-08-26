@@ -4,8 +4,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const config = require('./gulp/config');
 
 
-
-
 function createConfig(env) {
 
   if (env === undefined) {
@@ -15,8 +13,9 @@ function createConfig(env) {
   const isProduction = env === 'production';
 
 
-
   const webpackConfig = {
+    mode: isProduction ? 'production' : 'development',
+
     context: path.resolve(__dirname, config.src.js),
     entry: {
       app: ['./polyfills', './app']
@@ -35,6 +34,10 @@ function createConfig(env) {
     plugins: [
       new webpack.NoEmitOnErrorsPlugin(),
 
+      new webpack.optimize.ModuleConcatenationPlugin(),
+
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),
+
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(env)
@@ -48,35 +51,24 @@ function createConfig(env) {
         'window.jQuery': 'jquery'
       }),
 
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'app',
-        children: true,
-        async: 'common-async',
-        minChunks: 2
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'app',
+      //   children: true,
+      //   async: 'common-async',
+      //   minChunks: 2
+      // }),
 
       // new webpack.optimize.CommonsChunkPlugin({
       //   name: commons,
       //   minChunks: 2
       // }),
 
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        analyzerPort: 4000,
-        openAnalyzer: false
-      })
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'static',
+      //   analyzerPort: 4000,
+      //   openAnalyzer: false
+      // }),
     ],
-
-
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/
-        }
-      ]
-    },
 
     resolve: {
       extensions: ['.js'],
@@ -93,22 +85,29 @@ function createConfig(env) {
         'animation.gsap': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'),
         'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js')
       }
-    }
+    },
 
+    optimization :{
+      minimize: isProduction
+    },
+
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: [
+            path.resolve(__dirname, 'node_modules'),
+          ]
+        }
+      ]
+    }
   };
 
   if (isProduction) {
     webpackConfig.plugins.push(
       new webpack.LoaderOptionsPlugin({
         minimize: true
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-          warnings: false,
-          drop_console: true,
-          unsafe: true
-        }
       })
     );
   }

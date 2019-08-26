@@ -76,8 +76,8 @@
     "require-yaml": "^0.0.1",
     "sass-lint": "^1.12.1",
     "through2": "^2.0.3",
-    "webpack": "^2.2.1",
-    "webpack-bundle-analyzer": "^2.11.1"
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.1.0"
   },
   "dependencies": {
     "jquery": "^3.3.1",
