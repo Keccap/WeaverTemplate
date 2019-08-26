@@ -26,16 +26,11 @@ function createConfig(env) {
       filename: '[name].bundle.js',
       publicPath: 'js/',
       chunkFilename: 'async-chunks/[name].js',
-      sourceMapFilename: 'sourcemaps/[file].map',
-      pathinfo: !isProduction
+      sourceMapFilename: 'sourcemaps/[file].map'
     },
     devtool: isProduction ? false : 'cheap-inline-module-source-map',
 
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin(),
-
-      new webpack.optimize.ModuleConcatenationPlugin(),
-
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),
 
       new webpack.DefinePlugin({
@@ -50,18 +45,6 @@ function createConfig(env) {
         jQuery: 'jquery',
         'window.jQuery': 'jquery'
       }),
-
-      // new webpack.optimize.CommonsChunkPlugin({
-      //   name: 'app',
-      //   children: true,
-      //   async: 'common-async',
-      //   minChunks: 2
-      // }),
-
-      // new webpack.optimize.CommonsChunkPlugin({
-      //   name: commons,
-      //   minChunks: 2
-      // }),
 
       // new BundleAnalyzerPlugin({
       //   analyzerMode: 'static',
