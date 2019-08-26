@@ -19,7 +19,6 @@ const config        = require('../config');
 // postcss plugins
 const processorsDev = [
   autoprefixer({
-    browsers: ['last 4 versions'],
     cascade: false
   })
 ];
