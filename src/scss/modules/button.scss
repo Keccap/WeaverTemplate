@@ -1,0 +1,74 @@
+$b: '.button';
+
+#{$b} {
+  @include clickable();
+  @include truncate-text();
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 40px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: $white-true;
+  background-color: $accent-base;
+  outline: none;
+  border: none;
+  touch-action: manipulation;
+  transition-property: opacity, visibility, background, color, box-shadow, border;
+  transition-duration: $g-transition-duration;
+  transition-timing-function: $g-transition-easing;
+
+  &:hover {
+    background-color: lighten($accent-base, 13%);
+  }
+
+  &:disabled, &._disabled {
+    opacity: .6;
+    pointer-events: none;
+  }
+
+  &._loading {
+    @include hide-text();
+
+    // for multiline
+    #{$b}__text {
+      opacity: 0;
+    }
+
+    &::after {
+      @include spinner(20px, 2px, currentColor);
+      content: '';
+    }
+  }
+
+  &._full-width {
+    width: 100%;
+    max-width: none;
+  }
+
+  &._multiline {
+    height: auto;
+    min-height: 48px;
+    white-space: normal;
+    line-height: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+
+  &._outline {
+    color: $accent-base;
+    background-color: $white-true;
+    box-shadow: inset 0 0 0 2px $accent-base;
+
+    &:hover {
+      color: $white-true;
+      background-color: $accent-base;
+    }
+  }
+}
