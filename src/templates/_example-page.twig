@@ -12,6 +12,13 @@ pageClass: '_page-example'
 
     {% include 'modules/site-preloader.twig' %}
 
+    {# env #}
+    {% if _ENV == 'development' %}
+        <strong style="font-size: 30px;">
+            Env: {{ _ENV }}
+        </strong>
+    {% endif %}
+
     {# component loop #}
     {% for item in exampleItems %}
         {{
@@ -31,11 +38,6 @@ pageClass: '_page-example'
     <div style="font-size: 70px;">
         {{ mx.icon('behance') }}
     </div>
-
-    {# env #}
-    {% if _ENV == 'development' %}
-        {{ _ENV }}
-    {% endif %}
 
 {% endblock %}
 
