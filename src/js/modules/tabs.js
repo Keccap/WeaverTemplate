@@ -17,7 +17,7 @@ class TabItem {
     if (Array.isArray(this.content)) {
       this.content.forEach(content => {
         content.classList.toggle('_active', value);
-      })
+      });
     } else {
       this.content.classList.toggle('_active', value);
     }
@@ -178,7 +178,7 @@ export default {
           type: 'tabs:name-tabs-changed',
           activeTab: this.activeTab,
           tabs: this.tabs
-        })
+        });
       }
     });
   }
