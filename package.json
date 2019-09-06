@@ -14,6 +14,8 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
+    "json-server": "./node_modules/.bin/json-server",
+    "front-server": "json-server --watch front-server.json --port 3005",
     "start": "gulp",
     "build": "gulp build",
     "server": "gulp server",
@@ -66,6 +68,7 @@
     "gulp-util": "^3.0.8",
     "imagemin-jpeg-recompress": "^6.0.0",
     "imagemin-pngquant": "^8.0.0",
+    "json-server": "^0.15.1",
     "node-sass": "^4.12.0",
     "require-dir": "^1.2.0",
     "require-yaml": "^0.0.1",
