@@ -28,6 +28,10 @@ body, html {
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  -webkit-tap-highlight-color: rgba($black-true, 0)
+}
+
 *,
 *::before,
 *::after {
@@ -35,7 +39,6 @@ body, html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 strong, b {
