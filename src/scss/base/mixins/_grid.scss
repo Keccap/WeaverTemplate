@@ -12,7 +12,8 @@
   }
 }
 
-
+// @include column(1, 3, 0px, rem(15px))
+// @include column(917, 1920, 0px, 120px) (реальная ширина колонки = 797px; 797px + 120px отступ = 917px)
 @mixin column($cols, $max-cols, $left-gutter: 0px, $right-gutter: $left-gutter) {
   flex: 0 0 auto;
   @include columnWidth($cols, $max-cols, $left-gutter, $right-gutter);
