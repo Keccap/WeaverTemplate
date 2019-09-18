@@ -103,6 +103,13 @@
 //}
 //
 //
+//Равномерный скейл по высоте до максимального экрана (скейл вверх):
+//$mid-screen-height: 1920;
+//$max-screen-height: 2560;
+//
+//@include css-lock-h(100, #{100 * ($max-screen-height / $mid-screen-height)}, $mid-screen-height, $max-screen-height);
+//
+//
 //Равномерный полный скейл по высоте (скейл в обе стороны):
 //$min-screen-height: 630;
 //$mid-screen-height: 950;
