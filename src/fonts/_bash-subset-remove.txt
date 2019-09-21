@@ -1,0 +1,1 @@
+for file in subset-*; do mv "$file" "${file#subset-}";done;
