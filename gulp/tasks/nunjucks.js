@@ -49,7 +49,7 @@ function renderHtml(onlyChanged) {
       wrap_attributes: 'auto', // 'force'  (Wrap attributes to new lines)
       preserve_newlines: true, // preserve existing line-breaks
       max_preserve_newlines: 1,
-      unformatted: ['a', 'code', 'pre', 'script', 'svg'],
+      unformatted: ['code', 'pre', 'script'],
       end_with_newline: true
     }))
     .pipe(gulp.dest(config.dest.root))
