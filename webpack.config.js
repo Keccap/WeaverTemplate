@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./gulp/config');
 
@@ -46,6 +47,8 @@ function createConfig(env) {
         'window.jQuery': 'jquery'
       }),
 
+      new VueLoaderPlugin(),
+
       // new BundleAnalyzerPlugin({
       //   analyzerMode: 'static',
       //   analyzerPort: 4000,
@@ -54,7 +57,7 @@ function createConfig(env) {
     ],
 
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.vue'],
       alias: {
         vendor: path.resolve(config.src.vendor),
         vue: isProduction ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js',
@@ -76,6 +79,10 @@ function createConfig(env) {
 
     module: {
       rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
         {
           test: /\.js$/,
           loader: 'babel-loader',
