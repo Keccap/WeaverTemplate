@@ -13,9 +13,9 @@ pageClass: '_page-example'
     {% include 'modules/site-preloader.twig' %}
 
     {# env #}
-    {% if _ENV == 'development' %}
+    {% if NODE_ENV == 'development' %}
         <strong style="font-size: 30px;">
-            Env: {{ _ENV }}
+            Env: {{ NODE_ENV }}
         </strong>
     {% endif %}
 

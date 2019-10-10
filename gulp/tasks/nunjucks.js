@@ -35,7 +35,7 @@ function renderHtml(onlyChanged) {
       const resultData = {};
 
       Object.assign(resultData, JSONdata, frontMatterData); // frontMatterData перезаписывает схожие поля из JSONdata
-      resultData._ENV = config.env; // добавляем переменную окружения
+      resultData.NODE_ENV = config.env; // добавляем переменную окружения
       file.data = resultData;
     })
     .pipe(nunjucksRender({
