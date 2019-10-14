@@ -1,11 +1,16 @@
-@mixin aspect-ratio($width: 1, $height: $width) {
-  &::after {
-    content: '';
+@mixin aspect-ratio($width: 1, $height: $width, $pseudo: true) {
+  @if $pseudo {
+    &::after {
+      content: '';
+      display: block;
+      padding-top: 1 / ($width / $height) * 100%;
+    }
+  }
+  @else {
     display: block;
     padding-top: 1 / ($width / $height) * 100%;
   }
 }
-
 
 @mixin round($size) {
   width: $size;
