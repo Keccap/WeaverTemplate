@@ -34,9 +34,13 @@ pageClass: '_page-example'
         <div>{{ i }}</div>
     {%- endfor %}
 
-    {# icon #}
-    <div style="font-size: 70px;">
-        {{ mx.icon('behance') }}
+    {# inline svg #}
+    <div style="width: 260px;">
+        {{ mx.svg('rotate_device') }}
+    </div>
+
+    <div style="width: 70px;">
+        {{ mx.svg('behance') }}
     </div>
 
 {% endblock %}

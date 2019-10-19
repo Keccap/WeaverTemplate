@@ -1,0 +1,9 @@
+$b: '.inline-svg';
+
+#{$b} {
+  position: relative;
+  
+  svg {
+    @include fill-abs();
+  }
+}

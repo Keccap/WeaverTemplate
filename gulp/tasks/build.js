@@ -8,7 +8,7 @@ const config       = require('../config');
 function build(cb) {
   gulp.series(
     'clean',
-    'sprite:svg',
+    'inline-svg',
     'copy',
     gulp.parallel(
       'sass',
