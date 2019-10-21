@@ -17,8 +17,8 @@ $text-base: #3b4256;
 $border-base: #e6ecf2;
 $link-base: #1964b1;
 $shadow-base: #004484;
-$site-preloader-inner: #e57373;
-$site-preloader-background: $white-true;
+$site-preloader-inner: $accent-base;
+$site-preloader-bg: $white-true;
 
 // Backgrounds
 $bg-main: $white-true;
@@ -49,4 +49,4 @@ $tablet-width: 768px;
 $root-font-size: 100;
 
 // paths
-$image-path: '../img/'
+$image-path: '../img/';

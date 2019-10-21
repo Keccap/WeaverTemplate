@@ -7,7 +7,7 @@ $b: '.dots-preloader';
   $preloader-easing: ease !default;
 
   $site-preloader-inner: $accent-base !default;
-  $site-preloader-background: $white-true !default;
+  $site-preloader-bg: $white-true !default;
 
   position: absolute;
   top: 0;
@@ -24,7 +24,7 @@ $b: '.dots-preloader';
     position: fixed;
     z-index: 9999;
     height: 100vh;
-    background: $site-preloader-background;
+    background: $site-preloader-bg;
 
     #{$b}__dots div {
       background-color: $site-preloader-inner;

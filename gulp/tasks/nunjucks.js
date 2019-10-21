@@ -81,7 +81,7 @@ gulp.task('nunjucks:watch', cb => {
 
 
   gulp.watch([
-    config.src.templates + '/**/*.twig',
+    config.src.templates + '/**/*.{twig,svg}',
     '!' +  config.src.templates + '/*.twig'
   ], gulp.series('nunjucks'));
 

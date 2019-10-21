@@ -10,16 +10,23 @@ pageClass: '_page-example'
 
 {% block content %}
 
-    {% include 'modules/site-preloader.twig' %}
+    {# ENV #}
+    <div>
+        {% if NODE_ENV == 'development' %}
+            <strong style="font-size: 30px;">
+                Env: {{ NODE_ENV }}
+            </strong>
+        {% endif %}
+    </div>
+    <div>
+        {% if not IS_SERVER %}
+            <strong style="font-size: 30px;">
+                SERVER: {{ IS_SERVER }}
+            </strong>
+        {% endif %}
+    </div>
 
-    {# env #}
-    {% if NODE_ENV == 'development' %}
-        <strong style="font-size: 30px;">
-            Env: {{ NODE_ENV }}
-        </strong>
-    {% endif %}
-
-    {# component loop #}
+    {# COMPONENT / LOOP #}
     {% for item in exampleItems %}
         {{
             exampleComponent({
@@ -29,16 +36,15 @@ pageClass: '_page-example'
         }}
     {% endfor %}
 
-    {# range loop #}
-    {% for i in range(1, 5) -%}
-        <div>{{ i }}</div>
+    {# RANGE LOOP #}
+    {% for num in range(1, 5) -%}
+        <span>{{ loop.index }}/{{ loop.length }}{% if not loop.last %}, {% endif %}</span>
     {%- endfor %}
 
-    {# inline svg #}
+    {# INLINE SVG #}
     <div style="width: 260px;">
         {{ mx.svg('rotate_device') }}
     </div>
-
     <div style="width: 70px;">
         {{ mx.svg('behance') }}
     </div>
