@@ -23,15 +23,15 @@ gulp.task('inline-svg', () => {
     .pipe(through2.obj(function(file, encoding, cb) {
       const $ = file.cheerio;
       const data = $('svg > symbol').map(function() {
-        const $this  = $(this);
-        const size   = $this.attr('viewBox').split(' ').splice(2);
-        const name   = $this.attr('id');
-        const ratio  = size[0] / size[1]; // symbol width / symbol height
+        const $this = $(this);
+        const name = $this.attr('id');
+        const [width, height] = $this.attr('viewBox').split(' ').splice(2);
+        const ratio = Number((width / height).toFixed(2));
         return {
-          name: name,
-          ratio: +ratio.toFixed(2),
-          width: size[0],
-          height: size[1]
+          name,
+          ratio,
+          width,
+          height
         };
       }).get();
 
