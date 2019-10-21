@@ -38,7 +38,7 @@ function createConfig(env) {
         'process.env': {
           NODE_ENV: JSON.stringify(env)
         },
-        ENV_IS_SERVER: config.isServer
+        IS_SERVER: config.isServer
       }),
 
       new webpack.ProvidePlugin({
