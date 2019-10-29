@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const { VueLoaderPlugin } = require('vue-loader');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./gulp/config');
 
@@ -47,7 +47,7 @@ function createConfig(env) {
         'window.jQuery': 'jquery'
       }),
 
-      new VueLoaderPlugin(),
+      new VueLoaderPlugin()
 
       // new BundleAnalyzerPlugin({
       //   analyzerMode: 'static',
@@ -59,6 +59,7 @@ function createConfig(env) {
     resolve: {
       extensions: ['.js', '.vue'],
       alias: {
+        '~': path.resolve(config.src.root),
         vendor: path.resolve(config.src.vendor),
         vue: isProduction ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js',
         jquery: path.resolve('node_modules', 'jquery/dist/jquery.min'),
@@ -75,6 +76,17 @@ function createConfig(env) {
 
     optimization :{
       minimize: isProduction
+
+      /* splitChunks: {
+        cacheGroups: {
+          vendor: {
+            name: 'vendors',
+            test: /node_modules|vendor/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      } */
     },
 
     module: {
