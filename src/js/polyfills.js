@@ -1,6 +1,3 @@
-// SVG-SPRITES
-import 'vendor/_polyfills/svg-sprite/svgxuse.min';
-
 // JS
 import 'whatwg-fetch';
 import 'vendor/_polyfills/js/Performance.now';
