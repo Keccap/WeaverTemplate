@@ -1,88 +1,39 @@
-// MEDIA QUERIES
-
-// width
-@mixin r($width, $min-width: null) {
-	@if ($min-width) {
-		@media only screen and (max-width: $width + 'px') and (min-width: $min-width + 'px') {
-			@content;
-		}
-	} @else {
-		@media only screen and (max-width: $width + 'px') {
-			@content;
-		}
-	}
-}
-
-
-@mixin rmin($width) {
-	@media only screen and (min-width: $width + 'px') {
-		@content;
-	}
-}
-
-
-// height
-@mixin rh($height, $min-height: null) {
-  @if ($min-height) {
-    @media only screen and (max-height: $height + 'px') and (min-height: $min-height + 'px') {
-      @content;
-    }
-  } @else {
-    @media only screen and (max-height: $height + 'px') {
-      @content;
-    }
-  }
-}
-
-
-@mixin rhmin($height) {
-	@media only screen and (min-height: $height + 'px') {
-		@content;
-	}
-}
-
-
-
 @mixin below($width) {
-  @include r($width) {
+  @media screen and (max-width: $width) {
     @content;
   }
 }
 
 @mixin above($width) {
-  @include rmin($width) {
+  @media screen and (min-width: $width) {
     @content;
   }
 }
 
-@mixin between($width, $min-width) {
-  @include r($width, $min-width) {
+@mixin between($min-width, $width) {
+  @media screen and (min-width: $min-width) and (max-width: $width) {
     @content;
   }
 }
 
-
-@mixin below-h($height) {
-  @include rh($height) {
+@mixin below-height($height) {
+  @media screen and (max-height: $height) {
     @content;
   }
 }
 
-@mixin above-h($height) {
-  @include rhmin($height) {
+@mixin above-height($height) {
+  @media screen and (min-height: $height) {
     @content;
   }
 }
 
-@mixin between-h($height, $min-height) {
-  @include rh($height, $min-height) {
+@mixin between-height($min-height, $height) {
+  @media screen and (min-height: $min-height) and (max-height: $height) {
     @content;
   }
 }
 
-
-
-// orientations
 @mixin landscape {
 	@media only screen and (orientation: landscape) {
 		@content;
@@ -95,7 +46,6 @@
 	}
 }
 
-
 // retina, also available as +hdpi
 @mixin retina {
 	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
@@ -103,14 +53,12 @@
 	}
 }
 
-
 // Microsoft Edge Browser 12+ (All)
 @mixin Edge {
 	@supports (-ms-ime-align: auto) {
 		@content;
 	}
 }
-
 
 // IE10, IE11
 // If you want it to cover ONLY Internet Explorer 10,
@@ -123,16 +71,12 @@
 	}
 }
 
-
 // IE9 only
 @mixin IE9 {
 	@media screen and (min-width: 0\0) and (min-resolution: .001dpcm) {
 		@content;
 	}
 }
-
-
-
 
 @mixin Safari {
 	@media not all and (min-resolution: .001dpcm) {
