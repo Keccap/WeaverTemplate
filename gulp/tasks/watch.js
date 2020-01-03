@@ -11,7 +11,6 @@ gulp.task('watch', cb => {
     'data:watch',
     'nunjucks:watch',
     'webpack:watch',
-    'svgo:watch',
     'imagemin:watch',
     'copy:watch',
     'pagelist:watch'

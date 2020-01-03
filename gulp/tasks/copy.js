@@ -18,8 +18,7 @@ gulp.task('copy:img', () => {
   return gulp
     .src([
       config.src.img + '/**/*.{svg,webp,ico}',
-      config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}',
-      '!' + config.src.img + '/svgo/**/*.*'
+      config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}'
     ])
     .pipe(gulp.dest(config.dest.img));
 });
@@ -56,8 +55,7 @@ gulp.task('copyRoot:watch', cb => {
 gulp.task('copyImg:watch', cb => {
   const watcher = gulp.watch([
     config.src.img + '/**/*.{svg,webp,ico}',
-    config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}',
-    '!' + config.src.img + '/svgo/**/*.*'
+    config.src.img + '/imagemin-exceptions/**/*.{jpg,jpeg,png,gif,svg,webp,ico}'
   ], gulp.series('copy:img'));
 
   watcher.on('all', config.syncChange(path => {

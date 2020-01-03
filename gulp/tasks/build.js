@@ -13,7 +13,6 @@ function build(cb) {
     gulp.parallel(
       'sass',
       'webpack',
-      'svgo',
       'imagemin',
       'data'
     ),
