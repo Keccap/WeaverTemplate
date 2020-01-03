@@ -7,7 +7,7 @@ const config         = require('../config');
 
 gulp.task('data', () => {
   return gulp
-    .src(config.src.sdata + '/**/*.json')
+    .src(config.src.sdata + '/*.json')
     .pipe(jsonMerge({
       fileName: config.src.dataFile
     }))

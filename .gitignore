@@ -35,4 +35,4 @@ build
 
 _materials
 src/scss/generated
-src/data
+src/data/_result

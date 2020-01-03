@@ -304,20 +304,3 @@
   -moz-hyphens: auto;
   hyphens: auto;
 }
-
-
-@mixin br() {
-  &::after {
-    content: '\A';
-    white-space: pre;
-  }
-}
-
-@mixin flex-min-height-fix() {
-  &::after {
-    content: '';
-    display: block;
-    width: 0%;
-    min-height: inherit;
-  }
-}
