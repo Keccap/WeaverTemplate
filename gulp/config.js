@@ -40,7 +40,8 @@ const config = {
     data         : srcPath + '/data',
     dataFile     : 'data.json',
     pagelist     : srcPath + '/pagelist.yaml',
-    vendor       : srcPath + '/vendor'
+    vendor       : srcPath + '/vendor',
+    static       : srcPath + '/static'
   },
 
   dest: {

@@ -14,8 +14,7 @@ const config         = require('../config');
 gulp.task('imagemin', () => {
   return gulp
     .src([
-      config.src.img + '/**/*.{jpg,jpeg,png,gif}',
-      '!' + config.src.img + '/imagemin-exceptions/**/*.*'
+      config.src.img + '/**/*.{jpg,jpeg,png,gif}'
     ])
     .pipe(plumber({
       errorHandler: config.errorHandler('Imagemin')
@@ -33,8 +32,7 @@ gulp.task('imagemin', () => {
 
 gulp.task('imagemin:watch', cb => {
   const watcher = gulp.watch([
-    config.src.img + '/**/*.{jpg,jpeg,png,gif}',
-    '!' + config.src.img + '/imagemin-exceptions/**/*.*'
+    config.src.img + '/**/*.{jpg,jpeg,png,gif}'
   ], gulp.series('imagemin'));
 
   watcher.on('all', config.syncChange());

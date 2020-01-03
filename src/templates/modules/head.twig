@@ -1,6 +1,3 @@
-{% import "helpers/_helpers.twig" as hp %} {% import "helpers/_mixins.twig" as mx %}
-<!DOCTYPE html>
-<html lang="ru" class="🕷">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,16 +26,3 @@
     <link rel="stylesheet" href="css/app.min.css?rev=hash">
 
 </head>
-<body>
-    <div class="_g-wrapper{% if pageClass %} {{ pageClass }}{% endif %}">
-        {% include 'modules/header.twig' %}
-        <main class="_g-main">
-            {% block content %}{% endblock %}
-        </main>
-        {% include 'modules/footer.twig' %}
-    </div>
-
-    <script src="js/app.bundle.js?rev=hash"></script>
-
-</body>
-</html>

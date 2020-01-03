@@ -1,0 +1,17 @@
+{% import "helpers/_helpers.twig" as hp %} {% import "helpers/_mixins.twig" as mx %}
+<!DOCTYPE html>
+<html lang="ru" class="🕷">
+{% include 'modules/head.twig' %}
+<body>
+    <div class="_g-wrapper{% if pageClass %} {{ pageClass }}{% endif %}">
+        {% include 'modules/header.twig' %}
+        <main class="_g-main">
+            {% block content %}{% endblock %}
+        </main>
+        {% include 'modules/footer.twig' %}
+    </div>
+
+    <script src="js/app.bundle.js?rev=hash"></script>
+
+</body>
+</html>

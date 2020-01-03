@@ -15,7 +15,7 @@
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
     "json-server": "./node_modules/.bin/json-server",
-    "front-server": "json-server --watch front-server.json --port 3005",
+    "front-server": "json-server --watch src/front-server.json --port 3005",
     "start": "gulp",
     "build": "gulp build",
     "server": "gulp server",

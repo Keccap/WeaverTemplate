@@ -14,12 +14,12 @@ export const convertModelToFormData = (val, formData = new FormData(), namespace
       formData.append(namespace, val.toISOString());
     } else if (val instanceof Array) {
       for (let element of val) {
-        this.convertModelToFormData(element, formData, namespace + '[]');
+        convertModelToFormData(element, formData, namespace + '[]');
       }
     } else if (typeof val === 'object' && !(val instanceof File)) {
       for (let propertyName in val) {
         if (val.hasOwnProperty(propertyName)) {
-          this.convertModelToFormData(val[propertyName], formData, namespace ? namespace + '[' + propertyName + ']' : propertyName);
+          convertModelToFormData(val[propertyName], formData, namespace ? namespace + '[' + propertyName + ']' : propertyName);
         }
       }
     } else {
