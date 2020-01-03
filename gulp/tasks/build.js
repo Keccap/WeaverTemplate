@@ -3,8 +3,6 @@ const gulp         = require('gulp');
 const config       = require('../config');
 
 
-
-
 function build(cb) {
   gulp.series(
     'clean',
@@ -26,7 +24,6 @@ gulp.task('build', cb => {
   config.logEnv();
   build(cb);
 });
-
 
 gulp.task('build:dev', cb => {
   config.setEnv('development');

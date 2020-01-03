@@ -11,8 +11,6 @@ const rev            = require('gulp-rev-append');
 const config         = require('../config');
 
 
-
-
 function renderHtml(onlyChanged) {
   nunjucksRender.nunjucks.configure({
     watch: false,
@@ -61,11 +59,8 @@ function renderHtml(onlyChanged) {
     .pipe(gulpif(config.production, gulp.dest(config.dest.root)));
 }
 
-
 gulp.task('nunjucks', () => renderHtml());
-
 gulp.task('nunjucks:changed', () => renderHtml(true));
-
 
 gulp.task('nunjucks:watch', cb => {
   const watcher = gulp.watch([
@@ -78,7 +73,6 @@ gulp.task('nunjucks:watch', cb => {
       .replace('.twig', '.html')
       .replace('\\templates\\', '\\');
   }));
-
 
   gulp.watch([
     config.src.templates + '/**/*.{twig,svg}',

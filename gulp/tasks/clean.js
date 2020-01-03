@@ -5,8 +5,6 @@ const util   = require('gulp-util');
 const config = require('../config');
 
 
-
-
 gulp.task('clean', cb => {
   return del([ config.dest.root ])
     .then(paths => {

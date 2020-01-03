@@ -4,7 +4,6 @@ const jsonMerge      = require('gulp-merge-json');
 const config         = require('../config');
 
 
-
 gulp.task('data', () => {
   return gulp
     .src(config.src.sdata + '/*.json')
@@ -14,11 +13,8 @@ gulp.task('data', () => {
     .pipe(gulp.dest(config.src.data));
 });
 
-
-
 gulp.task('data:watch', cb => {
   gulp.watch([config.src.sdata], gulp.series('data'));
-
   cb();
 });
 

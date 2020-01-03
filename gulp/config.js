@@ -2,11 +2,10 @@ const del          = require('del');
 const path         = require('path');
 const util         = require('gulp-util');
 const errorHandler = require('./util/handle-errors');
-
+const toGetters = require('./util/toGetters');
 
 
 const srcPath = 'src';
-
 const devPath = 'build';
 const prodPath = devPath;
 
@@ -20,8 +19,6 @@ const config = {
   env       : 'development',
   production: production,
   isServer: isServer,
-
-  mergeMediaQueries: false,
 
   nodeModules: path.resolve('node_modules'),
 
@@ -86,11 +83,7 @@ toGetters(config.dest); // for dinamic dest path
 config.setEnv(production ? 'production' : 'development');
 
 
-
 module.exports = config;
-
-
-
 
 
 /**
@@ -129,23 +122,4 @@ function syncChange(pathEditFunc) {
     }
 
   };
-}
-
-
-
-function toGetters(...objects) {
-  objects.forEach(obj => {
-    for (const key in obj) {
-      const value = obj[key];
-
-      if (typeof value === 'function') {
-        Object.defineProperty(obj, key, {
-          get() {
-            return value();
-          }
-        });
-      }
-
-    }
-  });
 }

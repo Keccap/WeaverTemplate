@@ -5,11 +5,7 @@ const util           = require('gulp-util');
 const config         = require('../config');
 
 
-
-
 // in CL 'gulp server --tunnel siteName' to make project available over http://siteName.localtunnel.me
-
-
 gulp.task('server', cb => {
   server.init({
     server: {
@@ -22,7 +18,7 @@ gulp.task('server', cb => {
     files: [
       config.dest.root + '/*.html',
       config.dest.css + '/**/*.css',
-      config.dest.img + '/**/*',
+      config.dest.img + '/**/*'
       // config.dest.js + '/**/*.js', // вместо этого сервер вручную перезагружается в webpack.js (иначе browsersync будет ловить несколько событий при изменении => неск. перезагрузок)
     ],
     notify: false,
@@ -34,6 +30,5 @@ gulp.task('server', cb => {
 
   cb();
 });
-
 
 module.exports = server;

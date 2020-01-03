@@ -8,8 +8,6 @@ const config        = require('../config');
 const webpackConfig = require('../../webpack.config').createConfig;
 
 
-
-
 gulp.task('webpack', cb => {
   webpack(webpackConfig(config.env)).run((err, stats) => {
     handler(err, stats, cb);
@@ -24,7 +22,6 @@ gulp.task('webpack:watch', cb => {
 
   cb();
 });
-
 
 
 function handler(err, stats, cb) {

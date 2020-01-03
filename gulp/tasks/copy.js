@@ -3,8 +3,6 @@ const gulp         = require('gulp');
 const config       = require('../config');
 
 
-
-
 gulp.task('copy:static', () => {
   return gulp
     .src([
@@ -12,7 +10,6 @@ gulp.task('copy:static', () => {
     ])
     .pipe(gulp.dest(config.dest.root));
 });
-
 
 gulp.task('copy:img', () => {
   return gulp
@@ -22,12 +19,10 @@ gulp.task('copy:img', () => {
     .pipe(gulp.dest(config.dest.img));
 });
 
-
 gulp.task('copy', gulp.parallel(
   'copy:img',
   'copy:static'
 ));
-
 
 
 gulp.task('copyStatic:watch', cb => {
@@ -41,17 +36,14 @@ gulp.task('copyStatic:watch', cb => {
   cb();
 });
 
-
 gulp.task('copyImg:watch', cb => {
   const watcher = gulp.watch([
     config.src.img + '/**/*.{svg,webp,ico}'
   ], gulp.series('copy:img'));
 
   watcher.on('all', config.syncChange());
-
   cb();
 });
-
 
 gulp.task('copy:watch', gulp.parallel(
   'copyImg:watch',

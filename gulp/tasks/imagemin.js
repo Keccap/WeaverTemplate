@@ -9,8 +9,6 @@ const cache          = require('gulp-cache');
 const config         = require('../config');
 
 
-
-
 gulp.task('imagemin', () => {
   return gulp
     .src([
@@ -28,20 +26,14 @@ gulp.task('imagemin', () => {
     .pipe(gulp.dest(config.dest.img));
 });
 
-
-
 gulp.task('imagemin:watch', cb => {
   const watcher = gulp.watch([
     config.src.img + '/**/*.{jpg,jpeg,png,gif}'
   ], gulp.series('imagemin'));
 
   watcher.on('all', config.syncChange());
-
   cb();
 });
 
 
-
-
 gulp.task('clearcache', () => cache.clearAll());
-

@@ -2,8 +2,6 @@
 const gulp           = require('gulp');
 
 
-
-
 gulp.task('watch', cb => {
   gulp.parallel(
     'inline-svg:watch',
