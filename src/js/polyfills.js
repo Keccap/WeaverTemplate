@@ -1,7 +1,6 @@
 // JS
-import 'whatwg-fetch';
-import 'vendor/_polyfills/js/Performance.now';
 import 'vendor/_polyfills/js/requestAnimationFrame';
+// import 'whatwg-fetch';
 
 
 // DOM
