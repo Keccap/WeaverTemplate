@@ -25,9 +25,7 @@ function createConfig(env) {
     output: {
       path: path.resolve(__dirname, config.dest.js),
       filename: '[name].bundle.js',
-      publicPath: 'js/',
-      chunkFilename: 'async-chunks/[name].js',
-      sourceMapFilename: 'sourcemaps/[file].map'
+      publicPath: 'js/'
     },
     devtool: isProduction ? false : 'cheap-inline-module-source-map',
 
@@ -75,9 +73,9 @@ function createConfig(env) {
     },
 
     optimization :{
-      minimize: isProduction
+      minimize: isProduction,
 
-      /* splitChunks: {
+      splitChunks: {
         cacheGroups: {
           vendor: {
             name: 'vendors',
@@ -86,7 +84,7 @@ function createConfig(env) {
             enforce: true
           }
         }
-      } */
+      }
     },
 
     module: {

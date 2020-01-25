@@ -12,6 +12,11 @@
   }
 }
 
+@mixin true-vh($property, $value) {
+  #{$property}: #{strip-unit($value)}vh;
+  #{$property}: calc(var(--vh, 1vh) * #{strip-unit($value)});
+}
+
 @mixin round($size) {
   width: $size;
   height: $size;
@@ -293,10 +298,4 @@
 @mixin no-break-li() {
   break-inside: avoid;
   page-break-inside: avoid;
-}
-
-
-@mixin true-vh($property, $value) {
-  #{$property}: #{strip-unit($value)}vh;
-  #{$property}: calc(var(--vh, 1vh) * #{strip-unit($value)});
 }

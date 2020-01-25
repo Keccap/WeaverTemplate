@@ -20,7 +20,9 @@ function renderHtml(onlyChanged) {
   });
 
   return gulp
-    .src([config.src.templates + '/*.twig'])
+    .src([
+      config.src.templates + '/pages/**/*.twig'
+    ])
     .pipe(plumber({
       errorHandler: config.errorHandler('Nunjucks')
     }))
@@ -31,9 +33,9 @@ function renderHtml(onlyChanged) {
       const frontMatterData = file.data;
       const JSONdata = JSON.parse(fs.readFileSync(config.src.data + '/' + config.src.dataFile));
       const resultData = {};
-
       Object.assign(resultData, JSONdata, frontMatterData); // frontMatterData перезаписывает схожие поля из JSONdata
-      // добавляем переменныу окружения
+
+      // добавляем переменные окружения
       resultData.NODE_ENV = config.env;
       resultData.IS_SERVER = config.isServer;
 
@@ -64,19 +66,21 @@ gulp.task('nunjucks:changed', () => renderHtml(true));
 
 gulp.task('nunjucks:watch', cb => {
   const watcher = gulp.watch([
-    config.src.templates + '/*.twig',
+    config.src.templates + '/pages/**/*.twig',
     config.src.data
   ], gulp.series('nunjucks:changed'));
 
   watcher.on('all', config.syncChange(path => {
     return path
       .replace('.twig', '.html')
-      .replace('\\templates\\', '\\');
+      .replace('\\templates\\', '\\')
+      .replace('\\pages\\', '\\');
   }));
+
 
   gulp.watch([
     config.src.templates + '/**/*.{twig,svg}',
-    '!' +  config.src.templates + '/*.twig'
+    '!' +  config.src.templates + '/pages/**/*.twig'
   ], gulp.series('nunjucks'));
 
   cb();
