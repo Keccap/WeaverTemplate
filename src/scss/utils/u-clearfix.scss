@@ -1,3 +1,6 @@
-.u-clearfix {
+$b: '.u-clearfix';
+
+#{$b} {
   @include clearfix();
 }
+

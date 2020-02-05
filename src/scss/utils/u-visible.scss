@@ -1,4 +1,6 @@
-.u-visible {
+$b: '.u-visible';
+
+#{$b} {
   &-low-desktop {
     @include desktop-min {
       display: none !important;

@@ -1,4 +1,6 @@
-.u-hidden {
+$b: '.u-hidden';
+
+#{$b} {
   display: none !important;
 
   &-low-desktop {
