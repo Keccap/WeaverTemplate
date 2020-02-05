@@ -72,7 +72,7 @@ function createConfig(env) {
       }
     },
 
-    optimization :{
+    optimization: {
       minimize: isProduction,
 
       splitChunks: {

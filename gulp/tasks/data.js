@@ -14,7 +14,7 @@ gulp.task('data', () => {
 });
 
 gulp.task('data:watch', cb => {
-  gulp.watch([config.src.sdata], gulp.series('data'));
+  gulp.watch([config.src.sdata + '/*.json'], gulp.series('data'));
   cb();
 });
 
