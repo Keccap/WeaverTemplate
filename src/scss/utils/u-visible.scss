@@ -1,0 +1,19 @@
+.u-visible {
+  &-low-desktop {
+    @include desktop-min {
+      display: none !important;
+    }
+  }
+
+  &-tablet {
+    @include low-desktop-min {
+      display: none !important;
+    }
+  }
+
+  &-mobile {
+    @include tablet-min {
+      display: none !important;
+    }
+  }
+}

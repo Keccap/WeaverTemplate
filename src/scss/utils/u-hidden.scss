@@ -1,0 +1,29 @@
+.u-hidden {
+  display: none !important;
+
+  &-low-desktop {
+    @include low-desktop {
+      display: none !important;
+    }
+  }
+
+  &-tablet {
+    @include tablet {
+      display: none !important;
+    }
+  }
+
+  &-mobile {
+    @include mobile {
+      display: none !important;
+    }
+  }
+
+  &-input {
+    @include hidden-input();
+  }
+
+  &-visually {
+    @include visually-hidden();
+  }
+}

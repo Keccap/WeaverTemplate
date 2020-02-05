@@ -20,16 +20,6 @@ body {
   text-shadow: none;
 }
 
-::-moz-selection {
-  background: rgba($accent-base, .3);
-  text-shadow: none;
-}
-
-._g-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
 ._g-outer-width {
   margin-left: auto;
   margin-right: auto;
@@ -56,76 +46,12 @@ body {
   }
 }
 
-._g-visible-low-desktop {
-  @include desktop-min {
-    display: none !important;
-  }
-}
-
-._g-visible-tablet {
-  @include low-desktop-min {
-    display: none !important;
-  }
-}
-
-._g-visible-mobile {
-  @include tablet-min {
-    display: none !important;
-  }
-}
-
-._g-hidden-low-desktop {
-  @include low-desktop {
-    display: none !important;
-  }
-}
-
-._g-hidden-tablet {
-  @include tablet {
-    display: none !important;
-  }
-}
-
-._g-hidden-mobile {
-  @include mobile {
-    display: none !important;
-  }
-}
-
 ._g-font-alt {
   font-family: $font-alt;
 }
 
 ._g-alt-bg {
   background-color: $bg-alt;
-}
-
-._g-hidden {
-  display: none;
-}
-
-._g-hidden-input {
-  @include hidden-input();
-}
-
-._g-visually-hidden {
-  @include visually-hidden();
-}
-
-._g-clearfix {
-  @include clearfix();
-}
-
-._g-valign-inline {
-  font-size: 0;
-
-  &::after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    width: 0;
-  }
 }
 
 ._g-tab {
@@ -137,5 +63,15 @@ body {
 ._g-tab-content {
   &:not(._active) {
     display: none;
+  }
+}
+
+._g-inline-svg {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  svg {
+    @include fill-abs();
   }
 }

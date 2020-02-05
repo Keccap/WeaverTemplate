@@ -18,7 +18,6 @@ gulp.task('inline-svg', () => {
     .pipe(plumber({
       errorHandler: config.errorHandler('Inline SVG')
     }))
-    .pipe(rename({ prefix: 'svg-' }))
     .pipe(svgStore({ inlineSvg: false }))
     .pipe(through2.obj(function(file, encoding, cb) {
       const $ = file.cheerio;
@@ -37,10 +36,11 @@ gulp.task('inline-svg', () => {
 
       this.push(file);
 
-      gulp.src(path.join(__dirname, '_inline-svg.scss'))
+      gulp.src(path.join(__dirname, 'svg-template.scss'))
         .pipe(consolidate('lodash', {
           symbols: data
         }))
+        .pipe(rename('svg-generated.scss'))
         .pipe(gulp.dest(config.src.sassGen));
 
       cb();

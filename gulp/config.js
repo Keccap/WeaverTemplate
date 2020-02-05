@@ -25,7 +25,7 @@ const config = {
   src: {
     root         : srcPath,
     sass         : srcPath + '/scss',
-    sassGen      : srcPath + '/scss/generated',
+    sassGen      : srcPath + '/scss/base/_generated',
     css          : srcPath + '/css',
     js           : srcPath + '/js',
     img          : srcPath + '/img',

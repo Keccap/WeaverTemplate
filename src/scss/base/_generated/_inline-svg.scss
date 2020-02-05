@@ -1,0 +1,9 @@
+.svg {
+  &-behance {
+    @include aspect-ratio(16, 16)
+  }
+  &-rotate_device {
+    @include aspect-ratio(45, 45)
+  }
+  
+}

@@ -1,4 +1,0 @@
-<% _.each(symbols, function(symbol) { %>.<%= symbol.name %> {
-  @include aspect-ratio(<%= symbol.width %>, <%= symbol.height %>)
-}
-<% }); %>
