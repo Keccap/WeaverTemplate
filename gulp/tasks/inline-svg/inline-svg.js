@@ -40,7 +40,7 @@ gulp.task('inline-svg', () => {
         .pipe(consolidate('lodash', {
           symbols: data
         }))
-        .pipe(rename('svg-generated.scss'))
+        .pipe(rename('_inline-svg.scss'))
         .pipe(gulp.dest(config.src.sassGen));
 
       cb();
