@@ -1,0 +1,10 @@
+$b: '.u-bg';
+
+#{$b} {
+  &-cover {
+    @include bg-cover();
+  }
+  &-decor {
+    @include bg-decor();
+  }
+}

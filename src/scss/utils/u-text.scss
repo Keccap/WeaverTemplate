@@ -1,0 +1,38 @@
+$b: '.u-text';
+
+#{$b} {
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-uppercase {
+    text-transform: uppercase;
+  }
+  &-lowercase {
+    text-transform: lowercase;
+  }
+  &-nowrap {
+    white-space: nowrap;
+  }
+  &-truncate {
+    @include truncate-text();
+  }
+  &-editable {
+    @include editable-text();
+  }
+  &-color {
+    &-inherit {
+      color: inherit;
+    }
+  }
+  &-decoration {
+    &-none {
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+$b: '.u-abs';
+
+#{$b} {
+  &-fill {
+    @include fill-abs();
+  }
+  &-center {
+    @include center-abs();
+  }
+}
