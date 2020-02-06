@@ -8,7 +8,7 @@ export default {
   },
   calculate() {
     const vh = document.documentElement.clientHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.documentElement.style.setProperty('--vh', `${ vh }px`);
   },
   handleResize() {
     dispatcher.subscribe(({ type }) => {
@@ -18,5 +18,5 @@ export default {
         this.calculate();
       }
     });
-  }
+  },
 };

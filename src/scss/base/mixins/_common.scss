@@ -17,9 +17,13 @@
   #{$property}: calc(var(--vh, 1vh) * #{strip-unit($value)});
 }
 
-@mixin round($size) {
+@mixin size($size) {
   width: $size;
   height: $size;
+}
+
+@mixin round($size) {
+  @include size($size);
   border-radius: 50%;
 }
 

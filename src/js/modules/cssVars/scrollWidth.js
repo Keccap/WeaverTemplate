@@ -6,6 +6,6 @@ export default {
   },
   calculate() {
     const scrollWidth = getScrollWidth();
-    document.documentElement.style.setProperty('--scroll-width', `${scrollWidth}px`);
-  }
+    document.documentElement.style.setProperty('--scroll-width', `${ scrollWidth }px`);
+  },
 };

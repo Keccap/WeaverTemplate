@@ -4,16 +4,16 @@ import throttle from '../utils/throttle';
 export default {
   size: {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
   },
   init() {
     const self = this;
 
-    window.addEventListener('resize', throttle(300, false, function () {
+    window.addEventListener('resize', throttle(300, false, () => {
       self.handleResize();
     }), false);
 
-    window.addEventListener('orientationchange', throttle(300, false, function () {
+    window.addEventListener('orientationchange', throttle(300, false, () => {
       self.handleResize();
     }), false);
   },
@@ -26,29 +26,29 @@ export default {
 
     if (widthChanged) {
       dispatcher.dispatch({
-        type: 'resize:width'
+        type: 'resize:width',
       });
     }
 
     if (heightChanged) {
       dispatcher.dispatch({
-        type: 'resize:height'
+        type: 'resize:height',
       });
     }
 
     if (widthChanged && heightChanged) {
       dispatcher.dispatch({
-        type: 'resize:both'
+        type: 'resize:both',
       });
     }
 
     dispatcher.dispatch({
-      type: 'resize:default'
+      type: 'resize:default',
     });
 
     this.size = {
       width,
-      height
+      height,
     };
-  }
+  },
 };

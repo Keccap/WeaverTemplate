@@ -5,5 +5,5 @@ export default {
   init() {
     vh.init();
     scrollWidth.init();
-  }
+  },
 };
