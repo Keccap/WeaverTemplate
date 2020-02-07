@@ -10,4 +10,4 @@ export default function swiperToggle(initialized, element, options) {
       element.swiper.destroy();
     }
   }
-};
+}

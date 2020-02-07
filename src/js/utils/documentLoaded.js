@@ -3,7 +3,6 @@
  * @param  {Function} fn Method to run
  */
 export default function documentLoaded(fn) {
-
   // Sanity check
   if (typeof fn !== 'function') return;
 
@@ -14,5 +13,4 @@ export default function documentLoaded(fn) {
 
   // Otherwise, wait until document is loaded
   window.addEventListener('load', fn, false);
-
 }

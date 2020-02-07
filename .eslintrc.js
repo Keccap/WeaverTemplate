@@ -81,12 +81,6 @@ module.exports = {
         message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
       },
     ],
-    'no-underscore-dangle': ['error', {
-      allow: [],
-      allowAfterThis: false,
-      allowAfterSuper: false,
-      enforceInMethodNames: true,
-    }],
     'no-unneeded-ternary': ['error', { defaultAssignment: false }],
     'no-var': 'error',
     'object-shorthand': ['error', 'always', { 'avoidQuotes': true }],

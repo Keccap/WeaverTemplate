@@ -4,7 +4,7 @@ export default function getScrollWidth() {
     overflowY: 'scroll',
     height: '50px',
     width: '50px',
-    visibility: 'hidden'
+    visibility: 'hidden',
   });
   document.body.append(element);
   const scrollWidth = element.offsetWidth - element.clientWidth;

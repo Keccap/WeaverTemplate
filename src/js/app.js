@@ -10,7 +10,6 @@ documentReady(() => {
   resize.init();
 });
 
-
 documentLoaded(() => {
 
 });

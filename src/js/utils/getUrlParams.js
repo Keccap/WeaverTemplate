@@ -7,30 +7,30 @@ export default function getUrlParams(url) {
 
   // if query string exists
   if (queryString) {
-
     // stuff after # is not part of query string, so get rid of it
     queryString = queryString.split('#')[0];
 
     // split our query string into its component parts
-    let arr = queryString.split('&');
+    const arr = queryString.split('&');
 
+    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < arr.length; i++) {
       // separate the keys and the values
-      let a = arr[i].split('=');
+      const a = arr[i].split('=');
 
       // in case params look like: list[]=thing1&list[]=thing2
-      let paramNum = undefined;
-      let paramName = a[0].replace(/\[\d*]/, function(v) {
+      let paramNum;
+      const paramName = a[0].replace(/\[\d*]/, (v) => {
         paramNum = v.slice(1, -1);
         return '';
       });
 
       // set parameter value (use 'true' if empty)
-      let paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+      const paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
 
       // (optional) keep case consistent
-      /*paramName = paramName.toLowerCase();
-      paramValue = paramValue.toLowerCase();*/
+      /* paramName = paramName.toLowerCase();
+      paramValue = paramValue.toLowerCase(); */
 
       // if parameter name already exists
       if (obj[paramName]) {
@@ -42,19 +42,17 @@ export default function getUrlParams(url) {
         if (typeof paramNum === 'undefined') {
           // put the value on the end of the array
           obj[paramName].push(paramValue);
-        }
-        // if array index number specified...
-        else {
+        } else {
+          // if array index number specified...
           // put the value at that index number
           obj[paramName][paramNum] = paramValue;
         }
-      }
-      // if param name doesn't exist yet, set it
-      else {
+      } else {
+        // if param name doesn't exist yet, set it
         obj[paramName] = paramValue;
       }
     }
   }
 
   return obj;
-};
+}

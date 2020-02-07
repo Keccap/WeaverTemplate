@@ -18,8 +18,10 @@ export default {
     }), false);
   },
   handleResize() {
+    /* eslint-disable prefer-destructuring */
     const width = window.innerWidth;
     const height = window.innerHeight;
+    /* eslint-enable prefer-destructuring */
 
     const widthChanged = width !== this.size.width;
     const heightChanged = height !== this.size.height;

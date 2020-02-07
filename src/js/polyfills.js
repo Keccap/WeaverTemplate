@@ -2,7 +2,6 @@
 import 'vendor/_polyfills/js/requestAnimationFrame';
 // import 'whatwg-fetch';
 
-
 // DOM
 import 'vendor/_polyfills/js/DOM/Element.matches';
 import 'vendor/_polyfills/js/DOM/Element.closest'; // зависимость - Element.matches
@@ -15,5 +14,3 @@ import 'vendor/_polyfills/js/DOM/ParentNode.prepend';
 
 // customElements
 // import 'vendor/_polyfills/customElements/document-register-element.max';
-
-

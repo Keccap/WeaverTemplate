@@ -1,7 +1,8 @@
+/* eslint-disable no-param-reassign */
 export default class EventEmitter {
   constructor() {
     this._handlers = {
-      all: []
+      all: [],
     };
     this._frozen = false;
   }
@@ -16,16 +17,16 @@ export default class EventEmitter {
       channel = event.type.split(':')[0];
     }
 
-    if (!this._handlers.hasOwnProperty(channel)) {
+    if (!Object.prototype.hasOwnProperty.call(this._handlers, channel)) {
       this._handlers[channel] = [];
     }
 
     this._frozen = true;
 
-    this._handlers[channel].forEach(handler => handler(event));
+    this._handlers[channel].forEach((handler) => handler(event));
 
     if (channel !== 'all') {
-      this._handlers['all'].forEach(handler => handler(event));
+      this._handlers.all.forEach((handler) => handler(event));
     }
 
     this._frozen = false;
@@ -46,7 +47,7 @@ export default class EventEmitter {
       return;
     }
 
-    if (!this._handlers.hasOwnProperty(channel)) {
+    if (!Object.prototype.hasOwnProperty.call(this._handlers, channel)) {
       this._handlers[channel] = [];
     }
 
@@ -72,7 +73,7 @@ export default class EventEmitter {
     }
 
     if (!this._handlers[channel]) {
-      console.error('channel ' + channel + ' does not exist');
+      console.error(`channel ${ channel } does not exist`);
       return;
     }
 
