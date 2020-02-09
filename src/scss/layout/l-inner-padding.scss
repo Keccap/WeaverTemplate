@@ -1,0 +1,21 @@
+$b: '.l-inner-padding';
+
+#{$b} {
+  padding-left: $inner-pd;
+  padding-right: $inner-pd;
+
+  @include low-desktop-only {
+    padding-left: $inner-pd-ld;
+    padding-right: $inner-pd-ld;
+  }
+
+  @include tablet-only {
+    padding-left: $inner-pd-tab;
+    padding-right: $inner-pd-tab;
+  }
+
+  @include mobile {
+    padding-left: $inner-pd-mob;
+    padding-right: $inner-pd-mob;
+  }
+}

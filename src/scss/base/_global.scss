@@ -20,32 +20,6 @@ body {
   text-shadow: none;
 }
 
-._g-outer-width {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $outer-w;
-}
-
-._g-inner-padding {
-  padding-left: $inner-pd;
-  padding-right: $inner-pd;
-
-  @include low-desktop-only {
-    padding-left: $inner-pd-ld;
-    padding-right: $inner-pd-ld;
-  }
-
-  @include tablet-only {
-    padding-left: $inner-pd-tab;
-    padding-right: $inner-pd-tab;
-  }
-
-  @include mobile {
-    padding-left: $inner-pd-mob;
-    padding-right: $inner-pd-mob;
-  }
-}
-
 ._g-font-alt {
   font-family: $font-alt;
 }
