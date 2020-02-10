@@ -92,6 +92,13 @@
 }
 
 
+@mixin bg-contain() {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
 @mixin responsive-img() {
   display: block;
   width: 100%;

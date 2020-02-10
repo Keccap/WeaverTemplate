@@ -4,12 +4,12 @@ $b: '.u-bg';
   &-cover {
     @include bg-cover();
   }
+
   &-decor {
     @include bg-decor();
   }
+
   &-contain {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    @include bg-contain();
   }
 }
