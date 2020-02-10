@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "core-js": "^3.2.1",
+    "intersection-observer": "^0.7.0",
     "jquery": "^3.4.1",
     "lozad": "^1.14.0",
     "whatwg-fetch": "^3.0.0"
