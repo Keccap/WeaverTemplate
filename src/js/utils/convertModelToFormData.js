@@ -13,13 +13,15 @@ export const convertModelToFormData = (val, formData = new FormData(), namespace
     if (val instanceof Date) {
       formData.append(namespace, val.toISOString());
     } else if (val instanceof Array) {
-      for (let element of val) {
-        convertModelToFormData(element, formData, namespace + '[]');
+      // eslint-disable-next-line no-restricted-syntax
+      for (const element of val) {
+        convertModelToFormData(element, formData, `${ namespace }[]`);
       }
     } else if (typeof val === 'object' && !(val instanceof File)) {
-      for (let propertyName in val) {
-        if (val.hasOwnProperty(propertyName)) {
-          convertModelToFormData(val[propertyName], formData, namespace ? namespace + '[' + propertyName + ']' : propertyName);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const propertyName in val) {
+        if (Object.prototype.hasOwnProperty.call(val, propertyName)) {
+          convertModelToFormData(val[propertyName], formData, namespace ? `${ namespace }[${ propertyName }]` : propertyName);
         }
       }
     } else {

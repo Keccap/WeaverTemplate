@@ -38,3 +38,20 @@
 <div style="width: 70px;">
     {{ mx.svg('behance') }}
 </div>
+
+
+{# LAZYLOAD #}
+{# img #}
+<img class="js-lazy-picture" src="{{ hp.pixel }}" data-src="img/features/1.jpg" alt="">
+
+{# video #}
+<video class="js-lazy-video" muted autoplay playsinline loop>
+    <source data-src="videos/features/1.mp4" type="video/mp4">
+</video>
+
+{# bg #}
+<section class="section">
+    <div class="js-lazy-bg section__bg _g-hidden-tablet" data-background-image="img/hero-bg.jpg"></div>
+    <div class="js-lazy-bg section__bg _g-visible-tablet _g-hidden-mobile" data-background-image="img/hero-bg--tablet.jpg"></div>
+    <div class="js-lazy-bg section__bg _g-visible-mobile" data-background-image="img/hero-bg--mobile.jpg"></div>
+</section>
