@@ -1,51 +1,50 @@
 const path = require('path');
 const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./gulp/config');
 
-
 function createConfig(env) {
-
   if (env === undefined) {
+    // eslint-disable-next-line no-param-reassign
     env = process.env.NODE_ENV.trim();
   }
 
   const isProduction = env === 'production';
-
 
   const webpackConfig = {
     mode: isProduction ? 'production' : 'development',
 
     context: path.resolve(__dirname, config.src.js),
     entry: {
-      app: ['./polyfills', './app']
+      app: ['./polyfills', './app'],
     },
 
     output: {
       path: path.resolve(__dirname, config.dest.js),
       filename: '[name].bundle.js',
-      publicPath: 'js/'
+      publicPath: 'js/',
     },
     devtool: isProduction ? false : 'cheap-inline-module-source-map',
 
     plugins: [
+      // eslint-disable-next-line no-useless-escape
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),
 
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify(env)
+          NODE_ENV: JSON.stringify(env),
         },
-        IS_SERVER: config.isServer
+        IS_SERVER: config.isServer,
       }),
 
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',
-        'window.jQuery': 'jquery'
+        'window.jQuery': 'jquery',
       }),
 
-      new VueLoaderPlugin()
+      new VueLoaderPlugin(),
 
       // new BundleAnalyzerPlugin({
       //   analyzerMode: 'static',
@@ -68,8 +67,8 @@ function createConfig(env) {
         TimelineMax: path.resolve('node_modules', 'gsap/src/uncompressed/TimelineMax.js'),
         ScrollMagic: path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
         'animation.gsap': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'),
-        'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js')
-      }
+        'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
+      },
     },
 
     optimization: {
@@ -81,35 +80,36 @@ function createConfig(env) {
             name: 'vendors',
             test: /node_modules|vendor/,
             chunks: 'all',
-            enforce: true
-          }
-        }
-      }
+            enforce: true,
+          },
+        },
+      },
     },
 
     module: {
       rules: [
         {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          loader: 'vue-loader',
         },
         {
           test: /\.js$/,
           loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
           exclude: [
             path.resolve(__dirname, 'node_modules'),
-          ]
-        }
-      ]
-    }
+          ],
+        },
+      ],
+    },
   };
 
   if (isProduction) {
-    webpackConfig.plugins.push(
-      new webpack.LoaderOptionsPlugin({
-        minimize: true
-      })
-    );
+    webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({
+      minimize: true,
+    }));
   }
 
   return webpackConfig;
