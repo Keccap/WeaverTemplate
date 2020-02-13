@@ -4,6 +4,7 @@
 {% include 'modules/head.twig' %}
 <body>
     <div class="l-wrapper{% if pageClass %} {{ pageClass }}{% endif %}">
+        {% include 'modules/site-preloader.twig' %}
         {% include 'modules/header.twig' %}
         <main class="l-main">
             {% block content %}{% endblock %}

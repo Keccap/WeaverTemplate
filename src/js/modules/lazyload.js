@@ -1,7 +1,6 @@
 import 'core-js/features/object/assign';
 import 'intersection-observer'; // polyfill
 import lozad from 'lozad';
-import 'core-js/features/string/starts-with';
 
 export default {
   init() {
