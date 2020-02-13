@@ -4,6 +4,11 @@ $b: '.u-flex';
   &-center {
     @include center-flex();
   }
+  &-justify {
+    &-center {
+      justify-content: center;
+    }
+  }
   &-none {
     flex: 0 0 auto;
   }
