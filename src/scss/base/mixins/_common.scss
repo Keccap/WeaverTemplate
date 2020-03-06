@@ -99,12 +99,17 @@
 }
 
 
-@mixin responsive-img() {
+@mixin img-responsive() {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin img-full() {
   display: block;
   width: 100%;
   height: auto;
 }
-
 
 @mixin responsive-svg() {
   display: block;

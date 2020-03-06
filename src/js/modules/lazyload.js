@@ -8,7 +8,7 @@ export default {
       rootMargin: `${ document.documentElement.clientHeight }px 0px`,
     };
 
-    const pictureObserver = lozad('.js-lazy-picture', options);
+    const pictureObserver = lozad('.js-lazy-img', options);
     const backgroundObserver = lozad('.js-lazy-bg', options);
 
     pictureObserver.observe();
