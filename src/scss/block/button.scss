@@ -27,7 +27,8 @@ $b: '.button';
     background-color: lighten($accent-base, 13%);
   }
 
-  &:disabled, &._disabled {
+  &:disabled,
+  &._disabled {
     opacity: .6;
     pointer-events: none;
   }
