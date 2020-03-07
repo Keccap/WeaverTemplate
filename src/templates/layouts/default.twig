@@ -1,15 +1,25 @@
 {% import "helpers/_helpers.twig" as hp %} {% import "helpers/_mixins.twig" as mx %}
 <!DOCTYPE html>
-<html lang="ru" class="🕷">
+<html lang="ru" class="🕷{% if pageClass %} {{ pageClass }}{% endif %}">
 {% include 'modules/head.twig' %}
 <body>
-    <div class="l-wrapper{% if pageClass %} {{ pageClass }}{% endif %}">
+    <div class="l-page">
+
         {% include 'modules/site-preloader.twig' %}
-        {% include 'modules/header.twig' %}
-        <main class="l-main">
-            {% block content %}{% endblock %}
-        </main>
-        {% include 'modules/footer.twig' %}
+
+        <div class="l-page-layout">
+            <div class="l-header">
+                {% include 'modules/header.twig' %}
+            </div>
+
+            <main class="l-main">
+                {% block content %}{% endblock %}
+            </main>
+
+            <div class="l-footer">
+                {% include 'modules/footer.twig' %}
+            </div>
+        </div>
     </div>
 
     <script src="js/vendors.bundle.js?rev=hash"></script>
