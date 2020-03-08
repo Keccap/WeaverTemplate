@@ -40,12 +40,12 @@
             text-shadow: none;
         }
         .icon-logo { width: 3.66em; height: 1em; fill: #221F20; }
-        .icon-desktop { width: 1.41em; height: 1em; fill: #000; }
-        .icon-link { width: 2em; height: 1em; fill: #000; }
-        .icon-mobile { width: 0.59em; height: 1em; fill: #000; }
-        .icon-tablet { width: 0.79em; height: 1em; fill: #000; }
-        .icon-watch { width: 0.67em; height: 1em; fill: #000; }
-        .icon-wide { width: 1.1em; height: 1em; fill: #000; }
+        .icon-desktop { width: 1.41em; height: 1em; fill: #111; }
+        .icon-link { width: 2em; height: 1em; fill: #111; }
+        .icon-mobile { width: 0.59em; height: 1em; fill: #111; }
+        .icon-tablet { width: 0.79em; height: 1em; fill: #111; }
+        .icon-watch { width: 0.67em; height: 1em; fill: #111; }
+        .icon-wide { width: 1.1em; height: 1em; fill: #111; }
         section{
             width: 300px;
             padding: 30px 0;
@@ -60,7 +60,7 @@
         }
         iframe{
             opacity: 1;
-            box-shadow: 0 0 8px rgba(#000,.5);
+            box-shadow: 0 0 8px rgba(#111,.5);
             margin: 0 auto;
             transform-origin: 0 0;
             box-shadow: 0 0 20px rgba(0,0,0,.3);
@@ -73,7 +73,7 @@
             padding: 0;
         }
         .preview footer a{
-            color: #000;
+            color: #111;
         }
         .pagelist{
             list-style-type: none;
@@ -90,7 +90,7 @@
             display: inline-block;
             box-shadow: none;
             padding: 5px 20px;
-            border: 1px solid #000;
+            border: 1px solid #111;
             font-size: 13px;
             margin-top: 10px;
             text-transform: uppercase;
@@ -98,11 +98,12 @@
             font-size: 24px;
         }
         .pagelist__title{
-            color: #000;
+            color: #111;
             text-decoration: none;
-            padding: 5px 8px 5px 3px;
+            padding: 5px 8px 5px 5px;
             position: relative;
-            left: -3px;
+            /*left: -3px;*/
+            border-radius: 4px;
         }
         .is-notready .pagelist__title{
             color: #aaaaaa;
@@ -128,7 +129,7 @@
             border-top: 1px solid currentColor;
         }
         .pagelist__title.is-active{
-            background: #000;
+            background: #111;
             color: #fff;
         }
         .pagelist__url{
@@ -141,6 +142,8 @@
             position: relative;
             vertical-align: middle;
             margin-left: 4px;
+            cursor: pointer;
+            user-select: none;
         }
         .is-notready .pagelist__url{
             background: #eeeeee;
@@ -161,6 +164,8 @@
             height: 4px;
             background: #eeeeee;
             margin-top: 5px;
+            border-radius: 2px;
+            overflow: hidden;
         }
         .pagelist__progress i{
             height: 4px;
@@ -215,7 +220,7 @@
             font-size: 24px;
             height: 90px;
             line-height: 90px;
-            color: #050a0f;
+            color: #111;
             display: inline-block;
             vertical-align: top;
             margin-left: 40px;
@@ -237,9 +242,10 @@
             height: 46px;
             width: 112px;
             border: 1px solid #eee;
+            border-radius: 4px;
             background: #fff;
             font-size: 14px;
-            color: #000;
+            color: #111;
             text-align: left;
             font-family: 'Politica', serif;
             padding-left: 38px;
@@ -262,9 +268,9 @@
         .types .icon-desktop{left: 5px;}
         .types .icon-wide{left: 8px;}
         .types button.is-active{
-            border-color: #000;
+            border-color: #111;
             color: #fff;
-            background: #000;
+            background: #111;
         }
         .types button.is-active .icon{
             color: #fff;
@@ -423,8 +429,8 @@
         <li <% if(!page.ready) { %> class="is-notready" <% } %>>
         <% if(!page.ready) page.ready = 0; %>
 
-        <a title="Готовность: <%= page.ready %>%" class="pagelist__title <% if(i==1){ %> is-active <% } %>" target="_blank" href="<%= page.file %>"><span><%= i %>.</span><em><%= page.name || _.split(page.file, '.', 1) %></em></a>
-        <a href="<%= page.file %>" title="Открыть страницу" class="pagelist__url">
+        <a title="Readiness: <%= page.ready %>%" class="pagelist__title <% if(i==1){ %> is-active <% } %>" target="_blank" href="<%= page.file %>"><span><%= i %>.</span><em><%= page.name || _.split(page.file, '.', 1) %></em></a>
+        <a href="<%= page.file %>" title="Open page" class="pagelist__url">
             <svg class="icon icon-link"><use xlink:href="#icon-link"></use></svg>
         </a>
 
