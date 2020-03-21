@@ -21,27 +21,19 @@ body {
   text-shadow: none;
 }
 
-._g-font-alt {
-  font-family: $font-alt;
-}
-
-._g-alt-bg {
-  background-color: $bg-alt;
-}
-
-._g-tab {
+.g-tab {
   &._active {
     cursor: default;
   }
 }
 
-._g-tab-content {
+.g-tab-content {
   &:not(._active) {
     display: none;
   }
 }
 
-._g-inline-svg {
+.g-inline-svg {
   position: relative;
   display: block;
   width: 100%;

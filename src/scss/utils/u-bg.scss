@@ -12,4 +12,16 @@ $b: '.u-bg';
   &-contain {
     @include bg-contain();
   }
+
+  &-main {
+    background-color: $bg-main;
+  }
+
+  &-alt {
+    background-color: $bg-alt;
+  }
+
+  &-accent {
+    background-color: $accent-base;
+  }
 }

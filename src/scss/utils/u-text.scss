@@ -25,11 +25,6 @@ $b: '.u-text';
   &-editable {
     @include editable-text();
   }
-  &-color {
-    &-inherit {
-      color: inherit;
-    }
-  }
   &-decoration {
     &-none {
       text-decoration: none;
