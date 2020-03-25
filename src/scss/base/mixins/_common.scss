@@ -315,3 +315,13 @@
   break-inside: avoid;
   page-break-inside: avoid;
 }
+
+
+@mixin fix-flex-minh() {
+  &::after {
+    content: '';
+    display: block;
+    width: 0%;
+    min-height: inherit;
+  }
+}
