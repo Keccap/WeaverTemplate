@@ -26,12 +26,12 @@ $bg-alt: #f0f0f0;
 $bg-footer: #ccc;
 
 // Fonts
-$font-family-main: 'Arial';
-$font-family-alt: 'Meta';
+$font-base: 'Arial';
+$font-alt: 'Meta';
 $font-size: 16px;
 $line-height: 1.33;
-$font-base: $font-family-main, Arial, Helvetica, sans-serif;
-$font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
+$font-family-base: $font-base, Arial, Helvetica, sans-serif;
+$font-family-alt: $font-alt, Arial, Helvetica, sans-serif;
 
 // Transition
 $g-transition-duration: .25s;
