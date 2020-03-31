@@ -1,0 +1,11 @@
+$b: '.u-font';
+
+#{$b} {
+  &-base {
+    font-family: $font-family-base;
+  }
+
+  &-alt {
+    font-family: $font-family-alt
+  }
+}
