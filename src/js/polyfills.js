@@ -1,4 +1,7 @@
 // JS
+import 'core-js/features/promise';
+import 'core-js/features/array/find';
+import 'core-js/features/string/starts-with';
 import 'vendor/_polyfills/js/requestAnimationFrame';
 // import 'whatwg-fetch';
 
@@ -11,6 +14,10 @@ import 'vendor/_polyfills/js/DOM/Node.before';
 import 'vendor/_polyfills/js/DOM/Node.replaceWith';
 import 'vendor/_polyfills/js/DOM/ParentNode.append';
 import 'vendor/_polyfills/js/DOM/ParentNode.prepend';
+
+if (!SVGElement.prototype.contains) {
+  SVGElement.prototype.contains = HTMLDivElement.prototype.contains;
+}
 
 // customElements
 // import 'vendor/_polyfills/customElements/document-register-element.max';
