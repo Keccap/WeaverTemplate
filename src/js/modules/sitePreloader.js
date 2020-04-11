@@ -1,6 +1,7 @@
 import dispatcher from './dispatcher';
+import documentReady from '../utils/documentReady';
 
-export default {
+const preloader = {
   el: null,
   images: [],
   backgroundEls: [],
@@ -65,3 +66,9 @@ export default {
     }
   },
 };
+
+documentReady(() => {
+  preloader.init();
+});
+
+export default preloader;
