@@ -1,23 +1,19 @@
-._g-font-alt {
-  font-family: $font-alt;
-}
-
-._g-h1,
-._g-h2,
-._g-h3,
-._g-h4,
-._g-h5,
-._g-h6 {
+.g-h1,
+.g-h2,
+.g-h3,
+.g-h4,
+.g-h5,
+.g-h6 {
   font-weight: bold;
 }
 
-//._g-text-md {}
+//.g-text-md {}
 //
-//._g-text-sm {}
+//.g-text-sm {}
 //
-//._g-text-xs {}
+//.g-text-xs {}
 
-._g-editable-content {
+.g-editable-content {
   @include editable-text();
 
   h3 {
