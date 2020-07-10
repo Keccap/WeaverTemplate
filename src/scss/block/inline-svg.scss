@@ -1,0 +1,43 @@
+$b: '.inline-svg';
+
+#{$b} {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  @at-root {
+    span#{&} {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &[data-dir=up] svg {
+    transform: rotate(0);
+  }
+
+  &[data-dir=right] svg {
+    transform: rotate(90deg);
+  }
+
+  &[data-dir=down] svg {
+    transform: rotate(180deg);
+  }
+
+  &[data-dir=left] svg {
+    transform: rotate(270deg);
+  }
+
+  &[data-flip=horizontal] svg {
+    transform: scale(-1) rotateX(180deg);
+  }
+
+  &[data-flip=vertical] svg {
+    transform: scale(-1) rotateY(180deg);
+  }
+
+  svg {
+    @include fill-abs();
+    transform-origin: 50% 50%;
+  }
+}
