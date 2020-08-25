@@ -34,5 +34,4 @@ bower_components
 build
 
 _materials
-src/scss/base/_generated
 src/data/_result

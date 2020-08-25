@@ -6,7 +6,6 @@ const config       = require('../config');
 function build(cb) {
   gulp.series(
     'clean',
-    'inline-svg',
     'copy',
     gulp.parallel(
       'sass',

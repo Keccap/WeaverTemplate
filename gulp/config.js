@@ -32,7 +32,6 @@ const config = {
     svg          : srcPath + '/img/svg',
     fonts        : srcPath + '/fonts',
     templates    : srcPath + '/templates',
-    inlineSvg    : srcPath + '/templates/inline-svg',
     sdata        : srcPath + '/data',
     data         : srcPath + '/data/_result',
     dataFile     : 'data.json',
