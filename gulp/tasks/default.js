@@ -1,10 +1,10 @@
 'use strict';
-const gulp         = require('gulp');
+const gulp = require('gulp');
 
-gulp.task('default', function(cb) {
+gulp.task('default', (cb) => {
   gulp.series(
     'build:dev',
     'server',
-    'watch'
+    'watch',
   )(cb);
 });

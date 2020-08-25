@@ -1,9 +1,8 @@
-const del          = require('del');
-const path         = require('path');
-const util         = require('gulp-util');
+const del = require('del');
+const path = require('path');
+const util = require('gulp-util');
 const errorHandler = require('./util/handle-errors');
 const toGetters = require('./util/toGetters');
-
 
 const srcPath = 'src';
 const devPath = 'build';
@@ -14,43 +13,42 @@ let destPath = null;
 const production = util.env.production || util.env.prod || false;
 const isServer = !!util.env.server;
 
-
 const config = {
-  env       : 'development',
-  production: production,
-  isServer: isServer,
+  env: 'development',
+  production,
+  isServer,
 
   nodeModules: path.resolve('node_modules'),
 
   src: {
-    root         : srcPath,
-    sass         : srcPath + '/scss',
-    sassGen      : srcPath + '/scss/base/_generated',
-    css          : srcPath + '/css',
-    js           : srcPath + '/js',
-    img          : srcPath + '/img',
-    svg          : srcPath + '/img/svg',
-    fonts        : srcPath + '/fonts',
-    templates    : srcPath + '/templates',
-    sdata        : srcPath + '/data',
-    data         : srcPath + '/data/_result',
-    dataFile     : 'data.json',
-    pagelist     : srcPath + '/pagelist.yaml',
-    vendor       : srcPath + '/vendor',
-    static       : srcPath + '/static'
+    root: srcPath,
+    sass: `${ srcPath }/scss`,
+    sassGen: `${ srcPath }/scss/base/_generated`,
+    css: `${ srcPath }/css`,
+    js: `${ srcPath }/js`,
+    img: `${ srcPath }/img`,
+    svg: `${ srcPath }/img/svg`,
+    fonts: `${ srcPath }/fonts`,
+    templates: `${ srcPath }/templates`,
+    sdata: `${ srcPath }/data`,
+    data: `${ srcPath }/data/_result`,
+    dataFile: 'data.json',
+    pagelist: `${ srcPath }/pagelist.yaml`,
+    vendor: `${ srcPath }/vendor`,
+    static: `${ srcPath }/static`,
   },
 
   dest: {
-    root    : () => destPath,
-    html    : () => destPath,
-    css     : () => destPath + '/css',
-    js      : () => destPath + '/js',
-    img     : () => destPath + '/img',
-    fonts   : () => destPath + '/fonts'
+    root: () => destPath,
+    html: () => destPath,
+    css: () => `${ destPath }/css`,
+    js: () => `${ destPath }/js`,
+    img: () => `${ destPath }/img`,
+    fonts: () => `${ destPath }/fonts`,
   },
 
   server: {
-    online: true
+    online: true,
   },
 
   setEnv(env) {
@@ -69,21 +67,19 @@ const config = {
   logEnv() {
     util.log(
       'Environment:',
-      util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
+      util.colors.white.bgRed(` ${ process.env.NODE_ENV } `),
     );
   },
 
   syncChange,
-  errorHandler
+  errorHandler,
 };
 
 toGetters(config.dest); // for dinamic dest path
 
 config.setEnv(production ? 'production' : 'development');
 
-
 module.exports = config;
-
 
 /**
  * Возвращает функцию, которая синхронизирует удаленные файлы в src директории с файлами в dest директории
@@ -93,7 +89,6 @@ module.exports = config;
  */
 function syncChange(pathEditFunc) {
   return function (event, filePath) {
-
     /* если файл был удален или добавлен */
     if (event === 'unlink' || event === 'add') {
       const srcPath = path.relative(path.resolve(config.src.root), filePath);
@@ -110,15 +105,14 @@ function syncChange(pathEditFunc) {
       // если файл был удален, удалить его в dest директории и вывести инф. в консоль
       if (event === 'unlink') {
         del(destPath).then(() => {
-          util.log(util.colors.red('Deleted: ' + pathForLog));
+          util.log(util.colors.red(`Deleted: ${ pathForLog }`));
         });
       }
 
       // если файл был добавлен вывести инф. в консоль
       if (event === 'add') {
-        util.log(util.colors.green('Added: ' + pathForLog));
+        util.log(util.colors.green(`Added: ${ pathForLog }`));
       }
     }
-
   };
 }

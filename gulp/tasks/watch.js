@@ -1,8 +1,7 @@
 'use strict';
-const gulp           = require('gulp');
+const gulp = require('gulp');
 
-
-gulp.task('watch', cb => {
+gulp.task('watch', (cb) => {
   gulp.parallel(
     'sass:watch',
     'data:watch',
@@ -10,6 +9,6 @@ gulp.task('watch', cb => {
     'webpack:watch',
     'imagemin:watch',
     'copy:watch',
-    'pagelist:watch'
+    'pagelist:watch',
   )(cb);
 });

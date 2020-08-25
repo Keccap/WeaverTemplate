@@ -1,28 +1,26 @@
 'use strict';
-const gulp          = require('gulp');
-const webpack       = require('webpack');
-const server        = require('./server');
-const gutil         = require('gulp-util');
-const notify        = require('gulp-notify');
-const config        = require('../config');
+const gulp = require('gulp');
+const webpack = require('webpack');
+const server = require('./server');
+const gutil = require('gulp-util');
+const notify = require('gulp-notify');
+const config = require('../config');
 const webpackConfig = require('../../webpack.config').createConfig;
 
-
-gulp.task('webpack', cb => {
+gulp.task('webpack', (cb) => {
   webpack(webpackConfig(config.env)).run((err, stats) => {
     handler(err, stats, cb);
   });
 });
 
-gulp.task('webpack:watch', cb => {
+gulp.task('webpack:watch', (cb) => {
   webpack(webpackConfig(config.env)).watch({
     aggregateTimeout: 100,
-    poll: false
+    poll: false,
   }, handler);
 
   cb();
 });
-
 
 function handler(err, stats, cb) {
   const errors = stats.compilation.errors;
@@ -32,13 +30,13 @@ function handler(err, stats, cb) {
   if (errors.length > 0) {
     notify.onError({
       title: 'Webpack Error',
-      message: '<%= error.message %>'
+      message: '<%= error.message %>',
     }).apply(null, errors);
   }
 
   gutil.log('[webpack]', stats.toString({
     colors: true,
-    chunks: false // информация о распределении модулей по чанкам в консоли
+    chunks: false, // информация о распределении модулей по чанкам в консоли
   }));
 
   server.reload();
