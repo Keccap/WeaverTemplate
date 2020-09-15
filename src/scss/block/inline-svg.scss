@@ -1,6 +1,7 @@
 $b: '.inline-svg';
 
 #{$b} {
+  @include aspect-ratio(1);
   position: relative;
   display: block;
   width: 100%;

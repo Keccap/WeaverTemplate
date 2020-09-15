@@ -1,5 +1,5 @@
-{% macro inlineSvg(name, options) %}
-    <div class="inline-svg-{{name}} inline-svg"{% if (options.dir) %} data-dir="{{ options.dir }}"{% endif %}{% if (options.flip) %} data-flip="{{ options.flip }}"{% endif %}>
-        {% include "inline-svg/" + name + ".svg" %}
-    </div>
+{% macro inlineSvg(name, options, tag = "div") %}
+    <{{tag}} class="inline-svg-{{name}} inline-svg"{% if (options.dir) %} data-dir="{{ options.dir }}"{% endif %}{% if (options.flip) %} data-flip="{{ options.flip }}"{% endif %}>
+    {% include "inline-svg/" + name + ".svg" %}
+    </{{tag}}>
 {% endmacro %}
