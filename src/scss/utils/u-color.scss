@@ -4,4 +4,8 @@ $b: '.u-color';
   &-accent {
     color: $accent-base;
   }
+
+  &-inherit {
+    color: inherit;
+  }
 }
