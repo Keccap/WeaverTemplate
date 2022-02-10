@@ -67,7 +67,7 @@
     "imagemin-jpeg-recompress": "^7.0.0",
     "imagemin-pngquant": "^9.0.0",
     "json-server": "^0.16.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "require-dir": "^1.2.0",
     "require-yaml": "^0.0.1",
     "sass-lint": "^1.13.1",
